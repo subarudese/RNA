@@ -456,6 +456,68 @@
                 width: 180px;
             }
         }
+        /* 最新文章版块样式 */
+        .articles-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        .article-card {
+            display: flex;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        .article-card:hover {
+            transform: translateY(-5px);
+        }
+        .article-image {
+            flex: 0 0 250px;
+            background-size: cover;
+            background-position: center;
+        }
+        .article-content {
+            flex: 1;
+            padding: 25px;
+        }
+        .article-content h3 {
+            margin-top: 0;
+            color: #1a5f7a;
+        }
+        .article-content h3 a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .article-content h3 a:hover {
+            color: #2a9d8f;
+        }
+        .article-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 10px 0;
+        }
+        .read-more {
+            display: inline-block;
+            margin-top: 15px;
+            color: #2a9d8f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .article-card {
+                flex-direction: column;
+            }
+            .article-image {
+                flex: 0 0 200px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -540,6 +602,36 @@
             <!-- 团队成员将通过JavaScript动态生成 -->
         </div>
     </section>
+
+    <!-- 最新文章/成果 Section -->
+<section class="container" id="publications">
+    <h2 class="section-title">最新成果</h2>
+    <div class="articles-container">
+        <!-- 在主页的最新成果部分 -->
+        <article class="article-card">
+            <div class="article-image" style="background-image: url('images/research/nanocarrier.jpg');"></div>
+            <div class="article-content">
+                <!-- 重点修改：将 href 指向新建的独立文章页面 -->
+                <h3><a href="articles/test1.html">新型智能纳米载体实现肿瘤靶向治疗新突破</a></h3>
+                <p class="article-meta">发布时间：2024年5月 • 发表于《自然·材料》</p>
+                <!-- 这里是文章简介，约100-150字 -->
+                <p>本研究开发了一种pH响应型超分子纳米载体，可精准递送化疗药物至肿瘤部位，显著提高疗效并降低副作用。体外与小鼠模型实验均证实了其卓越的靶向性和安全性，为癌症靶向治疗提供了新思路。</p>
+                <!-- 重点修改：链接指向独立文章页面 -->
+                <a href="articles/test1.html" class="read-more">阅读全文</a>
+            </div>
+        </article>
+        <!-- 文章 2 -->
+        <article class="article-card">
+            <div class="article-image" style="background-image: url('images/research/theranostics.jpg');"></div>
+            <div class="article-content">
+                <h3><a href="#">超分子诊疗一体化平台用于早期肝癌检测</a></h3>
+                <p class="article-meta">发布时间：2024年3月 • 发表于《科学进展》</p>
+                <p>我们构建了首个兼具MRI成像和光热治疗功能的超分子平台，在早期肝癌模型中实现了高灵敏度诊断与高效治疗...</p>
+                <a href="#" class="read-more">阅读全文</a>
+            </div>
+        </article>
+    </div>
+</section>
 
     <!-- 页脚 -->
     <footer id="contact">

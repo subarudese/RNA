@@ -213,25 +213,30 @@
         
         // 团队成员数据
         const teamMembers = [
-            { name: '林佳奇', role: '教授', img: 'images/member/ljq.jpg' },
-            { name: '都书博', role: '副教授', img: 'images/member/dsb.png' },
-            { name: '孙凯', role: '博士后研究员', img: 'images/member/sk.jpg' },
-            { name: '赵雨靓', role: '博士后研究员', img: 'images/member/zyl.jpg' },
-            { name: '程浩', role: '博士后研究员', img: 'images/member/ch.jpg' },
+            { name: '林佳奇', role: '教授', img: 'images/member/ljq.jpg', page: 'member/ljq.html' },
+            { name: '都书博', role: '副教授', img: 'images/member/dsb.png', page: 'member/dsb.html' },
+            { name: '孙凯', role: '博士后研究员', img: 'images/member/sk.jpg', page: 'member/sk.html' },
+            { name: '赵雨靓', role: '博士后研究员', img: 'images/member/zyl.jpg', page: 'member/zyl.html' },
+            { name: '程浩', role: '博士后研究员', img: 'images/member/ch.jpg', page: 'member/ch.html' },
         ];
         
         // 生成团队成员
         const teamSlider = document.querySelector('.team-slider');
-        
+        teamSlider.innerHTML = ''; // 清空原有内容
+
         teamMembers.forEach(member => {
             const teamMember = document.createElement('div');
             teamMember.className = 'team-member';
+
+            // 【重点】将卡片内容包裹在链接中，点击跳转到 member.page
             teamMember.innerHTML = `
-                <div class="member-img" style="background-image: url('${member.img}')"></div>
-                <div class="member-info">
-                    <div class="member-name">${member.name}</div>
-                    <div class="member-role">${member.role}</div>
-                </div>
+                <a href="${member.page}" class="member-link">
+                    <div class="member-img" style="background-image: url('${member.img}')"></div>
+                    <div class="member-info">
+                        <div class="member-name">${member.name}</div>
+                        <div class="member-role">${member.role}</div>
+                    </div>
+                </a>
             `;
             teamSlider.appendChild(teamMember);
         });

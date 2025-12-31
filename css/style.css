@@ -237,6 +237,22 @@
             font-size: 1.5rem;
         }
         
+        /* 研究标题链接样式 */
+        .research-title-link {
+            color: #1a5f7a;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .research-title-link:hover {
+            color: #2a9d8f;
+            text-decoration: underline;
+        }
+        /* 保持卡片悬停效果 */
+        .research-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
         /* 团队成员 */
         .team-slider {
             display: flex;

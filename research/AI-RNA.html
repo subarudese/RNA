@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>{{研究方向名称}} | 超分子实验室</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* 详情页专用样式 */
+        .research-detail-hero {
+            background: linear-gradient(rgba(26, 95, 122, 0.9), rgba(42, 157, 143, 0.8));
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .research-detail-container {
+            max-width: 900px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+        .research-section {
+            margin: 40px 0;
+            padding: 25px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            border-left: 5px solid #2a9d8f;
+        }
+        .research-gallery img {
+            width: 100%;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .publication-item {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏（复用） -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-flask"></i>
+            <a href="../index.html" style="color: inherit; text-decoration: none;">超分子实验室</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../index.html">首页</a></li>
+            <li><a href="../index.html#research">研究方向</a></li>
+            <li><a href="../index.html#team">团队成员</a></li>
+            <li><a href="../index.html#publications">研究成果</a></li>
+            <li><a href="../index.html#contact">联系我们</a></li>
+        </ul>
+    </nav>
+
+    <!-- 研究方向页眉 -->
+    <header class="research-detail-hero">
+        <h1>{{研究方向名称}}</h1>
+        <p>{{一句话概括}}</p>
+        <p><i class="fas fa-user"></i> 负责人：{{负责人姓名}} &nbsp; | &nbsp; <i class="fas fa-users"></i> 相关成员：{{成员1, 成员2}}</p>
+    </header>
+
+    <!-- 详情内容 -->
+    <main class="research-detail-container">
+        <section class="research-section">
+            <h2><i class="fas fa-book"></i> 研究背景与意义</h2>
+            <p>{{详细介绍该方向的研究背景、科学意义和实际应用价值...}}</p>
+        </section>
+
+        <section class="research-section">
+            <h2><i class="fas fa-cogs"></i> 核心方法与技术</h2>
+            <ul>
+                <li>{{核心技术或方法一}}</li>
+                <li>{{核心技术或方法二}}</li>
+                <li>{{核心技术或方法三}}</li>
+            </ul>
+            <div class="research-gallery">
+                <img src="../images/research/{{相关原理或设备图}}.jpg" alt="原理示意图">
+            </div>
+        </section>
+
+        <section class="research-section">
+            <h2><i class="fas fa-chart-line"></i> 近期重要进展</h2>
+            <p>{{列举1-3项最重要进展，可包含数据或关键发现...}}</p>
+            <div class="publication-item">
+                <strong>代表性论文：</strong> {{论文标题}} <em>《期刊名称》</em>, 2024.
+                <a href="#">[全文链接]</a>
+            </div>
+        </section>
+
+        <section class="research-section">
+            <h2><i class="fas fa-bullseye"></i> 未来目标</h2>
+            <p>{{未来1-2年的研究计划和发展目标...}}</p>
+        </section>
+
+        <div style="text-align: center; margin-top: 50px;">
+            <a href="../index.html#research" class="cta-button">返回所有研究方向</a>
+            &nbsp;&nbsp;
+            <a href="#contact" class="cta-button">联系该方向负责人</a>
+        </div>
+    </main>
+
+    <!-- 页脚（复用） -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>联系我们</h3>
+                <ul class="contact-list">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>XX市XX区XX路XX号 科学园XX栋XX室</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span>+86 XXX-XXXX-XXXX</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>lab@university.edu.cn</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>快速链接</h3>
+                <ul class="contact-list">
+                    <li><a href="#home" style="color: #a8dadc;">首页</a></li>
+                    <li><a href="#research" style="color: #a8dadc;">研究方向</a></li>
+                    <li><a href="#team" style="color: #a8dadc;">团队成员</a></li>
+                    <li><a href="#publications" style="color: #a8dadc;">研究成果</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>关注我们</h3>
+                <ul class="contact-list">
+                    <li><i class="fab fa-weixin"></i> 微信公众号</li>
+                    <li><i class="fab fa-github"></i> GitHub仓库</li>
+                    <li><i class="fas fa-graduation-cap"></i> Google Scholar</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 超分子治疗诊断实验室. 版权所有.</p>
+            <p>本网站基于学术交流目的创建</p>
+        </div>
+    </footer>
+</body>
+</html>

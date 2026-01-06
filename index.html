@@ -44,9 +44,9 @@
     </div>
 
     <!-- 研究领域 -->
-    <section class="full-screen-section bg-alt" id="research">
+    <section class="container" id="research">
         <h2 class="section-title">研究方向</h2>
-        <div class="container w-100">
+        <div class="research-grid">
             <div class="research-card">
                 <div class="research-img" style="background-image: url('images/research/AI-RNA.png');"></div>
                 <div class="research-content">
@@ -75,17 +75,17 @@
     </section>
 
     <!-- 团队成员 -->
-    <section class="full-screen-section" id="team">
+    <section class="container" id="team">
         <h2 class="section-title">团队成员</h2>
-        <div class="container w-100">
+        <div class="team-slider">
             <!-- 团队成员将通过JavaScript动态生成 -->
         </div>
     </section>
 
     <!-- 最新文章/成果 Section -->
-<section class="full-screen-section bg-alt" id="publications">
+<section class="container" id="publications">
     <h2 class="section-title">最新成果</h2>
-    <div class="container w-100">
+    <div class="article-grid">
         <!-- 在主页的最新成果部分 -->
         <article class="article-card">
             <div class="article-image" style="background-image: url('images/research/nanocarrier.jpg');"></div>
@@ -244,22 +244,6 @@
             teamSlider.appendChild(teamMember);
         });
         
-        // 增强的平滑滚动（如果已有类似代码，可合并）
-        $(document).on('click', 'a[href^="#"]', function(event) {
-            // 排除不需要平滑滚动的链接
-            if ($(this).attr('href') === "#" || $(this).hasClass('no-smooth-scroll')) return;
-            
-            event.preventDefault();
-            const target = $(this.hash);
-            if (target.length) {
-                // 计算滚动目标位置（考虑固定导航栏高度）
-                const targetPosition = target.offset().top - 70;
-                $('html, body').animate({
-                    scrollTop: targetPosition
-                }, 800, 'swing'); // 800ms滚动时长，'swing'缓动效果
-            }
-        });
-
         // 平滑滚动到锚点
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {

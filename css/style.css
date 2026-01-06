@@ -36,7 +36,7 @@
         
         .logo i {
             margin-right: 10px;
-            color: #2a9d8f;
+            color: #4a90e2;
         }
         
         .nav-links {
@@ -57,7 +57,7 @@
         }
         
         .nav-links a:hover {
-            color: #2a9d8f;
+            color: #4a90e2;
         }
         
         .mobile-menu-btn {
@@ -96,7 +96,7 @@
         }
         
         .cta-button {
-            background-color: #2a9d8f;
+            background-color: #4a90e2;
             color: white;
             border: none;
             padding: 15px 30px;
@@ -117,7 +117,7 @@
         
         /* 滚动新闻栏 */
         .news-ticker-container {
-            background-color: #1a5f7a;
+            background-color: #0056a6;
             color: white;
             padding: 15px 0;
             overflow: hidden;
@@ -125,7 +125,7 @@
         }
         
         .news-ticker-label {
-            background-color: #2a9d8f;
+            background-color: #4a90e2;
             padding: 10px 20px;
             font-weight: bold;
             position: absolute;
@@ -156,7 +156,7 @@
         
         .ticker-item i {
             margin-right: 10px;
-            color: #2a9d8f;
+            color: #4a90e2;
         }
         
         .ticker-date {
@@ -194,7 +194,7 @@
             position: absolute;
             width: 100px;
             height: 4px;
-            background-color: #2a9d8f;
+            background-color: #4a90e2;
             bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
@@ -244,7 +244,7 @@
             transition: color 0.3s ease;
         }
         .research-title-link:hover {
-            color: #2a9d8f;
+            color: #4a90e2;
             text-decoration: underline;
         }
         /* 保持卡片悬停效果 */
@@ -309,14 +309,14 @@
         }
         
         .member-role {
-            color: #2a9d8f;
+            color: #4a90e2;
             font-size: 0.9rem;
             margin-bottom: 10px;
         }
         
         /* 页脚 */
         footer {
-            background-color: #1a5f7a;
+            background-color: #0056a6;
             color: white;
             padding: 60px 0 30px;
         }
@@ -343,7 +343,7 @@
             position: absolute;
             width: 50px;
             height: 3px;
-            background-color: #2a9d8f;
+            background-color: #4a90e2;
             bottom: 0;
             left: 0;
         }
@@ -356,7 +356,7 @@
         
         .contact-list i {
             margin-right: 10px;
-            color: #2a9d8f;
+            color: #4a90e2;
             margin-top: 5px;
         }
         
@@ -499,7 +499,7 @@
             text-decoration: none;
         }
         .article-content h3 a:hover {
-            color: #2a9d8f;
+            color: #4a90e2;
         }
         .article-meta {
             color: #666;
@@ -509,7 +509,7 @@
         .read-more {
             display: inline-block;
             margin-top: 15px;
-            color: #2a9d8f;
+            color: #4a90e2;
             font-weight: bold;
             text-decoration: none;
         }

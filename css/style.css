@@ -260,7 +260,7 @@
             padding: 20px 0;
             gap: 25px;
             scrollbar-width: thin;
-            scrollbar-color: #0056a6; #f1f1f1;
+            scrollbar-color: #0056a6;
         }
         
         .team-slider::-webkit-scrollbar {
@@ -525,4 +525,22 @@
             .article-image {
                 flex: 0 0 200px;
             }
+        }
+        /* 核心：全屏区块样式 */
+        .full-screen-section {
+            min-height: 100vh; /* 至少占满一个视口高度 */
+            display: flex;
+            align-items: center; /* 垂直居中内容 */
+            position: relative;
+            padding-top: 80px; /* 给固定导航栏留出空间 */
+            padding-bottom: 40px;
+        }
+
+        /* 可选：为不同区块设置差异化背景色 */
+        .bg-alt {
+            background-color: #f8f9fa; /* 浅灰色背景，用于间隔 */
+        }
+        .bg-dark {
+            background-color: #1a5f7a; /* 您的主题深色 */
+            color: white;
         }

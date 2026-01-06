@@ -315,6 +315,39 @@
             margin-bottom: 10px;
         }
         
+        /* 团队成员“更多”链接样式 */
+        .team-more-link {
+            display: inline-flex;
+            align-items: center;
+            background-color: #0056a6; /* 大工蓝主题色 */
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px; /* 胶囊形状，现代感 */
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(0, 86, 166, 0.3); /* 蓝色阴影增强立体感 */
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        /* 鼠标悬停交互效果 */
+        .team-more-link:hover {
+            background-color: #003d7a; /* 悬停时变为更深的蓝色 */
+            color: white;
+            transform: translateY(-3px); /* 轻微上浮 */
+            box-shadow: 0 7px 20px rgba(0, 61, 122, 0.4); /* 悬停阴影加深 */
+            border-color: rgba(255, 255, 255, 0.2); /* 添加淡淡边框 */
+        }
+
+        /* 链接内图标的单独动画 */
+        .team-more-link .fa-arrow-right {
+            transition: transform 0.3s ease;
+        }
+        .team-more-link:hover .fa-arrow-right {
+            transform: translateX(5px); /* 悬停时箭头向右移动 */
+        }
+
         /* 页脚 */
         footer {
             background-color: #0056a6;

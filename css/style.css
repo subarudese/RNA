@@ -256,7 +256,7 @@
         /* 团队成员 */
         .team-slider {
             display: flex;
-            overflow-x: auto;
+            overflow-x: center;
             padding: 20px 0;
             gap: 25px;
             scrollbar-width: thin;

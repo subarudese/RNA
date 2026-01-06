@@ -317,9 +317,9 @@
         
         /* 团队成员“更多”链接样式 */
         .team-more-link {
-            display: inline-flex;
-            margin-left: auto;
-            margin-right: auto;
+            display: block;
+            width: fit-content; /* 让宽度刚好包裹内容 */
+            margin: 0 auto; /* 上下边距为0，左右自动（居中） */
             align-items: center;
             background-color: #0056a6; /* 大工蓝主题色 */
             color: white;

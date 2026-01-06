@@ -521,8 +521,9 @@
             height: 250px;
             width: 100%;
             flex: 0 0 250px;
-            background-size: cover;
+            background-size: contain;
             background-position: center;
+            background-repeat: no-repeat;
         }
         .article-content {
             flex: 1;

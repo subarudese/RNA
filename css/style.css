@@ -526,23 +526,3 @@
                 flex: 0 0 200px;
             }
         }
-        /* 修复版：全屏区域核心样式 */
-        .full-screen-section {
-            min-height: 100vh; /* 核心：最小高度为整个视口 */
-            width: 100%; /* 确保宽度占满 */
-            position: relative; /* 为内部绝对定位元素提供参考 */
-            display: flex; /* 使用Flexbox进行内容居中 */
-            flex-direction: column; /* 垂直方向排列 */
-            justify-content: center; /* 垂直居中 */
-            align-items: center; /* 水平居中 (可根据需要调整) */
-            padding: 80px 20px 40px; /* 上内边距避开导航栏，下边距留白 */
-            box-sizing: border-box; /* 非常重要：确保padding不会增加总高度 */
-            overflow: hidden; /* 防止内部元素溢出导致布局混乱 */
-        }
-
-        /* 如果使用Bootstrap，可能需要更具体的选择器来覆盖默认样式 */
-        section.full-screen-section > .container {
-            width: 100%;
-            max-width: 1200px; /* 或您的容器最大宽度 */
-            margin: 0 auto; /* 确保容器自身在flex布局中也居中 */
-        }

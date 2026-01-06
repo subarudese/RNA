@@ -318,7 +318,8 @@
         /* 团队成员“更多”链接样式 */
         .team-more-link {
             display: inline-flex;
-            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
             align-items: center;
             background-color: #0056a6; /* 大工蓝主题色 */
             color: white;

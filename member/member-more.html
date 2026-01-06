@@ -10,6 +10,28 @@
     <link rel="stylesheet" href="css/style.css">
     <style>
         /* 本页专用样式 */
+        /* 1. 导航栏基础与滚动样式 */
+        #mainNav {
+            padding-top: 1.2rem;
+            padding-bottom: 1.2rem;
+            background-color: transparent; /* 初始透明 */
+            transition: all 0.4s ease;
+        }
+        #mainNav.navbar-shrink {
+            padding-top: 0.7rem;
+            padding-bottom: 0.7rem;
+            background-color: rgba(0, 86, 166, 0.95); /* 大工蓝，带透明度 */
+            backdrop-filter: blur(10px); /* 毛玻璃效果，可选 */
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        /* 2. 为固定导航栏预留空间，防止内容被遮挡 */
+        body {
+            padding-top: 80px; /* 这个值应等于或略大于导航栏.navbar-shrink后的高度 */
+        }
+        /* 如果页面有独立的第一个区块（如header），也可以单独为其添加padding */
+        .team-header, .page-header {
+            padding-top: 80px;
+        }
         .team-header {
             background: linear-gradient(rgba(0, 86, 166, 0.9), rgba(0, 61, 122, 0.9));
             color: white;
@@ -185,6 +207,19 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // 导航栏滚动变化函数
+        function updateNavbarOnScroll() {
+            if (window.scrollY > 100) {
+                document.getElementById('mainNav').classList.add('navbar-shrink');
+            } else {
+                document.getElementById('mainNav').classList.remove('navbar-shrink');
+            }
+        }
+        // 页面加载后执行一次，并监听滚动事件
+        document.addEventListener('DOMContentLoaded', function() {
+            updateNavbarOnScroll(); // 初始化
+            window.addEventListener('scroll', updateNavbarOnScroll); // 滚动时触发
+        });
         // 简单的平滑滚动，用于导航锚点
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>团队简介 | 大连理工大学超分子实验室</title>
+    <!-- 引入与主站一致的样式和框架 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css"> <!-- 注意：使用../回到根目录引用CSS -->
+    <style>
+        /* 本页专用样式 */
+        .team-hero {
+            background: linear-gradient(rgba(0, 86, 166, 0.9), rgba(0, 61, 122, 0.9));
+            color: white;
+            padding: 140px 0 80px;
+            text-align: center;
+        }
+        .section-padding {
+            padding: 80px 0;
+        }
+        .section-title {
+            color: #0056a6;
+            border-bottom: 3px solid #4a90e2;
+            padding-bottom: 10px;
+            margin-bottom: 40px;
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #4a90e2;
+            margin-bottom: 1rem;
+        }
+        .timeline-item {
+            padding-left: 30px;
+            border-left: 3px solid #e3f2fd;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            background: #0056a6;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 (与主页保持一致，但“团队简介”应高亮) -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <img src="../images/dut_logo.png" alt="大连理工大学" style="height: 40px; margin-right: 12px;">
+                超分子治疗诊断实验室
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">首页</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html#research">研究方向</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html#team">团队成员</a></li>
+                    <!-- 新增的“团队简介”链接，在此页保持高亮 -->
+                    <li class="nav-item"><a class="nav-link active" href="about_team.html">团队简介</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html#publications">研究成果</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html#contact">联系我们</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面主横幅 -->
+    <header class="team-hero">
+        <div class="container">
+            <h1 class="display-4 mb-4">超分子治疗诊断实验室</h1>
+            <p class="lead mb-4">一支融合化学、材料学、生物学与医学的交叉学科创新团队，致力于推动精准医疗发展。</p>
+            <a href="#intro" class="btn btn-light btn-lg">了解我们 <i class="fas fa-arrow-down ms-2"></i></a>
+        </div>
+    </header>
+
+    <!-- 1. 团队概述 -->
+    <section id="intro" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">团队概述</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4">
+                    <p class="lead">本实验室依托大连理工大学XXXX学院，成立于2015年。我们聚焦于超分子化学的分子识别与自组装原理，将其创新性地应用于疾病诊断与治疗。</p>
+                    <p>团队核心目标是开发“智能”纳米诊疗平台，实现从基础研究到临床转化应用的跨越。目前，我们在药物靶向递送、生物响应性材料、多模态成像引导治疗等方面取得了一系列标志性成果。</p>
+                </div>
+                <div class="col-lg-6">
+                    <img src="../images/team/lab_photo.jpg" alt="实验室环境" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. 研究领域 (可链接到主页详细页) -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <h2 class="section-title text-center">核心研究领域</h2>
+            <div class="row text-center g-4 mt-4">
+                <div class="col-md-4">
+                    <div class="feature-icon"><i class="fas fa-vial"></i></div>
+                    <h4>智能药物递送</h4>
+                    <p>设计环境响应的超分子载体，实现药物的精准控释与增效减毒。</p>
+                    <a href="../index.html#research" class="btn btn-outline-primary btn-sm">了解更多</a>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-icon"><i class="fas fa-stethoscope"></i></div>
+                    <h4>诊疗一体化</h4>
+                    <p>构建兼具诊断成像与治疗功能的纳米平台，用于癌症等重大疾病。</p>
+                    <a href="../research/theranostics.html" class="btn btn-outline-primary btn-sm">了解更多</a>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-icon"><i class="fas fa-dna"></i></div>
+                    <h4>生物材料与器件</h4>
+                    <p>开发新型生物相容性材料，用于组织工程、生物传感与体外诊断。</p>
+                    <a href="../research/biomaterials.html" class="btn btn-outline-primary btn-sm">了解更多</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 人员构成与理念 -->
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="section-title">团队构成与理念</h2>
+            <div class="row">
+                <div class="col-lg-8">
+                    <p>我们是一个由1名教授、2名副教授、5名博士后、10名博士及硕士研究生组成的紧密协作团队。我们相信，跨学科的碰撞是创新的源泉。</p>
+                    <ul>
+                        <li><strong>育人理念</strong>：鼓励独立思考，培养兼具扎实基础与前沿视野的科研人才。</li>
+                        <li><strong>合作文化</strong>：团队内部开放共享，并积极与国内外顶尖临床及科研机构合作。</li>
+                        <li><strong>学术追求</strong>：致力于解决实际科学问题，发表高质量论文，并推动专利转化。</li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <div class="bg-primary text-white p-4 rounded text-center">
+                        <h3 class="h4">团队规模</h3>
+                        <div class="display-4">18+</div>
+                        <p>名活跃研究人员</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 发展历程 (可选) -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <h2 class="section-title">发展历程</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h5>2023年</h5>
+                    <p>实验室迁入新落成的XX科学楼，研究条件全面升级；获评国家自然科学基金创新研究群体。</p>
+                </div>
+                <div class="timeline-item">
+                    <h5>2020年</h5>
+                    <p>在《Nature Communications》、《Science Advances》等顶级期刊上发表多篇突破性论文。</p>
+                </div>
+                <div class="timeline-item">
+                    <h5>2015年</h5>
+                    <p>超分子治疗诊断实验室正式成立。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页尾召唤语 -->
+    <section class="py-5 bg-dark text-white text-center">
+        <div class="container">
+            <h3 class="mb-4">欢迎加入我们</h3>
+            <p class="mb-4">我们常年招聘博士后、博士和硕士研究生，欢迎对交叉学科研究充满热情的青年才俊联系咨询。</p>
+            <a href="../index.html#contact" class="btn btn-light btn-lg">联系我们</a>
+        </div>
+    </section>
+
+    <!-- 页脚 (请务必复制您主站index.html的完整页脚代码替换下方注释部分) -->
+    <!-- 开始复制 -->
+    <footer id="contact">
+        ... （这里是您主站完整的页脚HTML代码，请直接复制过来）
+    </footer>
+    <!-- 结束复制 -->
+
+    <!-- 引入JS库 (与主页一致) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 简单的平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        // 导航栏滚动效果（如果主站JS中有此功能，可复用）
+        $(window).on('scroll', function() {
+            if ($(window).scrollTop() > 100) {
+                $('#mainNav').addClass('navbar-shrink');
+            } else {
+                $('#mainNav').removeClass('navbar-shrink');
+            }
+        });
+    </script>
+</body>
+</html>

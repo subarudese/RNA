@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <!-- 在 <head> 中引入 fullPage.css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.19/fullpage.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>课题组网站 - mRNA技术与生物界面实验室</title>
@@ -204,26 +204,45 @@
         </div>
     </div>
     <script>
-        // 等待页面加载完成后初始化
-        document.addEventListener('DOMContentLoaded', function() {
-            new fullpage('#fullpage', { // 指向您的容器ID
-                // 核心配置
-                licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE', // 非商业用途可先用 'OPEN-SOURCE-GPLV3-LICENSE'
-                autoScrolling: true,        // 启用自动滚动
-                scrollHorizontally: true,   // 允许横向滚动（如果需要）
-                navigation: true,           // 显示右侧导航点
-                navigationPosition: 'right', // 导航点位置
-                scrollingSpeed: 700,        // 滚动动画速度（毫秒）
-                fitToSection: true,         // 滚动后自动适配到最接近的一屏
-                fitToSectionDelay: 300,     // 适配延迟
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.min.js"></script>
+        // 使用 jQuery 的 ready 函数确保 DOM 加载完成
+        $(document).ready(function() {
+            $('#fullpage').fullpage({ // 注意：使用 jQuery 选择器和 .fullpage() 方法初始化
+                // ========================
+                // 核心配置 (v3中无licenseKey)
+                // ========================
+                autoScrolling: true,        // ✅ 支持：启用自动滚动
+                scrollHorizontally: true,   // ✅ 支持：允许横向滚动
+                navigation: true,           // ✅ 支持：显示导航点
+                navigationPosition: 'right', // ✅ 支持：导航点位置
+                scrollingSpeed: 700,        // ✅ 支持：滚动速度
+                fitToSection: true,         // ✅ 支持：滚动后适配到屏
+                fitToSectionDelay: 300,     // ⚠️  注意：在 v3 中，此选项名为 `fitToSectionDelay`，但部分旧文档可能用 `easing`，建议先尝试此名。
 
-                // 锚点配置（与您的导航栏链接对应）
-                anchors: ['home', 'research', 'team', 'publications'], // 与每屏的id对应
-                menu: '#mainNav', // 将导航栏菜单与滚动绑定，实现同步高亮
+                // ========================
+                // 锚点与菜单配置
+                // ========================
+                // 锚点配置 (值必须唯一，不能与页面任何元素的 id 属性重复，否则会报错)
+                anchors: ['home', 'research', 'team', 'publications'],
+                // 菜单绑定 (将导航栏与滚动绑定)
+                menu: '#mainNav',
 
-                // 回调函数示例：到达某屏后触发操作
-                afterLoad: function(origin, destination, direction) {
-                    // 可以在这里触发您的AOS动画等
+                // ========================
+                // 回调函数
+                // ========================
+                // 滚动到某一屏后的回调函数
+                afterLoad: function(anchorLink, index) { // ⚠️ 参数与 v4 不同！
+                    // origin: 离开的页面信息
+                    // destination: 到达的页面信息
+                    // direction: 滚动方向 'up' 或 'down'
+                    // 可以在这里触发 AOS 动画等
+                    console.log('到达锚点: ' + anchorLink + ', 屏索引: ' + index);
+                },
+
+                // 其他可能需要的 v3.x 回调（如需）：
+                onLeave: function(index, nextIndex, direction) {
+                    // 离开某一屏时触发
                 }
             });
         });
@@ -338,8 +357,5 @@
             }
         });
     </script>
-    <!-- 在 </body> 标签前引入 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.19/fullpage.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.19/fullpage.extensions.min.js"></script>
 </body>
 </html>

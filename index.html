@@ -276,33 +276,7 @@
             // 滚动时更新指示器
             window.addEventListener('scroll', updateIndicator);
             updateIndicator(); // 初始化
-            
-            // 4. 新闻数据
-            const newsItems = [
-                { date: '2025-12-20', content: '课题组在《Nature Communications》发表超分子药物递送系统最新研究成果', icon: 'fas fa-newspaper' },
-                { date: '2025-12-15', content: '实验室成功举办第二届超分子医学前沿研讨会', icon: 'fas fa-users' },
-                { date: '2025-12-10', content: '博士生张华获得国家优秀青年科学基金资助', icon: 'fas fa-award' },
-                { date: '2025-12-05', content: '课题组与哈佛医学院合作项目正式启动', icon: 'fas fa-handshake' },
-                { date: '2025-11-28', content: '新型pH响应型纳米载体动物实验取得突破性进展', icon: 'fas fa-flask' },
-                { date: '2025-11-20', content: '实验室网站全新改版上线，欢迎访问', icon: 'fas fa-globe' },
-                { date: '2025-11-15', content: '王明教授受邀在ACS全国会议上作主旨报告', icon: 'fas fa-microphone' },
-                { date: '2025-11-10', content: '课题组获得国家自然科学基金重点项目支持', icon: 'fas fa-graduation-cap' }
-            ];
-            
-            const newsTicker = document.getElementById('newsTicker');
-            const duplicatedNewsItems = [...newsItems, ...newsItems];
-            
-            duplicatedNewsItems.forEach(item => {
-                const tickerItem = document.createElement('div');
-                tickerItem.className = 'ticker-item';
-                tickerItem.innerHTML = `
-                    <i class="${item.icon}"></i>
-                    <span class="ticker-date">${item.date}</span>
-                    <span class="ticker-content">${item.content}</span>
-                `;
-                newsTicker.appendChild(tickerItem);
-            });
-            
+                        
             // 5. 团队成员
             const teamMembers = [
                 { name: '林佳奇', role: '教授', img: 'images/member/ljq.jpg', page: 'member/ljq.html' },
@@ -337,7 +311,38 @@
                     authors: 'Linfeng Wang, Sujia Liu, Haifeng Zhu, Shuyu Li, Yannan Li, Sen Chen, Jianyin Han, Yin Zhu, Jiahao Wua,Wentao Liao, Hongmei Zhang, Haiyan Zeng, Shaoting Li, Shuping Zhao, Bingwei Wang*, Jiaqi Lin*, Ji Zeng*.',
                     link: 'articles/article1.html'
                 },
-                // 其他文章数据...
+
+                {
+                    title: 'Multi-functional lipid nanoformulations for enhancing the efficacy of mRNA tumor vaccines by reversing tumor immunosuppressive microenvironment',
+                    image: 'images/articles/nanotoday.jpg',
+                    meta: '发布时间：2025年8月 • 发表于 Nano Today',
+                    authors: 'Yufeng Zhang#, Liuwei Zhang#, Hui Gao, Shubo Du, Qixian Chen, Xueguang Lu*, Jiaqi Lin*.',
+                    link: 'articles/article2.html'
+                },
+
+                {
+                    title: 'Enhancing mRNA Translation Efficiency by Introducing Sequence- Optimized AU-Rich Elements in 3’UTR via HuR Anchorage',
+                    image: 'images/articles/Molecular Therapy - Nucleic Acids.jpg',
+                    meta: '发布时间：2025年6月 • 发表于 Molecular Therapy - Nucleic Acids',
+                    authors: 'Xinghuan Ma, Sujia Liu, Bangda Fan, Danni Jin, Lei Miao, Lin Liu, Shubo Du*, Jiaqi Lin*.',
+                    link: 'articles/article3.html'
+                },
+
+                {
+                    title: 'A tough semi-dry hydrogel electrode with anti-bacterial properties for long-term repeatable non-invasive EEG acquisition',
+                    image: 'images/articles/Microsystems & Nanoengineering.jpg',
+                    meta: '发布时间：2025年5月 • 发表于 Microsystems & Nanoengineering',
+                    authors: 'Hailing Xue, Dongyang Wang, Mingyan Jin, Hanbing Gao, Xuhui Wang, Long Xia, Dong’ang Li, Kai Sun, Huanan Wang, Xufeng Dong, Chi Zhang, Fengyu Cong and Jiaqi Lin*.',
+                    link: 'articles/article4.html'
+                },
+
+                {
+                    title: 'A Synergistic Lipid Nanoparticle Encapsulating mRNA Shingles Vaccine Induces Potent Immune Responses and Protects Guinea Pigs from Viral Challenges. Advanced Materials',
+                    image: 'images/articles/Advanced Materials.jpg',
+                    meta: '发布时间：2023年12月 • 发表于 Advanced Materials',
+                    authors: 'Xingdi Cheng, Sujia Liu, Jing Sun, Lin Liu, Xinghuan Ma, Jingjiao Li, Bangda Fan, Chen Yang, Yuanyuan Zhao, Shuai Liu, Yixing We, Wei Li , Simin Sun, Shiwei Mi, Haonan Huo, Lei Miao, Hao Pan, Xiaolan Cui*, Jiaqi Lin*, Xueguang Lu*.',
+                    link: 'articles/article5.html'
+                },
             ];
             
             const articlesContainer = document.getElementById('articlesContainer');

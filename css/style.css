@@ -511,6 +511,7 @@
         }
         .article-card {
             display: flex;
+            gap: 2.5rem;
             background: white;
             border-radius: 10px;
             overflow: hidden;

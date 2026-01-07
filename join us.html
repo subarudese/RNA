@@ -8,6 +8,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
+        #mainNav {
+            padding-top: 1.2rem;
+            padding-bottom: 1.2rem;
+            background-color: transparent; /* 初始透明 */
+            transition: all 0.4s ease;
+        }
+        #mainNav.navbar-shrink {
+            padding-top: 0.7rem;
+            padding-bottom: 0.7rem;
+            background-color: rgba(0, 86, 166, 0.95); /* 大工蓝，带透明度 */
+            backdrop-filter: blur(10px); /* 毛玻璃效果，可选 */
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
         .join-hero {
             background: linear-gradient(135deg, #0056a6 0%, #003d7a 100%);
             color: white;
@@ -151,7 +164,6 @@
         <section class="info-section" id="research-directions">
             <h2 class="info-title">招生科研方向</h2>
             <div class="info-content">
-                <p>AI赋能RNA药物、纳米药剂，mRNA疫苗及肿瘤免疫，mRNA组织再生，体内基因编辑疗法，脑机接口，多模态生物传感</p>
                 <div class="mt-4">
                     <span class="direction-tag">AI赋能RNA药物</span>
                     <span class="direction-tag">纳米药剂</span>
@@ -168,7 +180,6 @@
         <section class="info-section" id="majors">
             <h2 class="info-title">招生专业</h2>
             <div class="info-content">
-                <p>生物工程，生物医药，生物技术与工程</p>
                 <div class="mt-4">
                     <span class="specialty-badge">生物工程</span>
                     <span class="specialty-badge">生物医药</span>
@@ -199,9 +210,48 @@
         </div>
     </main>
 
-    <!-- 页脚 (请复制您主站的完整页脚代码替换这里) -->
-    <footer id="footer">
-        ... （请在此处粘贴您主站index.html中的完整<footer>代码）
+    <!-- 页脚 -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>联系我们</h3>
+                <ul class="contact-list">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>大连市甘井子区凌工路2号 大连理工大学生物工程学院</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span>+86 XXX-XXXX-XXXX</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>lab@university.edu.cn</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>快速链接</h3>
+                <ul class="contact-list">
+                    <li><a href="#home" style="color: #ffffff;">首页</a></li>
+                    <li><a href="#research" style="color: #ffffff;">研究方向</a></li>
+                    <li><a href="#team" style="color: #ffffff;">团队成员</a></li>
+                    <li><a href="#publications" style="color: #ffffff;">研究成果</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>关注我们</h3>
+                <ul class="contact-list">
+                    <li><i class="fab fa-weixin"></i> 微信公众号</li>
+                    <li><i class="fab fa-github"></i> GitHub仓库</li>
+                    <li><i class="fas fa-graduation-cap"></i> Google Scholar</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2026 mRNA技术与生物界面实验室. 版权所有.</p>
+            <p>本网站基于学术交流目的创建</p>
+        </div>
     </footer>
 
     <!-- 脚本 -->
@@ -209,6 +259,19 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // 导航栏滚动效果
+        // 导航栏滚动变化函数
+        function updateNavbarOnScroll() {
+            if (window.scrollY > 100) {
+                document.getElementById('mainNav').classList.add('navbar-shrink');
+            } else {
+                document.getElementById('mainNav').classList.remove('navbar-shrink');
+            }
+        }
+        // 页面加载后执行一次，并监听滚动事件
+        document.addEventListener('DOMContentLoaded', function() {
+            updateNavbarOnScroll(); // 初始化
+            window.addEventListener('scroll', updateNavbarOnScroll); // 滚动时触发
+        });
         $(window).on('scroll', function() {
             if ($(window).scrollTop() > 100) {
                 $('#mainNav').addClass('navbar-shrink');

@@ -557,6 +557,45 @@
             text-decoration: underline;
         }
 
+        /* 研究成果原文链接样式 */
+        .pub-links {
+            margin-top: 1.2rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #eee; /* 用细线与上方内容轻微分隔 */
+            display: flex;
+            flex-wrap: wrap; /* 如果一行放不下，允许换行 */
+            gap: 12px; /* 按钮之间的间距 */
+        }
+
+        .btn-pub-link {
+            display: inline-flex;
+            align-items: center;
+            background-color: #f0f7ff; /* 浅蓝色背景，符合主题 */
+            color: #0056a6; /* 主蓝色文字 */
+            padding: 8px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 1.5px solid #cce0ff; /* 更深的蓝色边框 */
+            transition: all 0.25s ease;
+        }
+
+        .btn-pub-link i {
+            margin-right: 8px;
+            font-size: 0.9em;
+        }
+
+        /* 鼠标悬停效果 */
+        .btn-pub-link:hover {
+            background-color: #0056a6; /* 悬停时背景变为深蓝 */
+            color: white;
+            border-color: #0056a6;
+            transform: translateY(-2px); /* 轻微上浮效果 */
+            box-shadow: 0 4px 12px rgba(0, 86, 166, 0.2);
+        }
+
+
         /* 移动端适配 */
         @media (max-width: 768px) {
             .article-card {

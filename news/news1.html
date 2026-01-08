@@ -119,22 +119,32 @@
 <body>
     <!-- 导航栏（与新闻列表页相同） -->
     <nav class="navbar">
-        <!-- 复制news.html的导航栏 -->
+        <a class="navbar-brand" href="index.html" style="display: flex; align-items: center; text-decoration: none;">
+            <img src="images/banners/dut.png" alt="大连理工大学校徽" style="height: 40px; margin-right: 12px;">
+            <span style="font-size: 24px; font-weight: 700; color: #0056a6;">mRNA技术与生物界面实验室</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html#home">首页</a></li>
+            <li><a href="about-team.html">团队简介</a></li>
+            <li><a href="news.html" class="active">新闻动态</a></li>
+            <li><a href="index.html#research">研究方向</a></li>
+            <li><a href="index.html#team">团队成员</a></li>
+            <li><a href="index.html#publications">研究成果</a></li>
+            <li><a href="join us.html">加入我们</a></li>
+        </ul>
+        <div class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </div>
     </nav>
-    
-    <!-- 移动端导航 -->
-    <div class="mobile-nav" id="mobileNav">
-        <!-- 复制news.html的移动端导航 -->
-    </div>
-    
+        
     <!-- 新闻详情内容 -->
     <main class="news-detail-container">
         <article>
             <header class="news-detail-header">
-                <h1 class="news-detail-title" id="newsTitle">新闻标题</h1>
+                <h1 class="news-detail-title" id="newsTitle">全球金奖！DUT-China闪耀巴黎！</h1>
                 <div class="news-detail-meta">
-                    <span><i class="far fa-calendar"></i> <span id="newsDate">2025-12-20</span></span>
-                    <span><i class="far fa-user"></i> <span id="newsAuthor">作者</span></span>
+                    <span><i class="far fa-calendar"></i> <span id="newsDate">2025-11-25</span></span>
+                    <span><i class="far fa-user"></i> <span id="newsAuthor">ghb</span></span>
                     <span><i class="far fa-eye"></i> <span id="newsViews">0</span> 次阅读</span>
                 </div>
                 <img id="newsImage" src="" alt="新闻图片" class="news-detail-image">
@@ -148,7 +158,7 @@
                 <a href="#" id="prevNews" class="nav-btn">
                     <i class="fas fa-arrow-left"></i> 上一篇
                 </a>
-                <a href="news.html" class="nav-btn">
+                <a href="../news.html" class="nav-btn">
                     <i class="fas fa-list"></i> 返回新闻列表
                 </a>
                 <a href="#" id="nextNews" class="nav-btn">
@@ -160,46 +170,69 @@
     
     <!-- 页脚 -->
     <footer id="contact">
-        <!-- 复制主页的页脚 -->
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>联系我们</h3>
+                <ul class="contact-list">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>大连市甘井子区凌工路2号 大连理工大学生物工程学院</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span>+86 XXX-XXXX-XXXX</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>lab@university.edu.cn</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>快速链接</h3>
+                <ul class="contact-list">
+                    <li><a href="#home" style="color: #ffffff;">首页</a></li>
+                    <li><a href="#research" style="color: #ffffff;">研究方向</a></li>
+                    <li><a href="#team" style="color: #ffffff;">团队成员</a></li>
+                    <li><a href="#publications" style="color: #ffffff;">研究成果</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>关注我们</h3>
+                <ul class="contact-list">
+                    <li><i class="fab fa-weixin"></i> 微信公众号</li>
+                    <li><i class="fab fa-github"></i> GitHub仓库</li>
+                    <li><i class="fas fa-graduation-cap"></i> Google Scholar</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2026 mRNA技术与生物界面实验室. 版权所有.</p>
+            <p>本网站基于学术交流目的创建</p>
+        </div>
     </footer>
     
     <script>
         // 新闻详情数据
         const newsDetails = {
             1: {
-                title: '课题组在《Nature Communications》发表超分子药物递送系统最新研究成果',
-                date: '2025-12-20',
-                author: '王明教授',
+                title: '全球金奖！DUT-China闪耀巴黎！',
+                date: '2025-11-25',
+                author: 'ghb',
                 views: 156,
-                image: 'images/news/nature-comm-detail.jpg',
+                image: 'images/news/igem2025.jpg',
                 content: `
-                    <p>本研究由本课题组王明教授团队主导，与国内外多个研究机构合作完成。研究开发了一种新型pH响应型超分子纳米载体，该载体能够智能响应肿瘤微环境的酸性条件，实现mRNA疫苗的高效靶向递送。</p>
+                    <p>近日，2025年国际基因工程机器大赛（International Genetically Engineered Machine Competiton, iGEM）全球总决赛在法国巴黎圆满落幕。本课题组团队从全球50多个国家和地区的400余支参赛队伍中脱颖而出夺得大赛金奖！</p>
                     
-                    <h2>研究背景</h2>
-                    <p>mRNA疫苗作为一种新兴的治疗手段，在肿瘤免疫治疗中显示出巨大潜力。然而，mRNA的稳定性差、体内递送效率低等问题限制了其临床应用。开发高效、安全的递送系统是当前研究的重点和难点。</p>
+                    <img src="../images/news/gold.jpg" alt="金牌" class="img-fluid rounded shadow">
+                    <p>国际基因工程机器大赛（iGEM）是合成生物学领域最高规格的国际性学术竞赛，旨在鼓励学生运用工程学理念设计和构建生物系统，解决现实世界面临的挑战。大赛由麻省理工学院于2003年发起，目前已成为合成生物学领域的顶级国际性学术竞赛。</p>
+                    <p>由我校生物工程学院牵头组建的DUT-China团队，成员由来自生物工程学院、未来技术学院、建筑与艺术学院、化工学院、机械工程学院、力学与航空航天学院等24名本科生组成，生物工程学院杨君教授、林佳奇教授、孜力汗高级工程师、都书博副教授担任指导教师。参赛项目《mRNA肝癌精准靶向药物》（R—Home：mRNA Hepatic Optimized Modules for liver cancer）构建了专为肝细胞癌精准治疗设计的集成型mRNA平台，通过多层靶向策略实现对于肝癌细胞的双蛋白精准调控，引入了肝癌细胞中高表达的mi21响应性RNA开关，通过整合GPC3抗体修饰的LNP递送系统，确保靶向肝癌细胞。团队还构建了真核Toehold开关系统，可生成并优化5’UTR的整合型序列平台，针对肿瘤缺氧微环境的空间药代药动模型以及一个自主开发的双通道微流控注射泵，具有高度创新性。</p>
                     
-                    <h2>研究亮点</h2>
-                    <p>本研究所开发的超分子纳米载体具有以下创新点：</p>
-                    <ol>
-                        <li>独特的pH响应机制：在正常生理条件下保持稳定，在肿瘤酸性微环境中快速释放药物</li>
-                        <li>高负载效率：对mRNA的包封率达到95%以上</li>
-                        <li>优异的靶向性：通过表面修饰实现肿瘤组织的特异性积累</li>
-                        <li>良好的生物相容性：载体材料可生物降解，无毒副作用</li>
-                    </ol>
+                    <img src="../images/news/communicition.jpg" alt="合作" class="img-fluid rounded shadow">
+                    <p>学校高度重视赛事筹备工作，在为期十个月的备赛过程中，多次组织团队成员深入康弘生物、义翘神州等知名企业调研，与生产一线工程师交流探讨，确保项目设计紧贴工业实际需求，这一举措获得了评委的高度评价。此外，团队与空军军医大学、华中农业大学等其他高校队伍开展了深度合作，队伍间相互借鉴交流学习，分享方法和心得。</p>
                     
-                    <h2>实验成果</h2>
-                    <p>在多种肿瘤模型中进行的实验表明，使用该递送系统的mRNA疫苗能够：</p>
-                    <ul>
-                        <li>显著提高抗原呈递细胞对肿瘤抗原的识别</li>
-                        <li>增强CD8+ T细胞的活化和增殖</li>
-                        <li>有效抑制肿瘤生长，延长实验动物生存期</li>
-                        <li>与现有疗法相比，副作用明显降低</li>
-                    </ul>
-                    
-                    <h2>研究意义</h2>
-                    <p>该研究成果不仅为mRNA疫苗的临床转化提供了新的技术路径，也为超分子材料在生物医学领域的应用开辟了新的方向。相关技术已申请多项国际专利，并计划开展进一步的临床试验。</p>
-                    
-                    <p>该研究得到了国家自然科学基金重点项目、科技部重点研发计划等项目的支持。</p>
+                    <img src="../images/news/igem2025team.jpg" alt="合照" class="img-fluid rounded shadow">
+                    <p>今年是我校参与iGEM赛事的第八年。学校始终坚持“以赛促教、以赛促学”的培养理念，累计组织本科生200人次参与该项赛事。本次参赛得到了生物工程学院、国际合作与交流处、国内合作与联络处等部门的大力支持，同时得到近邻生物、锦悦祉承、尹哥书房、松谱瑞特、库巴扎等提供的专项资金支持。自2017年生物工程学院发起并筹建我校iGEM竞赛以来，吸引了全校30多个专业600余名本科生参与校内iGEM竞赛培训、团队建设和交流、项目头脑风暴和研讨、校赛选拔、备赛和社会实践等，形成“培训-校内赛-国际赛”的完整竞赛体系及“生物工程”融创课程等系列育人品牌载体，拥有一支稳定的指导教师团队和“DUT-iGEM”校级社团，构建以iGEM为载体培养国际化拔尖创新人才的特色培养体系，成为我校跨学科创新人才培养的重要平台。</p>
                 `
             },
             // 其他新闻详情...

@@ -641,21 +641,6 @@
             background: rgba(0, 86, 166, 0.5);
         }
 
-        /* 当滚动到该section时，提示用户可以滚动 */
-        #publications::after {
-            content: '可滚动查看更多';
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 86, 166, 0.9);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            animation: fadeInOut 3s ease-in-out infinite;
-            z-index: 10;
-        }
 
         @keyframes fadeInOut {
             0%, 100% { opacity: 0.6; }

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新闻详情 - mRNA技术与生物界面实验室</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 添加新闻详情页样式 */
+        .news-detail-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 100px 20px 60px;
+        }
+        
+        .news-detail-header {
+            margin-bottom: 40px;
+        }
+        
+        .news-detail-title {
+            font-size: 2.2rem;
+            color: #0056a6;
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+        
+        .news-detail-meta {
+            display: flex;
+            gap: 30px;
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+        
+        .news-detail-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .news-detail-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .news-detail-content h2 {
+            color: #0056a6;
+            margin: 40px 0 20px;
+            font-size: 1.8rem;
+        }
+        
+        .news-detail-content h3 {
+            color: #4a90e2;
+            margin: 30px 0 15px;
+        }
+        
+        .news-detail-content p {
+            margin-bottom: 20px;
+        }
+        
+        .news-detail-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .news-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+        
+        .nav-btn {
+            color: #0056a6;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            background: #f0f7ff;
+            transition: all 0.3s;
+        }
+        
+        .nav-btn:hover {
+            background: #0056a6;
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        @media (max-width: 768px) {
+            .news-detail-title {
+                font-size: 1.8rem;
+            }
+            
+            .news-detail-image {
+                height: 250px;
+            }
+            
+            .news-navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-btn {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏（与新闻列表页相同） -->
+    <nav class="navbar">
+        <!-- 复制news.html的导航栏 -->
+    </nav>
+    
+    <!-- 移动端导航 -->
+    <div class="mobile-nav" id="mobileNav">
+        <!-- 复制news.html的移动端导航 -->
+    </div>
+    
+    <!-- 新闻详情内容 -->
+    <main class="news-detail-container">
+        <article>
+            <header class="news-detail-header">
+                <h1 class="news-detail-title" id="newsTitle">新闻标题</h1>
+                <div class="news-detail-meta">
+                    <span><i class="far fa-calendar"></i> <span id="newsDate">2025-12-20</span></span>
+                    <span><i class="far fa-user"></i> <span id="newsAuthor">作者</span></span>
+                    <span><i class="far fa-eye"></i> <span id="newsViews">0</span> 次阅读</span>
+                </div>
+                <img id="newsImage" src="" alt="新闻图片" class="news-detail-image">
+            </header>
+            
+            <div class="news-detail-content" id="newsContent">
+                <!-- 新闻内容将通过JavaScript动态生成 -->
+            </div>
+            
+            <div class="news-navigation">
+                <a href="#" id="prevNews" class="nav-btn">
+                    <i class="fas fa-arrow-left"></i> 上一篇
+                </a>
+                <a href="news.html" class="nav-btn">
+                    <i class="fas fa-list"></i> 返回新闻列表
+                </a>
+                <a href="#" id="nextNews" class="nav-btn">
+                    下一篇 <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </article>
+    </main>
+    
+    <!-- 页脚 -->
+    <footer id="contact">
+        <!-- 复制主页的页脚 -->
+    </footer>
+    
+    <script>
+        // 新闻详情数据
+        const newsDetails = {
+            1: {
+                title: '课题组在《Nature Communications》发表超分子药物递送系统最新研究成果',
+                date: '2025-12-20',
+                author: '王明教授',
+                views: 156,
+                image: 'images/news/nature-comm-detail.jpg',
+                content: `
+                    <p>本研究由本课题组王明教授团队主导，与国内外多个研究机构合作完成。研究开发了一种新型pH响应型超分子纳米载体，该载体能够智能响应肿瘤微环境的酸性条件，实现mRNA疫苗的高效靶向递送。</p>
+                    
+                    <h2>研究背景</h2>
+                    <p>mRNA疫苗作为一种新兴的治疗手段，在肿瘤免疫治疗中显示出巨大潜力。然而，mRNA的稳定性差、体内递送效率低等问题限制了其临床应用。开发高效、安全的递送系统是当前研究的重点和难点。</p>
+                    
+                    <h2>研究亮点</h2>
+                    <p>本研究所开发的超分子纳米载体具有以下创新点：</p>
+                    <ol>
+                        <li>独特的pH响应机制：在正常生理条件下保持稳定，在肿瘤酸性微环境中快速释放药物</li>
+                        <li>高负载效率：对mRNA的包封率达到95%以上</li>
+                        <li>优异的靶向性：通过表面修饰实现肿瘤组织的特异性积累</li>
+                        <li>良好的生物相容性：载体材料可生物降解，无毒副作用</li>
+                    </ol>
+                    
+                    <h2>实验成果</h2>
+                    <p>在多种肿瘤模型中进行的实验表明，使用该递送系统的mRNA疫苗能够：</p>
+                    <ul>
+                        <li>显著提高抗原呈递细胞对肿瘤抗原的识别</li>
+                        <li>增强CD8+ T细胞的活化和增殖</li>
+                        <li>有效抑制肿瘤生长，延长实验动物生存期</li>
+                        <li>与现有疗法相比，副作用明显降低</li>
+                    </ul>
+                    
+                    <h2>研究意义</h2>
+                    <p>该研究成果不仅为mRNA疫苗的临床转化提供了新的技术路径，也为超分子材料在生物医学领域的应用开辟了新的方向。相关技术已申请多项国际专利，并计划开展进一步的临床试验。</p>
+                    
+                    <p>该研究得到了国家自然科学基金重点项目、科技部重点研发计划等项目的支持。</p>
+                `
+            },
+            // 其他新闻详情...
+        };
+        
+        // 渲染新闻详情
+        function renderNewsDetail() {
+            // 获取URL中的新闻ID
+            const urlParams = new URLSearchParams(window.location.search);
+            const newsId = parseInt(urlParams.get('id')) || 1;
+            
+            const news = newsDetails[newsId];
+            if (!news) return;
+            
+            // 更新页面内容
+            document.getElementById('newsTitle').textContent = news.title;
+            document.getElementById('newsDate').textContent = news.date;
+            document.getElementById('newsAuthor').textContent = news.author;
+            document.getElementById('newsViews').textContent = news.views;
+            document.getElementById('newsImage').src = news.image;
+            document.getElementById('newsContent').innerHTML = news.content;
+            
+            // 更新标题
+            document.title = `${news.title} - mRNA技术与生物界面实验室`;
+            
+            // 设置上一篇和下一篇链接
+            const prevId = newsId > 1 ? newsId - 1 : 1;
+            const nextId = newsId < Object.keys(newsDetails).length ? newsId + 1 : newsId;
+            
+            document.getElementById('prevNews').href = `news-detail.html?id=${prevId}`;
+            document.getElementById('nextNews').href = `news-detail.html?id=${nextId}`;
+        }
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            renderNewsDetail();
+            
+            // 移动端菜单
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileNav = document.getElementById('mobileNav');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileNav.classList.toggle('active');
+                });
+            }
+            
+            // 点击导航链接后关闭移动菜单
+            document.querySelectorAll('.mobile-nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileNav.classList.remove('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

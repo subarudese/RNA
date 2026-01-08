@@ -315,6 +315,27 @@
             
             sections.forEach(section => observer.observe(section));
             
+            // 新闻数据（可以在原有newsItems数组基础上修改）
+            const newsItems = [
+                { 
+                    date: '2025-12-20', 
+                    title: '课题组在《Nature Communications》发表超分子药物递送系统最新研究成果',
+                    excerpt: '本研究开发了一种新型pH响应型超分子纳米载体，显著提高了mRNA疫苗的递送效率和靶向性。',
+                    link: 'news-detail.html?id=1'
+                },
+                { 
+                    date: '2025-12-15', 
+                    title: '实验室成功举办第二届超分子医学前沿研讨会',
+                    excerpt: '会议邀请了国内外多位知名专家，共同探讨超分子医学领域的最新进展和未来发展方向。',
+                    link: 'news-detail.html?id=2'
+                },
+                { 
+                    date: '2025-12-10', 
+                    title: '博士生张华获得国家优秀青年科学基金资助',
+                    excerpt: '张华博士的研究项目"基于AI的mRNA序列优化设计"获得国家自然科学基金优秀青年项目支持。',
+                    link: 'news-detail.html?id=3'
+                }
+            ];
             // 4.横幅最新新闻展示
             function renderLatestNews() {
                 const latestNewsContainer = document.getElementById('latestNews');
@@ -336,17 +357,9 @@
                     latestNewsContainer.appendChild(newsItem);
                 });
             }
+            // 渲染横幅新闻
+            renderBannerNews();
 
-            // 在DOMContentLoaded事件中调用
-            document.addEventListener('DOMContentLoaded', function() {
-                // ... 其他初始化代码 ...
-                
-                // 渲染最新新闻
-                renderLatestNews();
-                
-                // ... 其他代码 ...
-            });            
-            
             // 5. 团队成员
             const teamMembers = [
                 { name: '林佳奇', role: '教授', img: 'images/member/ljq.jpg', page: 'member/ljq.html' },

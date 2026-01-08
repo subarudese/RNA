@@ -659,3 +659,22 @@
                 padding: 6px 12px;
             }
         }
+        /* 在页面底部添加 */
+        @media (max-width: 768px) {
+            /* 隐藏桌面版布局，显示移动版布局 */
+            .scroll-container, .fullpage-container, .nav-dots {
+                display: none !important;
+            }
+            
+            .mobile-layout {
+                display: block !important;
+            }
+            
+            /* 为每个部分添加简单样式 */
+            section {
+                padding: 80px 15px 40px;
+                margin: 0;
+                width: 100%;
+                box-sizing: border-box;
+            }
+        }

@@ -221,6 +221,112 @@
     </div>
 
     <script>
+        // 移动端页面重构函数
+        function rebuildMobilePage() {
+            if (window.innerWidth <= 768) {
+                console.log('开始移动端页面重构...');
+                
+                // 1. 创建新的移动版容器
+                const mobileMain = document.createElement('main');
+                mobileMain.className = 'mobile-main';
+                mobileMain.id = 'mobileMain';
+                
+                // 2. 获取所有需要移动的区块
+                const sections = [
+                    { id: 'home', selector: '.banner' },
+                    { id: 'research', selector: '#research' },
+                    { id: 'team', selector: '#team' },
+                    { id: 'publications', selector: '#publications' },
+                    { id: 'contact', selector: 'footer' }
+                ];
+                
+                // 3. 复制每个区块到新容器
+                sections.forEach(section => {
+                    const original = document.querySelector(section.selector);
+                    if (original) {
+                        const clone = original.cloneNode(true);
+                        clone.id = section.id;
+                        clone.className = 'mobile-section';
+                        
+                        // 移除可能的问题属性
+                        clone.removeAttribute('style');
+                        clone.removeAttribute('data-section');
+                        
+                        // 添加到新容器
+                        mobileMain.appendChild(clone);
+                    }
+                });
+                
+                // 4. 移除旧容器
+                const oldContainers = document.querySelectorAll('.scroll-container, .fullpage-container');
+                oldContainers.forEach(container => {
+                    if (container.parentNode) {
+                        container.parentNode.removeChild(container);
+                    }
+                });
+                
+                // 5. 添加新容器到body
+                document.body.appendChild(mobileMain);
+                
+                // 6. 隐藏桌面版元素
+                document.querySelectorAll('.scroll-section, .fullpage-section').forEach(el => {
+                    el.style.display = 'none';
+                });
+                
+                // 7. 确保导航栏在最上面
+                const navbar = document.querySelector('.navbar');
+                if (navbar) {
+                    navbar.style.zIndex = '1000';
+                    navbar.style.position = 'fixed';
+                }
+                
+                // 8. 重新绑定事件
+                setTimeout(() => {
+                    bindMobileEvents();
+                    console.log('移动端页面重构完成');
+                }, 100);
+            }
+        }
+
+        // 移动端事件绑定
+        function bindMobileEvents() {
+            // 平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        e.preventDefault();
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // 页面加载时执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 立即执行一次
+            rebuildMobilePage();
+            
+            // 延迟执行，确保所有内容加载
+            setTimeout(rebuildMobilePage, 300);
+            
+            // 窗口大小改变时检查
+            window.addEventListener('resize', function() {
+                setTimeout(rebuildMobilePage, 100);
+            });
+        });
+
+        // 强制浏览器重绘
+        function forceRepaint() {
+            document.body.style.display = 'none';
+            document.body.offsetHeight;
+            document.body.style.display = 'block';
+        }
         // 极简的JavaScript代码 - 仅处理动态内容和指示器
         document.addEventListener('DOMContentLoaded', function() {
             // 1. 移动端菜单

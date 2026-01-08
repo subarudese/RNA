@@ -113,6 +113,7 @@
         <ul class="nav-links">
             <li><a href="#home">首页</a></li>
             <li class="nav-item"><a class="nav-link" href="about-team.html">团队简介</a></li>
+            <li><a href="news.html">新闻动态</a></li>
             <li><a href="#research">研究方向</a></li>
             <li><a href="#team">团队成员</a></li>
             <li><a href="#publications">研究成果</a></li>
@@ -142,6 +143,18 @@
                 <a href="#research" class="cta-button">探索我们的研究</a>
             </div>
                     
+            <!-- 新增：新闻展示区 -->
+            <div class="banner-news">
+                <div class="news-header">
+                    <h3><i class="fas fa-newspaper"></i> 最新动态</h3>
+                    <a href="news.html" class="news-more">查看更多 <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="news-list" id="latestNews">
+                    <!-- 最新新闻将通过JavaScript动态生成 -->
+                </div>
+            </div>
+        </section> 
+
         <!-- 研究领域 -->
         <section class="scroll-section" id="research">
             <div class="container">
@@ -301,6 +314,38 @@
             }, observerOptions);
             
             sections.forEach(section => observer.observe(section));
+            
+            // 4.横幅最新新闻展示
+            function renderLatestNews() {
+                const latestNewsContainer = document.getElementById('latestNews');
+                if (!latestNewsContainer) return;
+                
+                // 显示最新的3条新闻
+                const latestNews = newsItems.slice(0, 3);
+                
+                latestNews.forEach(news => {
+                    const newsItem = document.createElement('div');
+                    newsItem.className = 'news-item';
+                    newsItem.innerHTML = `
+                        <div class="news-date">
+                            <i class="far fa-calendar"></i> ${news.date}
+                        </div>
+                        <a href="news.html" class="news-title">${news.content}</a>
+                        <p class="news-excerpt">点击查看详细内容...</p>
+                    `;
+                    latestNewsContainer.appendChild(newsItem);
+                });
+            }
+
+            // 在DOMContentLoaded事件中调用
+            document.addEventListener('DOMContentLoaded', function() {
+                // ... 其他初始化代码 ...
+                
+                // 渲染最新新闻
+                renderLatestNews();
+                
+                // ... 其他代码 ...
+            });            
             
             // 5. 团队成员
             const teamMembers = [

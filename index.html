@@ -276,6 +276,32 @@
             window.addEventListener('scroll', updateIndicator);
             updateIndicator(); // 初始化
                         
+            //4. 使用Intersection Observer监测section可见性
+            const sections = document.querySelectorAll('.scroll-section');
+            const dots = document.querySelectorAll('.nav-dot');
+            
+            const observerOptions = {
+                root: null, // 相对于视口
+                rootMargin: '0px',
+                threshold: 0.5 // 当50%的section可见时触发
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // 获取当前section的索引
+                        const index = Array.from(sections).indexOf(entry.target);
+                        // 更新导航点
+                        dots.forEach(dot => dot.classList.remove('active'));
+                        if (dots[index]) {
+                            dots[index].classList.add('active');
+                        }
+                    }
+                });
+            }, observerOptions);
+            
+            sections.forEach(section => observer.observe(section));
+            
             // 5. 团队成员
             const teamMembers = [
                 { name: '林佳奇', role: '教授', img: 'images/member/ljq.jpg', page: 'member/ljq.html' },

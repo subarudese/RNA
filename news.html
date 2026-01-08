@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新闻动态 - mRNA技术与生物界面实验室</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 这里添加上面新闻页面通用样式部分 */
+    </style>
+</head>
+<body>
+    <!-- 导航栏（与主页相同） -->
+    <nav class="navbar">
+        <a class="navbar-brand" href="index.html" style="display: flex; align-items: center; text-decoration: none;">
+            <img src="images/banners/dut.png" alt="大连理工大学校徽" style="height: 40px; margin-right: 12px;">
+            <span style="font-size: 24px; font-weight: 700; color: #0056a6;">mRNA技术与生物界面实验室</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html#home">首页</a></li>
+            <li><a href="about-team.html">团队简介</a></li>
+            <li><a href="news.html" class="active">新闻动态</a></li>
+            <li><a href="index.html#research">研究方向</a></li>
+            <li><a href="index.html#team">团队成员</a></li>
+            <li><a href="index.html#publications">研究成果</a></li>
+            <li><a href="join us.html">加入我们</a></li>
+        </ul>
+        <div class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- 移动端导航 -->
+    <div class="mobile-nav" id="mobileNav">
+        <ul>
+            <li><a href="index.html#home">首页</a></li>
+            <li><a href="about-team.html">团队简介</a></li>
+            <li><a href="index.html#research">研究方向</a></li>
+            <li><a href="index.html#team">团队成员</a></li>
+            <li><a href="index.html#publications">研究成果</a></li>
+            <li><a href="news.html">新闻动态</a></li>
+            <li><a href="join us.html">加入我们</a></li>
+        </ul>
+    </div>
+
+    <!-- 新闻页面主内容 -->
+    <main class="news-container">
+        <h1 class="news-page-title">新闻动态</h1>
+        
+        <!-- 新闻筛选/分类（可选） -->
+        <div class="news-categories">
+            <button class="category-btn active" data-category="all">全部新闻</button>
+            <button class="category-btn" data-category="research">研究进展</button>
+            <button class="category-btn" data-category="award">奖项荣誉</button>
+            <button class="category-btn" data-category="event">学术活动</button>
+            <button class="category-btn" data-category="cooperation">合作交流</button>
+        </div>
+        
+        <!-- 新闻网格 -->
+        <div class="news-grid" id="newsGrid">
+            <!-- 新闻卡片将通过JavaScript动态生成 -->
+        </div>
+        
+        <!-- 分页 -->
+        <div class="pagination">
+            <a href="#" class="page-link active">1</a>
+            <a href="#" class="page-link">2</a>
+            <a href="#" class="page-link">3</a>
+            <a href="#" class="page-link">4</a>
+            <a href="#" class="page-link">5</a>
+            <a href="#" class="page-link">
+                <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>联系我们</h3>
+                <ul class="contact-list">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>大连市甘井子区凌工路2号 大连理工大学生物工程学院</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span>+86 XXX-XXXX-XXXX</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>lab@university.edu.cn</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>快速链接</h3>
+                <ul class="contact-list">
+                    <li><a href="#home" style="color: #ffffff;">首页</a></li>
+                    <li><a href="#research" style="color: #ffffff;">研究方向</a></li>
+                    <li><a href="#team" style="color: #ffffff;">团队成员</a></li>
+                    <li><a href="#publications" style="color: #ffffff;">研究成果</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>关注我们</h3>
+                <ul class="contact-list">
+                    <li><i class="fab fa-weixin"></i> 微信公众号</li>
+                    <li><i class="fab fa-github"></i> GitHub仓库</li>
+                    <li><i class="fas fa-graduation-cap"></i> Google Scholar</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2026 mRNA技术与生物界面实验室. 版权所有.</p>
+            <p>本网站基于学术交流目的创建</p>
+        </div>
+    </footer>
+
+    <script>
+        // 新闻数据
+        const newsData = [
+            {
+                id: 1,
+                title: '课题组在《Nature Communications》发表超分子药物递送系统最新研究成果',
+                date: '2025-12-20',
+                category: 'research',
+                excerpt: '本研究开发了一种新型pH响应型超分子纳米载体，显著提高了mRNA疫苗的递送效率和靶向性。',
+                image: 'images/news/nature-comm.jpg',
+                link: 'news-detail.html?id=1',
+                author: '王明教授',
+                views: 156
+            },
+            {
+                id: 2,
+                title: '实验室成功举办第二届超分子医学前沿研讨会',
+                date: '2025-12-15',
+                category: 'event',
+                excerpt: '会议邀请了国内外多位知名专家，共同探讨超分子医学领域的最新进展和未来发展方向。',
+                image: 'images/news/seminar-2025.jpg',
+                link: 'news-detail.html?id=2',
+                author: '实验室办公室',
+                views: 89
+            },
+            {
+                id: 3,
+                title: '博士生张华获得国家优秀青年科学基金资助',
+                date: '2025-12-10',
+                category: 'award',
+                excerpt: '张华博士的研究项目"基于AI的mRNA序列优化设计"获得国家自然科学基金优秀青年项目支持。',
+                image: 'images/news/award-2025.jpg',
+                link: 'news-detail.html?id=3',
+                author: '实验室办公室',
+                views: 234
+            },
+            {
+                id: 4,
+                title: '课题组与哈佛医学院合作项目正式启动',
+                date: '2025-12-05',
+                category: 'cooperation',
+                excerpt: '双方将在mRNA肿瘤疫苗的临床转化研究方面开展深度合作，共同推进癌症免疫治疗发展。',
+                image: 'images/news/harvard-coop.jpg',
+                link: 'news-detail.html?id=4',
+                author: '国际合作部',
+                views: 178
+            },
+            {
+                id: 5,
+                title: '新型pH响应型纳米载体动物实验取得突破性进展',
+                date: '2025-11-28',
+                category: 'research',
+                excerpt: '在肿瘤模型小鼠实验中，新型递送系统显示出优异的靶向性和治疗效果，具有重要临床转化价值。',
+                image: 'images/news/animal-test.jpg',
+                link: 'news-detail.html?id=5',
+                author: '李华研究员',
+                views: 312
+            },
+            {
+                id: 6,
+                title: '实验室网站全新改版上线，欢迎访问',
+                date: '2025-11-20',
+                category: 'event',
+                excerpt: '为更好地展示实验室研究成果和学术动态，我们对官方网站进行了全面升级和改版。',
+                image: 'images/news/website-new.jpg',
+                link: 'news-detail.html?id=6',
+                author: '网络中心',
+                views: 456
+            },
+            {
+                id: 7,
+                title: '王明教授受邀在ACS全国会议上作主旨报告',
+                date: '2025-11-15',
+                category: 'event',
+                excerpt: '王明教授分享了我们课题组在mRNA递送系统方面的最新研究成果，获得与会专家高度评价。',
+                image: 'images/news/acs-talk.jpg',
+                link: 'news-detail.html?id=7',
+                author: '学术交流部',
+                views: 123
+            },
+            {
+                id: 8,
+                title: '课题组获得国家自然科学基金重点项目支持',
+                date: '2025-11-10',
+                category: 'award',
+                excerpt: '项目"智能响应型mRNA递送系统的构建及其在肿瘤免疫治疗中的应用"获得国家自然科学基金重点项目资助。',
+                image: 'images/news/nsfc-project.jpg',
+                link: 'news-detail.html?id=8',
+                author: '科研管理部',
+                views: 267
+            }
+        ];
+
+        // 生成新闻卡片
+        function renderNews(newsArray) {
+            const newsGrid = document.getElementById('newsGrid');
+            if (!newsGrid) return;
+            
+            newsGrid.innerHTML = '';
+            
+            newsArray.forEach(news => {
+                const newsCard = document.createElement('article');
+                newsCard.className = 'news-card';
+                newsCard.innerHTML = `
+                    <div class="news-image" style="background-image: url('${news.image}')">
+                        <span class="news-category">${getCategoryName(news.category)}</span>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span><i class="far fa-calendar"></i> ${news.date}</span>
+                            <span><i class="far fa-eye"></i> ${news.views}</span>
+                        </div>
+                        <h3><a href="${news.link}" class="news-card-title">${news.title}</a></h3>
+                        <p class="news-card-excerpt">${news.excerpt}</p>
+                        <a href="${news.link}" class="news-read-more">
+                            阅读更多 <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                `;
+                newsGrid.appendChild(newsCard);
+            });
+        }
+
+        // 获取分类名称
+        function getCategoryName(category) {
+            const categories = {
+                'all': '全部',
+                'research': '研究进展',
+                'award': '奖项荣誉',
+                'event': '学术活动',
+                'cooperation': '合作交流'
+            };
+            return categories[category] || '新闻';
+        }
+
+        // 筛选新闻
+        function filterNews(category) {
+            if (category === 'all') {
+                return newsData;
+            }
+            return newsData.filter(news => news.category === category);
+        }
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 渲染所有新闻
+            renderNews(newsData);
+            
+            // 筛选功能
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // 移除所有active类
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    // 添加active类到当前按钮
+                    this.classList.add('active');
+                    // 筛选并渲染新闻
+                    const category = this.dataset.category;
+                    const filteredNews = filterNews(category);
+                    renderNews(filteredNews);
+                });
+            });
+            
+            // 移动端菜单
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileNav = document.getElementById('mobileNav');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileNav.classList.toggle('active');
+                });
+            }
+            
+            // 点击导航链接后关闭移动菜单
+            document.querySelectorAll('.mobile-nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileNav.classList.remove('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

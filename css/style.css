@@ -724,6 +724,51 @@
             
             .research-card {
                 margin-bottom: 20px;
+            }
+            /* 修复团队成员部分悬浮问题 */
+            #team.scroll-section {
+                position: relative !important;
+                z-index: 1 !important;
+                height: auto !important;
+                min-height: 100vh !important;
+                overflow: visible !important;
+            }
+
+            #team .container {
+                position: relative;
+                z-index: 2;
+                background-color: #f8f9fa; /* 与body背景色一致 */
+                padding-top: 80px;
+                padding-bottom: 40px;
+            }
+
+            /* 修复团队滑动容器 */
+            .team-slider {
+                position: relative;
+                z-index: 1;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                margin: 0 -15px;
+                padding: 0 15px;
+            }
+
+            /* 确保团队成员卡片正常显示 */
+            .team-member {
+                position: relative;
+                z-index: 1;
+                box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+                background-color: white;
+            }
+
+            /* 修复可能的重叠问题 */
+            .scroll-section {
+                position: relative;
+                z-index: 1;
+            }
+
+            /* 确保导航栏不会遮挡内容 */
+            .navbar {
+                z-index: 1000;
             }        
         }
         /* 解决移动端100vh问题 */

@@ -658,4 +658,85 @@
                 font-size: 12px;
                 padding: 6px 12px;
             }
+            /* 移动端禁用CSS Scroll Snap */
+            .scroll-container {
+                scroll-snap-type: none;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            /* 调整各区块的内边距 */
+            .container {
+                padding-top: 80px !important;
+                padding-bottom: 30px;
+            }
+            
+            /* 修复横幅区域 */
+            .banner {
+                padding-top: 60px !important;
+                justify-content: flex-start;
+                padding-bottom: 50px;
+            }
+            
+            .banner h1 {
+                font-size: 1.8rem;
+                margin-top: 20px;
+            }
+            
+            .banner p {
+                font-size: 1rem;
+                padding: 0 15px;
+            }
+            
+            /* 隐藏右侧导航点 */
+            .nav-dots {
+                display: none;
+            }
+            
+            /* 调整研究成果部分 */
+            #publications.scroll-section {
+                height: auto;
+                min-height: 100%;
+            }
+            
+            .articles-container {
+                max-height: none;
+                overflow-y: visible;
+            }
+            
+            /* 修复文章卡片布局 */
+            .article-card {
+                flex-direction: column;
+                height: auto;
+                margin-bottom: 20px;
+            }
+            
+            .article-image {
+                width: 100% !important;
+                height: 180px;
+                flex: none;
+            }
+            
+            /* 修复研究卡片网格 */
+            .research-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .research-card {
+                margin-bottom: 20px;
+            }        
+        }
+        /* 解决移动端100vh问题 */
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .scroll-container {
+            height: 100%;
+        }
+
+        .scroll-section {
+            min-height: 100%;
+            height: auto;
         }

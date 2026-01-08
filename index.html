@@ -223,6 +223,40 @@
     <script>
         // 极简的JavaScript代码 - 仅处理动态内容和指示器
         document.addEventListener('DOMContentLoaded', function() {
+            // 在DOMContentLoaded事件中添加
+            function fixMobileLayout() {
+                if (window.innerWidth <= 768) {
+                    // 修复团队成员部分
+                    const teamSection = document.getElementById('team');
+                    if (teamSection) {
+                        teamSection.style.position = 'relative';
+                        teamSection.style.zIndex = '1';
+                        teamSection.style.height = 'auto';
+                        teamSection.style.minHeight = '100vh';
+                        teamSection.style.overflow = 'visible';
+                    }
+                    
+                    // 修复团队滑动容器
+                    const teamSlider = document.querySelector('.team-slider');
+                    if (teamSlider) {
+                        teamSlider.style.overflowX = 'auto';
+                        teamSlider.style.margin = '0 -15px';
+                        teamSlider.style.padding = '0 15px';
+                    }
+                    
+                    // 确保所有section正常显示
+                    const sections = document.querySelectorAll('.scroll-section');
+                    sections.forEach(section => {
+                        section.style.position = 'relative';
+                        section.style.zIndex = '1';
+                    });
+                }
+            }
+
+            // 页面加载和窗口大小改变时都执行
+            document.addEventListener('DOMContentLoaded', fixMobileLayout);
+            window.addEventListener('resize', fixMobileLayout);
+            
             // 1. 移动端菜单
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const mobileNav = document.getElementById('mobileNav');

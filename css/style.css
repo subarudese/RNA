@@ -1193,6 +1193,89 @@
             border-left: 1px solid rgba(0, 0, 0, 0.1);
         }
 
+        /* 移动端导航菜单样式 */
+        @media (max-width: 992px) {
+            .mobile-nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s;
+                z-index: 999;
+            }
+            
+            .mobile-nav.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            .mobile-nav ul {
+                list-style: none;
+            }
+            
+            .mobile-nav li {
+                margin-bottom: 15px;
+                padding: 10px 0;
+                border-bottom: 1px solid #f0f0f0;
+            }
+            
+            .mobile-nav li:last-child {
+                border-bottom: none;
+            }
+            
+            .mobile-nav a {
+                text-decoration: none;
+                color: #333;
+                font-weight: 600;
+                font-size: 1.1rem;
+                display: block;
+                padding: 8px 0;
+            }
+            
+            .mobile-nav a:hover {
+                color: #4a90e2;
+            }
+            
+            /* 移动端下拉菜单样式 */
+            .mobile-dropdown-menu {
+                max-height: 0;
+                overflow: hidden;
+                padding-left: 20px;
+                transition: max-height 0.3s ease;
+            }
+            
+            .mobile-dropdown-menu.active {
+                max-height: 200px;
+                margin-top: 10px;
+            }
+            
+            .mobile-dropdown-menu li {
+                margin-bottom: 8px;
+                border-bottom: none;
+            }
+            
+            .mobile-dropdown-menu a {
+                font-size: 1rem;
+                color: #666;
+                font-weight: 500;
+            }
+            
+            /* 下拉箭头动画 */
+            .mobile-dropdown-toggle i {
+                transition: transform 0.3s;
+                margin-left: 5px;
+            }
+            
+            .mobile-dropdown-toggle.active i {
+                transform: rotate(180deg);
+            }
+        }  
+              
         /* ====== 移动端下拉菜单样式 ====== */
         @media (max-width: 992px) {
             /* 移动端下拉菜单触发器 */

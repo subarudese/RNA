@@ -7,6 +7,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
+        @media (max-width: 768px) {
+            #team .team-slider {
+                display: flex;
+                overflow-x: scroll;
+                padding: 10px;
+                -webkit-overflow-scrolling: touch;
+                width: 100%;
+            }
+            
+            #team .team-member {
+                flex: 0 0 auto;
+                width: 85vw;
+                min-width: 85vw;
+                margin-right: 15px;
+            }
+            
+            #team .container {
+                overflow-x: visible !important;
+            }
+        }
         /* 最简单的全屏滚动方案 - 使用CSS Scroll Snap */
         html {
             scroll-behavior: smooth;

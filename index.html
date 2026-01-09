@@ -258,6 +258,58 @@
     </div>
 
     <script>
+        // 研究概览模态框功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('researchModal');
+            const showBtn = document.getElementById('showResearchOverview');
+            const closeBtn = document.querySelector('.close-modal');
+            const modalImage = document.querySelector('.research-overview-img');
+            const downloadBtn = document.querySelector('.btn-download');
+            const printBtn = document.querySelector('.btn-print');
+            
+            // 打开模态框
+            if (showBtn) {
+                showBtn.addEventListener('click', function() {
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // 防止背景滚动
+                });
+            }
+            
+            // 关闭模态框
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeModal);
+            }
+            
+            // 点击模态框背景关闭
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            // ESC键关闭
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+            
+            // 图片缩放功能
+            if (modalImage) {
+                modalImage.addEventListener('click', function() {
+                    this.classList.toggle('zoomed');
+                });
+            }
+            
+            function closeModal() {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                // 如果有缩放，重置
+                if (modalImage && modalImage.classList.contains('zoomed')) {
+                    modalImage.classList.remove('zoomed');
+                }
+            }
+        });
         // 移动端下拉菜单交互
         function initMobileDropdown() {
             // 移动端下拉菜单触发器

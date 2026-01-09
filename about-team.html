@@ -258,6 +258,74 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // 移动端下拉菜单交互
+        function initMobileDropdown() {
+            // 移动端下拉菜单触发器
+            const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+            
+            mobileDropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // 切换当前菜单的显示状态
+                    const dropdownMenu = this.nextElementSibling;
+                    const isActive = this.classList.contains('active');
+                    
+                    // 关闭其他打开的菜单
+                    document.querySelectorAll('.mobile-dropdown-toggle').forEach(otherToggle => {
+                        if (otherToggle !== this) {
+                            otherToggle.classList.remove('active');
+                            otherToggle.nextElementSibling.classList.remove('active');
+                        }
+                    });
+                    
+                    // 切换当前菜单
+                    this.classList.toggle('active', !isActive);
+                    dropdownMenu.classList.toggle('active', !isActive);
+                });
+            });
+            
+            // 点击其他地方关闭菜单
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.mobile-dropdown')) {
+                    document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+                        toggle.classList.remove('active');
+                        toggle.nextElementSibling.classList.remove('active');
+                    });
+                }
+            });
+        }
+
+        // 平滑滚动到团队成员部分
+        function initTeamNavigation() {
+            // 监听下拉菜单链接点击
+            document.querySelectorAll('.dropdown-item, .mobile-dropdown-menu a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    
+                    // 如果是#开头的锚点链接
+                    if (targetId.startsWith('#')) {
+                        e.preventDefault();
+                        
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            // 如果是移动端，先关闭菜单
+                            if (window.innerWidth <= 992) {
+                                this.closest('.mobile-dropdown-menu').classList.remove('active');
+                                this.closest('.mobile-dropdown-toggle').classList.remove('active');
+                            }
+                            
+                            // 平滑滚动到目标位置
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 70, // 减去导航栏高度
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        }
         // 简单的平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -273,7 +341,6 @@
                 }
             });
         });
-        // 导航栏滚动效果（如果主站JS中有此功能，可复用）
         // 导航栏滚动变化函数
         function updateNavbarOnScroll() {
             if (window.scrollY > 100) {
@@ -281,6 +348,9 @@
             } else {
                 document.getElementById('mainNav').classList.remove('navbar-shrink');
             }
+            // 初始化下拉菜单
+            initMobileDropdown();
+            initTeamNavigation();
         }
         // 页面加载后执行一次，并监听滚动事件
         document.addEventListener('DOMContentLoaded', function() {

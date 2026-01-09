@@ -258,13 +258,15 @@
         .team-slider {
             display: flex;
             justify-content: center;
-            overflow-x: center;
-            padding: 20px 0;
+            overflow-x: auto;
+            padding: 20px 10px;
             gap: 25px;
             scrollbar-width: thin;
-            scrollbar-color: #0056a6;
+            scrollbar-color: #0056a6 #f1f1f1;
+            -webkit-overflow-scrolling: touch; /* 平滑滚动 */
+            scroll-snap-type: x mandatory; /* 添加滚动吸附 */
         }
-        
+
         .team-slider::-webkit-scrollbar {
             height: 8px;
         }
@@ -1792,4 +1794,136 @@
         /* 防止滚动穿透 */
         body.menu-open {
             overflow: hidden;
+        }
+        /* 移动端团队展示优化 */
+        @media (max-width: 768px) {
+            .team-slider {
+                justify-content: flex-start; /* 改为左对齐 */
+                padding: 15px 5px;
+                gap: 20px;
+                scroll-snap-type: x mandatory;
+            }
+            
+            .team-member {
+                flex: 0 0 auto; /* 防止flex项目收缩 */
+                width: 280px; /* 增加宽度，确保内容完整显示 */
+                scroll-snap-align: start; /* 滚动吸附 */
+                margin: 0 10px;
+            }
+            
+            .member-img {
+                height: 250px; /* 增加图片高度 */
+                background-size: cover;
+                background-position: center;
+            }
+            
+            .member-info {
+                padding: 20px 15px;
+            }
+            
+            .member-name {
+                font-size: 1.3rem;
+                margin-bottom: 8px;
+            }
+            
+            .member-role {
+                font-size: 1rem;
+                margin-bottom: 15px;
+            }
+            
+            /* 团队区域容器调整 */
+            #team .container {
+                padding: 60px 10px 40px;
+                overflow: hidden; /* 防止内容溢出 */
+            }
+            
+            #team .section-title {
+                margin-bottom: 30px;
+                font-size: 2rem;
+            }
+        }
+
+        /* 小屏幕手机优化 */
+        @media (max-width: 480px) {
+            .team-slider {
+                gap: 15px;
+                padding: 10px 5px;
+            }
+            
+            .team-member {
+                width: 260px; /* 稍微减小宽度 */
+                min-width: 260px; /* 设置最小宽度 */
+            }
+            
+            .member-img {
+                height: 220px;
+            }
+            
+            /* 添加滚动提示 */
+            .team-slider::after {
+                content: '';
+                min-width: 20px;
+                display: block;
+            }
+        }
+
+        /* 团队链接样式优化 */
+        .member-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s;
+        }
+
+        .member-link:hover {
+            transform: translateY(-5px);
+        }
+
+        /* 添加滚动条样式 */
+        .team-slider::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .team-slider::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+            margin: 0 10px;
+        }
+
+        .team-slider::-webkit-scrollbar-thumb {
+            background: #0056a6;
+            border-radius: 10px;
+        }
+
+        .team-slider::-webkit-scrollbar-thumb:hover {
+            background: #003d7a;
+        }
+
+        /* 添加滚动指示器 */
+        .team-scroll-hint {
+            text-align: center;
+            margin-top: 15px;
+            color: #666;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            opacity: 0.8;
+        }
+
+        .team-scroll-hint i {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(0);
+            }
+            40% {
+                transform: translateX(10px);
+            }
+            60% {
+                transform: translateX(5px);
+            }
         }

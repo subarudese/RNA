@@ -115,7 +115,15 @@
             <li class="nav-item"><a class="nav-link" href="about-team.html">团队简介</a></li>
             <li><a href="news.html">新闻动态</a></li>
             <li><a href="#research">研究方向</a></li>
-            <li><a href="#team">团队成员</a></li>
+            <li class="nav-dropdown">
+                <a href="#team" class="dropdown-toggle">
+                    团队成员 <i class="fas fa-chevron-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#team" class="dropdown-item">团队负责人</a></li>
+                    <li><a href="member/member-more.html" class="dropdown-item">其他团队成员</a></li>
+                </ul>
+            </li>            
             <li><a href="#publications">研究成果</a></li>
             <li class="nav-item"><a class="nav-link" href="join us.html">加入我们</a></li>
         </ul>
@@ -192,14 +200,8 @@
         <!-- 团队成员 -->
         <section class="scroll-section" id="team">
             <div class="container">
-                <h2 class="section-title">团队成员</h2>
+                <h2 class="section-title">团队负责人</h2>
                 <div class="team-slider" id="teamSlider"></div>
-                <div class="text-center my-5">
-                    <a href="member/member-more.html" class="team-more-link">
-                        <i class="fas fa-users me-2"></i>浏览其他团队成员
-                        <i class="fas fa-arrow-right ms-2"></i>
-                    </a>
-                </div>
             </div>
         </section>
         
@@ -234,6 +236,75 @@
     </div>
 
     <script>
+        // 移动端下拉菜单交互
+        function initMobileDropdown() {
+            // 移动端下拉菜单触发器
+            const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+            
+            mobileDropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // 切换当前菜单的显示状态
+                    const dropdownMenu = this.nextElementSibling;
+                    const isActive = this.classList.contains('active');
+                    
+                    // 关闭其他打开的菜单
+                    document.querySelectorAll('.mobile-dropdown-toggle').forEach(otherToggle => {
+                        if (otherToggle !== this) {
+                            otherToggle.classList.remove('active');
+                            otherToggle.nextElementSibling.classList.remove('active');
+                        }
+                    });
+                    
+                    // 切换当前菜单
+                    this.classList.toggle('active', !isActive);
+                    dropdownMenu.classList.toggle('active', !isActive);
+                });
+            });
+            
+            // 点击其他地方关闭菜单
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.mobile-dropdown')) {
+                    document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+                        toggle.classList.remove('active');
+                        toggle.nextElementSibling.classList.remove('active');
+                    });
+                }
+            });
+        }
+
+        // 平滑滚动到团队成员部分
+        function initTeamNavigation() {
+            // 监听下拉菜单链接点击
+            document.querySelectorAll('.dropdown-item, .mobile-dropdown-menu a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    
+                    // 如果是#开头的锚点链接
+                    if (targetId.startsWith('#')) {
+                        e.preventDefault();
+                        
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            // 如果是移动端，先关闭菜单
+                            if (window.innerWidth <= 992) {
+                                this.closest('.mobile-dropdown-menu').classList.remove('active');
+                                this.closest('.mobile-dropdown-toggle').classList.remove('active');
+                            }
+                            
+                            // 平滑滚动到目标位置
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 70, // 减去导航栏高度
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        }
+
         const newsItems = [
             { 
                 date: '2025-11-25', 
@@ -359,6 +430,10 @@
             
             // 渲染横幅新闻
             renderBannerNews();
+
+            // 初始化下拉菜单
+            initMobileDropdown();
+            initTeamNavigation();
 
             // 5. 团队成员
             const teamMembers = [

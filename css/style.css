@@ -1275,7 +1275,7 @@
                 transform: rotate(180deg);
             }
         }  
-              
+
         /* ====== 移动端下拉菜单样式 ====== */
         @media (max-width: 992px) {
             /* 移动端下拉菜单触发器 */
@@ -1643,4 +1643,153 @@
         .mobile-fixed .scroll-section {
             visibility: visible !important;
             opacity: 1 !important;
+        }
+        /* ====== 移动端导航修复 ====== */
+
+        /* 移动端菜单按钮 - 只在移动端显示 */
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #0056a6;
+            padding: 10px;
+        }
+
+        /* 移动端导航菜单 - 只在移动端显示 */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            z-index: 999;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .mobile-nav.active {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-nav li {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .mobile-nav li:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .mobile-nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: block;
+            padding: 8px 0;
+            transition: color 0.3s;
+        }
+
+        .mobile-nav a:hover {
+            color: #4a90e2;
+        }
+
+        /* 移动端下拉菜单 */
+        .mobile-dropdown {
+            position: relative;
+        }
+
+        .mobile-dropdown-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .mobile-dropdown-toggle i {
+            transition: transform 0.3s;
+        }
+
+        .mobile-dropdown-toggle.active i {
+            transform: rotate(180deg);
+        }
+
+        .mobile-dropdown-menu {
+            max-height: 0;
+            overflow: hidden;
+            padding-left: 20px;
+            margin-top: 10px;
+            transition: max-height 0.3s ease;
+        }
+
+        .mobile-dropdown-menu.active {
+            max-height: 200px;
+        }
+
+        .mobile-dropdown-menu li {
+            margin-bottom: 10px;
+            border-bottom: none;
+        }
+
+        .mobile-dropdown-menu a {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #666;
+        }
+
+        /* PC端桌面导航 - 隐藏移动端元素 */
+        @media (min-width: 993px) {
+            .mobile-menu-btn,
+            .mobile-nav {
+                display: none !important;
+            }
+            
+            .nav-links {
+                display: flex !important;
+            }
+        }
+
+        /* 移动端显示控制 */
+        @media (max-width: 992px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-nav {
+                display: block;
+            }
+        }
+        /* 确保页面加载时菜单正确隐藏 */
+        .mobile-nav:not(.active) {
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        /* 平滑过渡效果 */
+        .mobile-nav,
+        .mobile-dropdown-menu {
+            transition: all 0.3s ease;
+        }
+
+        /* 防止滚动穿透 */
+        body.menu-open {
+            overflow: hidden;
         }

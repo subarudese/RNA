@@ -661,9 +661,11 @@
         }
         /* 在页面底部添加 */
         @media (max-width: 768px) {
-            /* 隐藏桌面版布局，显示移动版布局 */
-            .scroll-container, .fullpage-container, .nav-dots {
-                display: none !important;
+            .scroll-container {
+                display: block !important;
+                height: auto;
+                overflow-y: visible;
+                scroll-snap-type: none;
             }
             
             .mobile-layout {
@@ -1478,4 +1480,84 @@
                 width: 100%;
                 justify-content: center;
             }
+        }
+
+        /* ====== 手机端修复 ====== */
+        @media (max-width: 768px) {
+            /* 确保所有内容可见 */
+            body, html {
+                overflow-x: hidden !important;
+                position: relative !important;
+                width: 100% !important;
+            }
+            
+            /* 修复滚动容器 */
+            .scroll-container {
+                display: block !important;
+                height: auto !important;
+                overflow-y: visible !important;
+                scroll-snap-type: none !important;
+            }
+            
+            /* 修复section */
+            .scroll-section {
+                height: auto !important;
+                min-height: 100vh !important;
+                scroll-snap-align: none !important;
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+            
+            /* 修复banner区域 */
+            .banner {
+                height: auto !important;
+                min-height: 100vh !important;
+                padding-top: 100px !important;
+                padding-bottom: 30px !important;
+            }
+            
+            /* 修复内容容器 */
+            .container {
+                min-height: auto !important;
+                height: auto !important;
+                display: block !important;
+                padding: 80px 20px 40px !important;
+            }
+            
+            /* 修复页脚 */
+            footer {
+                min-height: auto !important;
+                display: block !important;
+            }
+            
+            /* 隐藏不需要的元素 */
+            .fullpage-container, .nav-dots {
+                display: none !important;
+            }
+            
+            /* 确保导航栏可见 */
+            .navbar {
+                position: fixed !important;
+                top: 0 !important;
+                background-color: white !important;
+            }
+            
+            /* 修复横幅新闻区域 */
+            .banner-news {
+                position: relative !important;
+                margin-top: 30px !important;
+                margin-bottom: 30px !important;
+                bottom: auto !important;
+                left: auto !important;
+                transform: none !important;
+                width: 95% !important;
+                border-radius: 10px !important;
+            }
+        }
+        /* 确保初始加载时可见 */
+        .mobile-fixed .scroll-container,
+        .mobile-fixed .scroll-section {
+            visibility: visible !important;
+            opacity: 1 !important;
         }

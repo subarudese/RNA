@@ -127,7 +127,6 @@
             <li><a href="#publications">研究成果</a></li>
             <li class="nav-item"><a class="nav-link" href="join us.html">加入我们</a></li>
         </ul>
-        <!-- 修改移动菜单按钮和菜单结构 -->
         <div class="mobile-menu-btn" id="mobileMenuBtn">
             <i class="fas fa-bars"></i>
         </div>
@@ -462,15 +461,17 @@
                     section.style.minHeight = '100vh';
                 });
             }
-            // 1. 移动端菜单功能
+            // 移动端菜单功能
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const mobileNav = document.getElementById('mobileNav');
             
             if (mobileMenuBtn && mobileNav) {
-                // 切换菜单显示/隐藏
                 mobileMenuBtn.addEventListener('click', function(e) {
                     e.stopPropagation();
+                    
+                    // 切换菜单显示/隐藏
                     mobileNav.classList.toggle('active');
+                    
                     // 切换图标
                     const icon = this.querySelector('i');
                     if (mobileNav.classList.contains('active')) {
@@ -482,22 +483,68 @@
                     }
                 });
                 
-                // 点击链接后关闭菜单
-                const mobileLinks = mobileNav.querySelectorAll('a');
-                mobileLinks.forEach(link => {
+                // 移动端下拉菜单功能
+                const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+                mobileDropdownToggles.forEach(toggle => {
+                    toggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        // 切换当前下拉菜单
+                        const dropdownMenu = this.nextElementSibling;
+                        dropdownMenu.classList.toggle('active');
+                        this.classList.toggle('active');
+                    });
+                });
+                
+                // 点击移动菜单链接后关闭菜单
+                const mobileNavLinks = mobileNav.querySelectorAll('a[href]');
+                mobileNavLinks.forEach(link => {
                     link.addEventListener('click', function(e) {
-                        // 如果不是下拉菜单触发器，则关闭菜单
-                        if (!this.classList.contains('mobile-dropdown-toggle')) {
-                            mobileNav.classList.remove('active');
-                            mobileMenuBtn.querySelector('i').classList.remove('fa-times');
-                            mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                        // 如果是下拉菜单触发器，不关闭整个菜单
+                        if (this.classList.contains('mobile-dropdown-toggle')) {
+                            return;
+                        }
+                        
+                        // 关闭移动菜单
+                        mobileNav.classList.remove('active');
+                        mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                        mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                        
+                        // 如果是锚点链接，处理滚动
+                        const href = this.getAttribute('href');
+                        if (href.startsWith('#')) {
+                            e.preventDefault();
+                            const targetId = href.substring(1);
+                            const targetElement = document.getElementById(targetId);
+                            
+                            if (targetElement) {
+                                // 等待菜单关闭动画完成后滚动
+                                setTimeout(() => {
+                                    window.scrollTo({
+                                        top: targetElement.offsetTop - 70,
+                                        behavior: 'smooth'
+                                    });
+                                }, 300);
+                            }
                         }
                     });
                 });
                 
                 // 点击页面其他地方关闭菜单
                 document.addEventListener('click', function(e) {
-                    if (!mobileNav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    if (mobileNav.classList.contains('active') && 
+                        !mobileNav.contains(e.target) && 
+                        !mobileMenuBtn.contains(e.target)) {
+                        mobileNav.classList.remove('active');
+                        mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                        mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                    }
+                });
+                
+                // ESC键关闭菜单
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
                         mobileNav.classList.remove('active');
                         mobileMenuBtn.querySelector('i').classList.remove('fa-times');
                         mobileMenuBtn.querySelector('i').classList.add('fa-bars');
@@ -505,46 +552,15 @@
                 });
             }
             
-            // 2. 移动端下拉菜单功能
-            const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
-            mobileDropdownToggles.forEach(toggle => {
+            // 确保PC端导航下拉菜单正常工作
+            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+            dropdownToggles.forEach(toggle => {
                 toggle.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    const dropdownMenu = this.nextElementSibling;
-                    const isActive = dropdownMenu.classList.contains('active');
-                    
-                    // 关闭其他打开的下拉菜单
-                    document.querySelectorAll('.mobile-dropdown-menu').forEach(menu => {
-                        if (menu !== dropdownMenu) {
-                            menu.classList.remove('active');
-                            menu.previousElementSibling.classList.remove('active');
-                        }
-                    });
-                    
-                    // 切换当前下拉菜单
-                    dropdownMenu.classList.toggle('active');
-                    this.classList.toggle('active');
+                    if (window.innerWidth <= 992) {
+                        e.preventDefault(); // 移动端使用移动下拉菜单
+                    }
                 });
             });
-            // 1. 移动端菜单
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const mobileNav = document.getElementById('mobileNav');
-            
-            if (mobileMenuBtn) {
-                mobileMenuBtn.addEventListener('click', () => {
-                    mobileNav.classList.toggle('active');
-                });
-                
-                // 点击链接后关闭菜单
-                document.querySelectorAll('.mobile-nav a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        mobileNav.classList.remove('active');
-                    });
-                });
-            }
-
             // 2. 更新导航栏滚动样式
             window.addEventListener('scroll', () => {
                 const navbar = document.querySelector('.navbar');

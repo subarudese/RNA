@@ -2048,13 +2048,13 @@
         }
 
         /* 研究方向部分特殊处理 */
-        #researchs.scroll-section {
+        #research.scroll-section {
             height: 100vh;
             overflow-y: auto;  /* 允许内部滚动 */
             scroll-snap-align: start;
         }
 
-        #researchs .container {
+        #research .container {
             min-height: auto;  /* 取消最小高度限制 */
             height: auto;      /* 自动高度 */
             padding-top: 120px;
@@ -2063,25 +2063,25 @@
         }
 
         /* 隐藏研究成果section的外部滚动条，只显示内容滚动 */
-        #researchs.scroll-section::-webkit-scrollbar {
+        #research.scroll-section::-webkit-scrollbar {
             width: 8px;
         }
 
-        #researchs.scroll-section::-webkit-scrollbar-track {
+        #research.scroll-section::-webkit-scrollbar-track {
             background: rgba(0, 0, 0, 0.05);
         }
 
-        #researchs.scroll-section::-webkit-scrollbar-thumb {
+        #research.scroll-section::-webkit-scrollbar-thumb {
             background: rgba(0, 86, 166, 0.3);
             border-radius: 4px;
         }
 
-        #researchs.scroll-section::-webkit-scrollbar-thumb:hover {
+        #research.scroll-section::-webkit-scrollbar-thumb:hover {
             background: rgba(0, 86, 166, 0.5);
         }
 
         /* 当滚动到该section时，提示用户可以滚动 */
-        #researchs::after {
+        #research::after {
             content: '可滚动查看更多';
             position: absolute;
             bottom: 20px;
@@ -2103,12 +2103,12 @@
 
         /* 移动端调整 */
         @media (max-width: 768px) {
-            #researchs .container {
+            #research .container {
                 padding-top: 100px;
                 padding-bottom: 60px;
             }
             
-            #researchs::after {
+            #research::after {
                 font-size: 12px;
                 padding: 6px 12px;
             }

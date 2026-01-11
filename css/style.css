@@ -1927,7 +1927,7 @@
                 transform: translateX(5px);
             }
         }
-        
+
         /* 研究方向图片样式 */
         #research-map {
         width: 100%;
@@ -1970,5 +1970,45 @@
         
         .research-content {
             border-left-width: 3px;
+        }
+        }
+
+        /* 修复锚点滚动位置 - 关键修复！ */
+        html {
+        scroll-behavior: smooth; /* 确保平滑滚动 */
+        }
+
+        /* 确保研究方向内容不会被其他元素遮挡 */
+        #research-directions {
+        padding-top: 100px; /* 确保滚动时不会被导航栏遮挡 */
+        margin-top: -100px; /* 修复锚点位置偏移 */
+        }
+
+        /* 修复图片区域悬停效果 */
+        #research-map {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        display: block;
+        margin: 40px 0;
+        }
+
+        /* 为每个研究内容添加锚点定位 */
+        .research-content {
+        position: relative; /* 关键：确保锚点定位正确 */
+        background: #f8f9fa;
+        border-left: 4px solid #0056a6;
+        padding: 25px;
+        margin: 50px 0;
+        border-radius: 0 8px 8px 0;
+        transition: all 0.3s ease;
+        }
+
+        /* 修复移动端锚点位置 */
+        @media (max-width: 768px) {
+        #research-directions {
+            padding-top: 80px;
+            margin-top: -80px;
         }
         }

@@ -1937,6 +1937,24 @@
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
+        .research-map img {
+            width: 100%;      /* 响应式缩放 */
+            height: auto;     /* 保持比例 */
+            max-width: 100%;  /* 防止溢出 */
+        }        
+
+        /* 确保图片容器不干扰坐标 */
+        .research-map {
+            position: relative;
+            overflow: hidden; /* 防止图片溢出影响定位 */
+        }
+        .research-map img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            object-fit: contain; /* 关键：保持图片比例，避免拉伸 */
+        }
 
         /* 为研究方向内容添加样式 */
         .research-content {

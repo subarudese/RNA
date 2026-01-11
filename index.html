@@ -204,63 +204,59 @@
         <!-- 研究领域 -->
         <section class="scroll-section" id="research">
             <div class="container">
-                <h2 class="section-title">研究架构总览</h2>
-                
-                <!-- 交互式研究架构图 -->
-                <div class="research-architecture">
-                    <div class="architecture-container">
-                        <!-- 研究架构图 -->
-                        <div class="architecture-image" id="architectureImage">
-                            <img src="images/research/lab-research.jpg" alt="研究架构总览图" class="research-architecture-img">
-                            
-                            <!-- 交互热点区域 -->
-                            <div class="hotspot hotspot-1" data-link="research/AI-RNA.html" title="mRNA-Biologics">
-                                <div class="hotspot-label">mRNA-Biologics</div>
-                            </div>
-                            <div class="hotspot hotspot-2" data-link="research/Immunization-RNA.html" title="RNA-Collaboratory">
-                                <div class="hotspot-label">RNA-Collaboratory</div>
-                            </div>
-                            <div class="hotspot hotspot-3" data-link="research/Sensing.html" title="RNA-Cellular editor">
-                                <div class="hotspot-label">RNA-Cellular editor</div>
-                            </div>
-                            <div class="hotspot hotspot-4" data-link="research/multimodular-biosensing.html" title="Multimodular Biosensing">
-                                <div class="hotspot-label">Multimodular Biosensing</div>
-                            </div>
-                            <div class="hotspot hotspot-5" data-link="research/biology-synthetics.html" title="Biology-synthetics">
-                                <div class="hotspot-label">Biology-synthetics</div>
-                            </div>
-                            <div class="hotspot hotspot-6" data-link="research/lmp-carriers.html" title="LMP Carriers">
-                                <div class="hotspot-label">LMP Carriers</div>
-                            </div>
-                            <div class="hotspot hotspot-7" data-link="research/automatic-rna-printer.html" title="Automatic RNA printer">
-                                <div class="hotspot-label">Automatic RNA printer</div>
-                            </div>
-                            <div class="hotspot hotspot-8" data-link="research/neuron-interface.html" title="Neuron-Computer Interface">
-                                <div class="hotspot-label">Neuron-Computer Interface</div>
-                            </div>
-                        </div>
-                        
-                        <!-- 研究架构说明 -->
-                        <div class="architecture-legend">
-                            <h3>研究方向说明</h3>
-                            <ul class="research-list" id="researchList">
-                                <!-- 列表项将通过JavaScript动态生成 -->
-                            </ul>
+                <h2 class="section-title">研究方向</h2>
+                <div class="research-grid">
+                    <!-- 研究卡片内容保持不变 -->
+                    <div class="research-card">
+                        <div class="research-img" style="background-image: url('images/research/AI-RNA.png');"></div>
+                        <div class="research-content">
+                            <h3><a href="research/AI-RNA.html" class="research-title-link">AI赋能mRNA序列设计</a></h3>
+                            <p>建立5'UTR翻译效率定量体系,优化3'UTR增强稳定性,并开发circRNA高效环化策略,推动mRNA/circRNA治疗应用。</p>
+                            <a href="research/AI-RNA.html" class="read-more">深入了解该方向 →</a>
                         </div>
                     </div>
-                    
-                    <!-- 研究概览按钮 -->
-                    <div class="research-overview-section">
-                        <button class="research-overview-btn" id="showResearchOverview">
-                            <i class="fas fa-chart-network"></i>
-                            <span>放大查看研究架构图</span>
-                            <i class="fas fa-expand-alt"></i>
-                        </button>
+                    <div class="research-card">
+                        <div class="research-img" style="background-image: url('images/research/Immunization-RNA.png');"></div>
+                        <div class="research-content">
+                            <h3><a href="research/Immunization-RNA.html" class="research-title-link">mRNA疫苗与肿瘤免疫机制</a></h3>
+                            <p>构建新型LNP递送系统,提升mRNA疫苗安全性与效力,并拓展至肿瘤免疫治疗及局部靶向递送,推动mRNA技术转化应用。</p>
+                            <a href="research/Immunization-RNA.html" class="read-more">深入了解该方向 →</a>
+                        </div>
+                    </div>
+                    <div class="research-card">
+                        <div class="research-img" style="background-image: url('images/research/Sensing.png');"></div>
+                        <div class="research-content">
+                            <h3><a href="research/Sensing.html" class="research-title-link">柔性生物传感器</a></h3>
+                            <p>开发抗菌半干式水凝胶EEG传感器,实现长期稳定、高质量的脑电信号采集,推动非侵入式脑机接口应用。</p>
+                            <a href="research/Sensing.html" class="read-more">深入了解该方向 →</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 在研究领域部分，研究网格之后添加 -->
+                <div class="research-overview-section">
+                    <button class="research-overview-btn" id="showResearchOverview">
+                        <i class="fas fa-chart-network"></i>
+                        <span>一张图了解我们的研究</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- 模态框（弹出层） -->
+                <div class="modal" id="researchModal">
+                    <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <h3>研究架构总览</h3>
+                        <div class="modal-image-container">
+                            <img src="images/research/lab-research.jpg" alt="研究架构总览图" class="research-overview-img">
+                        </div>
+                        <div class="modal-caption">
+                            <p>点击图片可放大查看，拖动可移动图片位置</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-
+        
         <!-- 团队成员 -->
         <section class="scroll-section" id="team">
             <div class="container">
@@ -465,232 +461,6 @@
         }
         // 极简的JavaScript代码 - 仅处理动态内容和指示器
         document.addEventListener('DOMContentLoaded', function() {
-            // 研究架构数据
-            const researchAreas = [
-                {
-                    id: 1,
-                    title: "mRNA-Biologics",
-                    description: "包括circRNA、UTRs、Switches、AI-assisted等技术，专注于mRNA序列优化和设计",
-                    link: "research/AI-RNA.html"
-                },
-                {
-                    id: 2,
-                    title: "RNA-Collaboratory",
-                    description: "聚焦于治疗性肿瘤疫苗、体内CAR-T、肿瘤选择性RNA毒素等合作研究",
-                    link: "research/Immunization-RNA.html"
-                },
-                {
-                    id: 3,
-                    title: "RNA-Cellular editor",
-                    description: "涉及细胞编辑（凋亡）、蛋白质增强与降解、RNA编辑、DNA编辑等技术",
-                    link: "research/Sensing.html"
-                },
-                {
-                    id: 4,
-                    title: "Multimodular Biosensing",
-                    description: "包括组织靶向、细胞靶向、肿瘤响应性、AI辅助的多模块生物传感技术",
-                    link: "research/multimodular-biosensing.html"
-                },
-                {
-                    id: 5,
-                    title: "Biology-synthetics",
-                    description: "植入式光电生物传感器、光学诊断与治疗、可控传感与刺激、多功能水凝胶",
-                    link: "research/biology-synthetics.html"
-                },
-                {
-                    id: 6,
-                    title: "LMP Carriers",
-                    description: "完全集成平台、高通量快速制造的脂质纳米颗粒递送系统",
-                    link: "research/lmp-carriers.html"
-                },
-                {
-                    id: 7,
-                    title: "Automatic RNA printer",
-                    description: "自动化RNA打印技术，实现高效RNA合成与制备",
-                    link: "research/automatic-rna-printer.html"
-                },
-                {
-                    id: 8,
-                    title: "Neuron-Computer Interface",
-                    description: "神经-计算机接口、人工神经元、智能假体、外骨骼等技术",
-                    link: "research/neuron-interface.html"
-                }
-            ];
-
-            // 渲染研究列表
-            const researchList = document.getElementById('researchList');
-            if (researchList) {
-                researchList.innerHTML = '';
-                researchAreas.forEach(area => {
-                    const listItem = document.createElement('li');
-                    listItem.className = 'research-list-item';
-                    listItem.innerHTML = `
-                        <a href="${area.link}">
-                            <div class="research-list-title">
-                                <span>${area.title}</span>
-                                <i class="fas fa-arrow-right"></i>
-                            </div>
-                            <p class="research-list-desc">${area.description}</p>
-                        </a>
-                    `;
-                    researchList.appendChild(listItem);
-                });
-            }
-
-            // 热点区域点击事件
-            const hotspots = document.querySelectorAll('.hotspot');
-            hotspots.forEach(hotspot => {
-                hotspot.addEventListener('click', function() {
-                    const link = this.getAttribute('data-link');
-                    const title = this.getAttribute('title');
-                    
-                    // 添加点击动画
-                    this.style.transform = 'scale(0.95)';
-                    this.style.backgroundColor = 'rgba(0, 86, 166, 0.3)';
-                    
-                    setTimeout(() => {
-                        this.style.transform = '';
-                        this.style.backgroundColor = '';
-                        
-                        // 跳转到对应页面
-                        if (link) {
-                            window.location.href = link;
-                        }
-                    }, 200);
-                });
-                
-                // 桌面端悬停效果
-                hotspot.addEventListener('mouseenter', function() {
-                    if (window.innerWidth > 768) {
-                        const label = this.querySelector('.hotspot-label');
-                        if (label) {
-                            label.style.opacity = '1';
-                            label.style.bottom = '-50px';
-                        }
-                    }
-                });
-                
-                hotspot.addEventListener('mouseleave', function() {
-                    if (window.innerWidth > 768) {
-                        const label = this.querySelector('.hotspot-label');
-                        if (label) {
-                            label.style.opacity = '0';
-                            label.style.bottom = '-40px';
-                        }
-                    }
-                });
-            });
-
-            // 研究架构图模态框功能
-            const modal = document.getElementById('researchModal');
-            const showBtn = document.getElementById('showResearchOverview');
-            const closeBtn = document.querySelector('.close-modal');
-            const modalImage = document.querySelector('.research-overview-img');
-            
-            // 打开模态框
-            if (showBtn) {
-                showBtn.addEventListener('click', function() {
-                    if (modal) {
-                        modal.classList.add('active');
-                        document.body.style.overflow = 'hidden';
-                    } else {
-                        // 如果没有模态框，直接放大图片
-                        const architectureImage = document.querySelector('.research-architecture-img');
-                        if (architectureImage) {
-                            architectureImage.style.transform = 'scale(1.1)';
-                            setTimeout(() => {
-                                architectureImage.style.transform = '';
-                            }, 500);
-                        }
-                    }
-                });
-            }
-            
-            // 关闭模态框
-            if (closeBtn) {
-                closeBtn.addEventListener('click', closeModal);
-            }
-            
-            // 点击模态框背景关闭
-            if (modal) {
-                modal.addEventListener('click', function(e) {
-                    if (e.target === modal) {
-                        closeModal();
-                    }
-                });
-            }
-            
-            // ESC键关闭
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
-                    closeModal();
-                }
-            });
-            
-            function closeModal() {
-                if (modal) {
-                    modal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                    if (modalImage && modalImage.classList.contains('zoomed')) {
-                        modalImage.classList.remove('zoomed');
-                    }
-                }
-            }
-            
-            // 图片缩放功能
-            if (modalImage) {
-                modalImage.addEventListener('click', function() {
-                    this.classList.toggle('zoomed');
-                });
-            }
-            
-            // 移动端触摸交互优化
-            if ('ontouchstart' in window) {
-                let touchStartX = 0;
-                let touchStartY = 0;
-                
-                document.addEventListener('touchstart', function(e) {
-                    touchStartX = e.touches[0].clientX;
-                    touchStartY = e.touches[0].clientY;
-                });
-                
-                document.addEventListener('touchend', function(e) {
-                    const touchEndX = e.changedTouches[0].clientX;
-                    const touchEndY = e.changedTouches[0].clientY;
-                    
-                    const diffX = Math.abs(touchEndX - touchStartX);
-                    const diffY = Math.abs(touchEndY - touchStartY);
-                    
-                    // 如果是点击而不是滑动
-                    if (diffX < 10 && diffY < 10) {
-                        // 检查是否点击了热点区域
-                        const element = document.elementFromPoint(touchEndX, touchEndY);
-                        const hotspot = element.closest('.hotspot');
-                        
-                        if (hotspot) {
-                            const link = hotspot.getAttribute('data-link');
-                            if (link) {
-                                e.preventDefault();
-                                window.location.href = link;
-                            }
-                        }
-                    }
-                });
-            }
-            
-            // 监听窗口大小变化
-            window.addEventListener('resize', function() {
-                // 在移动端隐藏热点标签
-                if (window.innerWidth <= 576) {
-                    document.querySelectorAll('.hotspot-label').forEach(label => {
-                        label.style.display = 'none';
-                    });
-                } else {
-                    document.querySelectorAll('.hotspot-label').forEach(label => {
-                        label.style.display = 'block';
-                    });
-                }
-            });
             // 手机端特殊处理
             if (window.innerWidth <= 768) {
                 // 强制显示所有内容

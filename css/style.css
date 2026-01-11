@@ -1927,3 +1927,48 @@
                 transform: translateX(5px);
             }
         }
+        
+        /* 研究方向图片样式 */
+        #research-map {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin: 30px 0;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 为研究方向内容添加样式 */
+        .research-content {
+        background: #f8f9fa;
+        border-left: 4px solid #0056a6;
+        padding: 20px;
+        margin: 40px 0;
+        border-radius: 0 4px 4px 0;
+        transition: all 0.3s ease;
+        }
+
+        /* 高亮效果 - 当鼠标悬停在图片区域时显示 */
+        area:hover {
+        outline: 3px solid #0056a6;
+        outline-offset: 2px;
+        cursor: pointer;
+        }
+
+        /* 当点击区域时的视觉反馈 */
+        area:active {
+        outline: 4px solid #0056a6;
+        outline-offset: 1px;
+        }
+
+        /* 移动端优化 */
+        @media (max-width: 768px) {
+        #research-map {
+            width: 100%;
+            height: auto;
+        }
+        
+        .research-content {
+            border-left-width: 3px;
+        }
+        }

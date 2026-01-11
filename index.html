@@ -202,59 +202,37 @@
         </section> 
 
         <!-- 研究领域 -->
-        <section class="scroll-section" id="research">
-            <div class="container">
-                <h2 class="section-title">研究方向</h2>
-                <div class="research-grid">
-                    <!-- 研究卡片内容保持不变 -->
-                    <div class="research-card">
-                        <div class="research-img" style="background-image: url('images/research/AI-RNA.png');"></div>
-                        <div class="research-content">
-                            <h3><a href="research/AI-RNA.html" class="research-title-link">AI赋能mRNA序列设计</a></h3>
-                            <p>建立5'UTR翻译效率定量体系,优化3'UTR增强稳定性,并开发circRNA高效环化策略,推动mRNA/circRNA治疗应用。</p>
-                            <a href="research/AI-RNA.html" class="read-more">深入了解该方向 →</a>
-                        </div>
-                    </div>
-                    <div class="research-card">
-                        <div class="research-img" style="background-image: url('images/research/Immunization-RNA.png');"></div>
-                        <div class="research-content">
-                            <h3><a href="research/Immunization-RNA.html" class="research-title-link">mRNA疫苗与肿瘤免疫机制</a></h3>
-                            <p>构建新型LNP递送系统,提升mRNA疫苗安全性与效力,并拓展至肿瘤免疫治疗及局部靶向递送,推动mRNA技术转化应用。</p>
-                            <a href="research/Immunization-RNA.html" class="read-more">深入了解该方向 →</a>
-                        </div>
-                    </div>
-                    <div class="research-card">
-                        <div class="research-img" style="background-image: url('images/research/Sensing.png');"></div>
-                        <div class="research-content">
-                            <h3><a href="research/Sensing.html" class="research-title-link">柔性生物传感器</a></h3>
-                            <p>开发抗菌半干式水凝胶EEG传感器,实现长期稳定、高质量的脑电信号采集,推动非侵入式脑机接口应用。</p>
-                            <a href="research/Sensing.html" class="read-more">深入了解该方向 →</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- 在研究领域部分，研究网格之后添加 -->
-                <div class="research-overview-section">
-                    <button class="research-overview-btn" id="showResearchOverview">
-                        <i class="fas fa-chart-network"></i>
-                        <span>一张图了解我们的研究</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                </div>
-
-                <!-- 模态框（弹出层） -->
-                <div class="modal" id="researchModal">
-                    <div class="modal-content">
-                        <span class="close-modal">&times;</span>
-                        <h3>研究架构总览</h3>
-                        <div class="modal-image-container">
-                            <img src="images/research/lab-research.jpg" alt="研究架构总览图" class="research-overview-img">
-                        </div>
-                        <div class="modal-caption">
-                            <p>点击图片可放大查看，拖动可移动图片位置</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <section id="research-directions">
+            <h2>Research Directions</h2>
+            <!-- 替换为图片和图像地图 -->
+            <img id="research-map" src="images/research/lab-research.jpg" usemap="#directions-map" alt="Research Directions">
+            
+            <!-- 图像地图定义 -->
+            <map name="directions-map">
+                <!-- RNA-Oncology -->
+                <area shape="poly" coords="338,1212,974,580,1298,1357,1120,1538" href="#rna-oncology" alt="RNA-Oncology">
+                
+                <!-- RNA-Cellular Editor -->
+                <area shape="poly" coords="338,1212,337,2109,1125,1785,1120,1538" href="#rna-cellular-editor" alt="RNA-Cellular Editor">
+                
+                <!-- Regenerative Medicine -->
+                <area shape="poly" coords="976,2743,337,2109,1125,1785,1301,1961" href="#regenerative-medicine" alt="Regenerative Medicine">
+                
+                <!-- Multinodular Biosensing -->
+                <area shape="poly" coords="976,2743,1869,2743,1547,1961,1301,1961" href="#multinodular-biosensing" alt="Multinodular Biosensing">
+                
+                <!-- Brain-Computer Interface -->
+                <area shape="poly" coords="2503,2112,1869,2743,1547,1961,1726,1790" href="#brain-computer-interface" alt="Brain-Computer Interface">
+                
+                <!-- Automatic RNA Printer -->
+                <area shape="poly" coords="2503,2112,2503,1217,1723,1531,1726,1790" href="#automatic-rna-printer" alt="Automatic RNA Printer">
+                
+                <!-- LNP-Carriers -->
+                <area shape="poly" coords="1874,583,2503,1217,1723,1531,1547,1357" href="#lnp-carriers" alt="LNP-Carriers">
+                
+                <!-- mRNA-Biologics -->
+                <area shape="poly" coords="1874,583,976,580,1547,1357,1291,1360" href="#mrna-biologics" alt="mRNA-Biologics">
+            </map>
         </section>
         
         <!-- 团队成员 -->

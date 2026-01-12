@@ -712,7 +712,21 @@
                     closeFullImageModal();
                 }
             });
-                        
+
+            // 打印功能
+            if (printBtn) {
+                printBtn.addEventListener('click', function() {
+                    window.print();
+                });
+            }
+            
+            function closeFullImageModal() {
+                if (fullImageModal) {
+                    fullImageModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+
             // 网格项交互效果
             const gridItems = document.querySelectorAll('.grid-item');
             

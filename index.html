@@ -201,62 +201,152 @@
             </div>
         </section> 
 
-        <!-- 研究领域 -->
+        <!-- 研究方向 -->
         <section class="scroll-section" id="research">
             <div class="container">
-                <h2 class="section-title">研究方向</h2>
-                <div class="research-grid">
-                    <!-- 研究卡片内容保持不变 -->
-                    <div class="research-card">
-                        <div class="research-img" style="background-image: url('images/research/AI-RNA.png');"></div>
-                        <div class="research-content">
-                            <h3><a href="research/AI-RNA.html" class="research-title-link">AI赋能mRNA序列设计</a></h3>
-                            <p>建立5'UTR翻译效率定量体系,优化3'UTR增强稳定性,并开发circRNA高效环化策略,推动mRNA/circRNA治疗应用。</p>
-                            <a href="research/AI-RNA.html" class="read-more">深入了解该方向 →</a>
+                <h2 class="section-title">研究架构总览</h2>
+                
+                <div class="research-overview-container">
+                    <!-- 左侧研究链接（4个） -->
+                    <div class="research-links research-links-left">
+                        <div class="research-link-item" data-order="1">
+                            <div class="link-icon">
+                                <i class="fas fa-dna"></i>
+                            </div>
+                            <div class="link-content">
+                                <h3>mRNA-Biologics</h3>
+                                <p>circRNA、UTRs、Switches、AI-assisted等技术</p>
+                                <a href="research/AI-RNA.html" class="link-arrow">了解更多 <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="research-link-item" data-order="2">
+                            <div class="link-icon">
+                                <i class="fas fa-vial"></i>
+                            </div>
+                            <div class="link-content">
+                                <h3>RNA-Collaboratory</h3>
+                                <p>治疗性肿瘤疫苗、体内CAR-T、肿瘤选择性RNA毒素</p>
+                                <a href="research/Immunization-RNA.html" class="link-arrow">了解更多 <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="research-link-item" data-order="3">
+                            <div class="link-icon">
+                                <i class="fas fa-edit"></i>
+                            </div>
+                            <div class="link-content">
+                                <h3>RNA-Cellular editor</h3>
+                                <p>细胞编辑、蛋白质增强与降解、RNA编辑、DNA编辑</p>
+                                <a href="research/Sensing.html" class="link-arrow">了解更多 <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="research-link-item" data-order="4">
+                            <div class="link-icon">
+                                <i class="fas fa-microscope"></i>
+                            </div>
+                            <div class="link-content">
+                                <h3>Multimodular Biosensing</h3>
+                                <p>组织靶向、细胞靶向、肿瘤响应性、AI辅助</p>
+                                <a href="research/multimodular-biosensing.html" class="link-arrow">了解更多 <i class="fas fa-arrow-right"></i></a>
+                            </div>
                         </div>
                     </div>
-                    <div class="research-card">
-                        <div class="research-img" style="background-image: url('images/research/Immunization-RNA.png');"></div>
-                        <div class="research-content">
-                            <h3><a href="research/Immunization-RNA.html" class="research-title-link">mRNA疫苗与肿瘤免疫机制</a></h3>
-                            <p>构建新型LNP递送系统,提升mRNA疫苗安全性与效力,并拓展至肿瘤免疫治疗及局部靶向递送,推动mRNA技术转化应用。</p>
-                            <a href="research/Immunization-RNA.html" class="read-more">深入了解该方向 →</a>
+                    
+                    <!-- 中心概览图 -->
+                    <div class="research-overview-image">
+                        <div class="image-container">
+                            <img src="images/research/lab-research.jpg" alt="研究架构总览图">
+                            <div class="image-caption">
+                                <h3>研究架构总览</h3>
+                                <p>点击图片查看大图</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 概览图放大查看按钮 -->
+                        <div class="overview-actions">
+                            <button class="btn-zoom" id="zoomOverview">
+                                <i class="fas fa-search-plus"></i> 放大查看
+                            </button>
+                            <a href="images/research/lab-research.jpg" download class="btn-download">
+                                <i class="fas fa-download"></i> 下载图片
+                            </a>
                         </div>
                     </div>
-                    <div class="research-card">
-                        <div class="research-img" style="background-image: url('images/research/Sensing.png');"></div>
-                        <div class="research-content">
-                            <h3><a href="research/Sensing.html" class="research-title-link">柔性生物传感器</a></h3>
-                            <p>开发抗菌半干式水凝胶EEG传感器,实现长期稳定、高质量的脑电信号采集,推动非侵入式脑机接口应用。</p>
-                            <a href="research/Sensing.html" class="read-more">深入了解该方向 →</a>
+                    
+                    <!-- 右侧研究链接（4个） -->
+                    <div class="research-links research-links-right">
+                        <div class="research-link-item" data-order="5">
+                            <div class="link-icon">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <div class="link-content">
+                                <h3>Biology-synthetics</h3>
+                                <p>植入式光电生物传感器、光学诊断与治疗、多功能水凝胶</p>
+                                <a href="research/biology-synthetics.html" class="link-arrow">了解更多 <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="research-link-item" data-order="6">
+                            <div class="link-icon">
+                                <i class="fas fa-truck-loading"></i>
+                            </div>
+                            <div class="link-content">
+                                <h3>LMP Carriers</h3>
+                                <p>完全集成平台、高通量快速制造的脂质纳米颗粒递送系统</p>
+                                <a href="research/lmp-carriers.html" class="link-arrow">了解更多 <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="research-link-item" data-order="7">
+                            <div class="link-icon">
+                                <i class="fas fa-print"></i>
+                            </div>
+                            <div class="link-content">
+                                <h3>Automatic RNA printer</h3>
+                                <p>自动化RNA打印技术，实现高效RNA合成与制备</p>
+                                <a href="research/automatic-rna-printer.html" class="link-arrow">了解更多 <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="research-link-item" data-order="8">
+                            <div class="link-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="link-content">
+                                <h3>Neuron-Computer Interface</h3>
+                                <p>神经-计算机接口、人工神经元、智能假体、外骨骼</p>
+                                <a href="research/neuron-interface.html" class="link-arrow">了解更多 <i class="fas fa-arrow-right"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- 在研究领域部分，研究网格之后添加 -->
-                <div class="research-overview-section">
-                    <button class="research-overview-btn" id="showResearchOverview">
-                        <i class="fas fa-chart-network"></i>
-                        <span>一张图了解我们的研究</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                </div>
-
-                <!-- 模态框（弹出层） -->
-                <div class="modal" id="researchModal">
-                    <div class="modal-content">
-                        <span class="close-modal">&times;</span>
-                        <h3>研究架构总览</h3>
-                        <div class="modal-image-container">
-                            <img src="images/research/lab-research.jpg" alt="研究架构总览图" class="research-overview-img">
-                        </div>
-                        <div class="modal-caption">
-                            <p>点击图片可放大查看，拖动可移动图片位置</p>
+            </div>
+            
+            <!-- 概览图放大模态框 -->
+            <div class="modal overview-modal" id="overviewModal">
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <h3>研究架构总览（高清图）</h3>
+                    <div class="modal-image-container">
+                        <img src="images/research/lab-research.jpg" alt="研究架构总览图" class="overview-full-image">
+                    </div>
+                    <div class="modal-caption">
+                        <p>点击图片可进一步放大/缩小，拖动可查看细节</p>
+                        <div class="modal-actions">
+                            <button class="btn-download" id="downloadOverview">
+                                <i class="fas fa-download"></i> 下载高清图
+                            </button>
+                            <button class="btn-print" id="printOverview">
+                                <i class="fas fa-print"></i> 打印
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        
+
         <!-- 团队成员 -->
         <section class="scroll-section" id="team">
             <div class="container">
@@ -581,6 +671,161 @@
                     }
                 });
             });
+            // 1.研究概览图放大功能
+            const zoomBtn = document.getElementById('zoomOverview');
+            const overviewModal = document.getElementById('overviewModal');
+            const closeModalBtn = overviewModal ? overviewModal.querySelector('.close-modal') : null;
+            const fullImage = document.querySelector('.overview-full-image');
+            const downloadBtn = document.getElementById('downloadOverview');
+            const printBtn = document.getElementById('printOverview');
+            
+            // 打开模态框
+            if (zoomBtn && overviewModal) {
+                zoomBtn.addEventListener('click', function() {
+                    overviewModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+            
+            // 关闭模态框
+            if (closeModalBtn) {
+                closeModalBtn.addEventListener('click', closeOverviewModal);
+            }
+            
+            // 点击模态框背景关闭
+            if (overviewModal) {
+                overviewModal.addEventListener('click', function(e) {
+                    if (e.target === overviewModal) {
+                        closeOverviewModal();
+                    }
+                });
+            }
+            
+            // ESC键关闭模态框
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && overviewModal && overviewModal.classList.contains('active')) {
+                    closeOverviewModal();
+                }
+            });
+            
+            // 图片缩放功能
+            if (fullImage) {
+                fullImage.addEventListener('click', function() {
+                    this.classList.toggle('zoomed');
+                });
+            }
+            
+            // 下载按钮功能
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', function() {
+                    const imageUrl = fullImage ? fullImage.src : 'images/research/lab-research.jpg';
+                    const link = document.createElement('a');
+                    link.href = imageUrl;
+                    link.download = '研究架构总览图.jpg';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                });
+            }
+            
+            // 打印按钮功能
+            if (printBtn) {
+                printBtn.addEventListener('click', function() {
+                    window.print();
+                });
+            }
+            
+            function closeOverviewModal() {
+                if (overviewModal) {
+                    overviewModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                    // 如果有缩放，重置
+                    if (fullImage && fullImage.classList.contains('zoomed')) {
+                        fullImage.classList.remove('zoomed');
+                    }
+                }
+            }
+            
+            // 研究链接悬停效果增强
+            const researchLinkItems = document.querySelectorAll('.research-link-item');
+            
+            researchLinkItems.forEach(item => {
+                // 鼠标悬停时添加涟漪效果
+                item.addEventListener('mouseenter', function() {
+                    const order = this.getAttribute('data-order');
+                    const colors = [
+                        '#4a90e2', '#5cb85c', '#f0ad4e', '#d9534f',
+                        '#5bc0de', '#337ab7', '#8e44ad', '#2c3e50'
+                    ];
+                    const colorIndex = parseInt(order) - 1;
+                    
+                    if (colorIndex >= 0 && colorIndex < colors.length) {
+                        const ripple = document.createElement('div');
+                        ripple.style.position = 'absolute';
+                        ripple.style.borderRadius = '50%';
+                        ripple.style.background = `radial-gradient(circle, ${colors[colorIndex]}20, transparent 70%)`;
+                        ripple.style.width = '200px';
+                        ripple.style.height = '200px';
+                        ripple.style.top = '50%';
+                        ripple.style.left = '50%';
+                        ripple.style.transform = 'translate(-50%, -50%) scale(0)';
+                        ripple.style.zIndex = '1';
+                        ripple.style.pointerEvents = 'none';
+                        ripple.style.transition = 'transform 0.5s ease-out';
+                        
+                        this.appendChild(ripple);
+                        
+                        // 触发动画
+                        setTimeout(() => {
+                            ripple.style.transform = 'translate(-50%, -50%) scale(1)';
+                        }, 10);
+                        
+                        // 存储涟漪元素引用，以便移除
+                        this.dataset.ripple = 'true';
+                    }
+                });
+                
+                // 鼠标离开时移除涟漪效果
+                item.addEventListener('mouseleave', function() {
+                    const ripple = this.querySelector('div[style*="radial-gradient"]');
+                    if (ripple) {
+                        ripple.style.opacity = '0';
+                        setTimeout(() => {
+                            if (ripple.parentNode === this) {
+                                this.removeChild(ripple);
+                            }
+                        }, 500);
+                    }
+                });
+                
+                // 点击效果
+                item.addEventListener('click', function(e) {
+                    // 只有当点击的不是链接本身时才处理
+                    if (!e.target.closest('a')) {
+                        const link = this.querySelector('a.link-arrow');
+                        if (link) {
+                            // 添加点击动画
+                            this.style.transform = 'scale(0.98)';
+                            setTimeout(() => {
+                                this.style.transform = '';
+                                window.location.href = link.href;
+                            }, 200);
+                        }
+                    }
+                });
+            });
+            
+            // 图片悬停效果
+            const imageContainer = document.querySelector('.image-container');
+            if (imageContainer) {
+                imageContainer.addEventListener('click', function() {
+                    const modalBtn = document.getElementById('zoomOverview');
+                    if (modalBtn) {
+                        modalBtn.click();
+                    }
+                });
+            }
+
             // 2. 更新导航栏滚动样式
             window.addEventListener('scroll', () => {
                 const navbar = document.querySelector('.navbar');

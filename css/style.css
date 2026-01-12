@@ -201,230 +201,311 @@
             transform: translateX(-50%);
         }
         
-        /* ====== 研究架构概览布局样式 ====== */
-        .research-overview-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: stretch;
-            gap: 30px;
-            max-width: 1400px;
-            margin: 0 auto 60px;
-            padding: 20px;
-        }
-
-        /* 研究链接列样式 */
-        .research-links {
-            flex: 0 0 30%;
+        /* ====== 单页滚动优化研究架构布局 ====== */
+        #research .container {
+            padding-top: 80px;
+            padding-bottom: 40px;
+            height: 100vh;
             display: flex;
             flex-direction: column;
-            gap: 25px;
-        }
-
-        .research-links-left {
-            order: 1;
-        }
-
-        .research-links-right {
-            order: 3;
-        }
-
-        /* 研究链接项样式 */
-        .research-link-item {
-            background: white;
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border-left: 5px solid transparent;
-            position: relative;
+            justify-content: space-between;
+            max-height: 100vh;
             overflow: hidden;
         }
 
-        .research-link-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
+        #research .section-title {
+            margin-bottom: 30px;
+            flex-shrink: 0;
+        }
+
+        /* 研究网格布局 */
+        .research-grid-layout {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex: 1;
+            min-height: 0;
+            max-height: calc(100vh - 200px);
+            padding: 10px 0;
+        }
+
+        /* 田字格布局 */
+        .research-grid {
+            flex: 0 0 38%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(0, 86, 166, 0.05), rgba(74, 144, 226, 0.05));
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 0.3s;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 20px;
+            max-height: 100%;
         }
 
-        .research-link-item:hover {
-            transform: translateY(-8px);
+        .research-grid-left {
+            order: 1;
+        }
+
+        .research-grid-right {
+            order: 3;
+        }
+
+        /* 网格项样式 */
+        .grid-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
+
+        .grid-item:hover {
+            transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-            border-left-color: #0056a6;
+            z-index: 10;
         }
 
-        .research-link-item:hover::before {
-            opacity: 1;
+        /* 网格项悬停颜色效果 */
+        .grid-item[data-order="1"]:hover { border-top: 4px solid #4a90e2; }
+        .grid-item[data-order="2"]:hover { border-top: 4px solid #5cb85c; }
+        .grid-item[data-order="3"]:hover { border-top: 4px solid #f0ad4e; }
+        .grid-item[data-order="4"]:hover { border-top: 4px solid #d9534f; }
+        .grid-item[data-order="5"]:hover { border-top: 4px solid #5bc0de; }
+        .grid-item[data-order="6"]:hover { border-top: 4px solid #337ab7; }
+        .grid-item[data-order="7"]:hover { border-top: 4px solid #8e44ad; }
+        .grid-item[data-order="8"]:hover { border-top: 4px solid #2c3e50; }
+
+        .grid-content {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
         }
 
-        /* 设置不同链接项的边框颜色 */
-        .research-link-item[data-order="1"] {
-            border-left-color: #4a90e2;
-        }
-
-        .research-link-item[data-order="2"] {
-            border-left-color: #5cb85c;
-        }
-
-        .research-link-item[data-order="3"] {
-            border-left-color: #f0ad4e;
-        }
-
-        .research-link-item[data-order="4"] {
-            border-left-color: #d9534f;
-        }
-
-        .research-link-item[data-order="5"] {
-            border-left-color: #5bc0de;
-        }
-
-        .research-link-item[data-order="6"] {
-            border-left-color: #337ab7;
-        }
-
-        .research-link-item[data-order="7"] {
-            border-left-color: #8e44ad;
-        }
-
-        .research-link-item[data-order="8"] {
-            border-left-color: #2c3e50;
-        }
-
-        .link-icon {
-            width: 60px;
-            height: 60px;
-            background: #f0f7ff;
-            border-radius: 50%;
+        .grid-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #f0f7ff, #e3f2fd);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
-            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
             color: #0056a6;
             transition: all 0.3s;
-            position: relative;
-            z-index: 2;
         }
 
-        .research-link-item:hover .link-icon {
-            background: #0056a6;
+        .grid-item:hover .grid-icon {
+            background: linear-gradient(135deg, #0056a6, #4a90e2);
             color: white;
             transform: scale(1.1) rotate(5deg);
         }
 
-        .link-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .link-content h3 {
+        .grid-content h3 {
             color: #0056a6;
-            margin-bottom: 12px;
-            font-size: 1.4rem;
-            transition: color 0.3s;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            line-height: 1.3;
+            font-weight: 700;
         }
 
-        .research-link-item:hover .link-content h3 {
-            color: #003d7a;
-        }
-
-        .link-content p {
+        .grid-content p {
             color: #666;
-            margin-bottom: 20px;
-            line-height: 1.6;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            margin-bottom: 15px;
+            flex: 1;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
         }
 
-        .link-arrow {
+        .grid-link {
             display: inline-flex;
             align-items: center;
             gap: 8px;
             color: #4a90e2;
             font-weight: 600;
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             transition: all 0.3s;
+            margin-top: auto;
         }
 
-        .link-arrow i {
+        .grid-link i {
             transition: transform 0.3s;
         }
 
-        .research-link-item:hover .link-arrow {
+        .grid-item:hover .grid-link {
             color: #0056a6;
         }
 
-        .research-link-item:hover .link-arrow i {
+        .grid-item:hover .grid-link i {
             transform: translateX(5px);
         }
 
-        /* 中心概览图样式 */
-        .research-overview-image {
-            flex: 0 0 40%;
+        /* 中心图片区域 */
+        .research-center-image {
+            flex: 0 0 24%;
             order: 2;
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            height: 100%;
         }
 
-        .image-container {
-            background: white;
+        .center-image-container {
+            width: 100%;
+            aspect-ratio: 3/4;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
             position: relative;
+            cursor: pointer;
+            transition: all 0.3s;
         }
 
-        .image-container:hover {
+        .center-image-container:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
         }
 
-        .image-container img {
+        .center-image-container img {
             width: 100%;
-            height: auto;
-            display: block;
+            height: 100%;
+            object-fit: cover;
             transition: transform 0.5s;
         }
 
-        .image-container:hover img {
-            transform: scale(1.02);
+        .center-image-container:hover img {
+            transform: scale(1.05);
         }
 
-        .image-caption {
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 86, 166, 0.9), transparent);
+            color: white;
             padding: 20px;
             text-align: center;
-            background: linear-gradient(to right, #0056a6, #4a90e2);
-            color: white;
         }
 
-        .image-caption h3 {
-            font-size: 1.5rem;
-            margin-bottom: 8px;
+        .image-overlay h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
         }
 
-        .image-caption p {
+        .image-overlay p {
             font-size: 0.9rem;
             opacity: 0.9;
         }
 
-        /* 概览图操作按钮 */
-        .overview-actions {
+        .btn-view-full {
+            padding: 10px 20px;
+            background: #0056a6;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .btn-view-full:hover {
+            background: #003d7a;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 86, 166, 0.3);
+        }
+
+        /* 页面底部指示器 */
+        .page-indicator {
+            flex-shrink: 0;
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 10px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .indicator-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .indicator-dots .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ccc;
+            transition: all 0.3s;
+        }
+
+        .indicator-dots .dot.active {
+            background: #0056a6;
+            transform: scale(1.2);
+        }
+
+        .indicator-text {
+            color: #666;
+            font-size: 0.9rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        /* 全图查看模态框 */
+        .full-image-modal .modal-content {
+            max-width: 95%;
+            max-height: 95vh;
+            width: 1200px;
+            overflow: hidden;
+            background: #f8f9fa;
+        }
+
+        .full-image-modal .modal-image-container {
+            max-height: 85vh;
+            overflow: auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #fullImageView {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .full-image-modal .modal-actions {
             display: flex;
             justify-content: center;
             gap: 15px;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #eee;
         }
 
-        .btn-zoom, .btn-download {
-            padding: 12px 24px;
-            border-radius: 30px;
+        .btn-action {
+            padding: 10px 20px;
+            border-radius: 25px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
@@ -432,185 +513,182 @@
             align-items: center;
             gap: 8px;
             text-decoration: none;
-            font-size: 0.95rem;
         }
 
-        .btn-zoom {
+        .btn-action:first-child {
             background: #0056a6;
             color: white;
             border: 2px solid #0056a6;
         }
 
-        .btn-zoom:hover {
+        .btn-action:first-child:hover {
             background: #003d7a;
             border-color: #003d7a;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 86, 166, 0.3);
         }
 
-        .btn-download {
+        .btn-action:last-child {
             background: white;
             color: #0056a6;
             border: 2px solid #0056a6;
         }
 
-        .btn-download:hover {
+        .btn-action:last-child:hover {
             background: #f0f7ff;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 86, 166, 0.2);
-        }
-
-        /* 模态框样式 */
-        .overview-modal .modal-content {
-            max-width: 90%;
-            max-height: 90vh;
-            width: 1200px;
-            overflow: hidden;
-        }
-
-        .overview-modal .modal-image-container {
-            max-height: 70vh;
-            overflow: auto;
-            padding: 20px;
-            text-align: center;
-            background: #f8f9fa;
-        }
-
-        .overview-full-image {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            cursor: zoom-in;
-            transition: transform 0.3s;
-        }
-
-        .overview-full-image.zoomed {
-            cursor: zoom-out;
-            transform: scale(1.5);
-        }
-
-        .overview-modal .modal-caption {
-            padding: 20px;
-            text-align: center;
-            background: white;
-            border-top: 1px solid #eee;
-        }
-
-        .overview-modal .modal-actions {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 15px;
         }
 
         /* ====== 响应式设计 ====== */
         @media (max-width: 1200px) {
-            .research-overview-container {
-                gap: 20px;
+            .research-grid {
+                flex: 0 0 36%;
+            }
+            
+            .research-center-image {
+                flex: 0 0 28%;
+            }
+            
+            .grid-content {
                 padding: 15px;
             }
             
-            .research-links {
-                flex: 0 0 32%;
+            .grid-content h3 {
+                font-size: 1rem;
             }
             
-            .research-overview-image {
-                flex: 0 0 36%;
+            .grid-content p {
+                font-size: 0.8rem;
+                -webkit-line-clamp: 2;
             }
         }
 
         @media (max-width: 992px) {
-            .research-overview-container {
+            .research-grid-layout {
                 flex-direction: column;
-                gap: 40px;
+                gap: 30px;
+                max-height: none;
+                overflow-y: auto;
+                padding: 20px 10px;
             }
             
-            .research-links {
-                flex: 0 0 auto;
+            .research-grid {
                 width: 100%;
+                flex: 0 0 auto;
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: 1fr;
+                gap: 15px;
             }
             
-            .research-overview-image {
-                flex: 0 0 auto;
+            .research-center-image {
                 width: 100%;
+                flex: 0 0 auto;
                 order: 1;
             }
             
-            .research-links-left, .research-links-right {
+            .research-grid-left,
+            .research-grid-right {
                 order: 2;
             }
             
-            /* 在小屏幕上将8个链接分成两行，每行4个 */
-            .research-links-left, .research-links-right {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 25px;
+            .center-image-container {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            /* 在平板设备上，网格项改为单行4列 */
+            .grid-item {
+                min-height: 200px;
+            }
+            
+            .grid-content p {
+                -webkit-line-clamp: 2;
             }
         }
 
         @media (max-width: 768px) {
-            .research-overview-container {
-                gap: 30px;
-                padding: 10px;
+            #research .container {
+                padding-top: 60px;
+                padding-bottom: 30px;
             }
             
-            /* 在更小的屏幕上，链接列变为单列 */
-            .research-links-left, .research-links-right {
-                grid-template-columns: 1fr;
-                gap: 20px;
+            .research-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+                gap: 15px;
             }
             
-            .research-link-item {
-                padding: 20px;
+            .grid-item {
+                min-height: 180px;
             }
             
-            .link-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 1.5rem;
-                margin-bottom: 15px;
+            .grid-content {
+                padding: 12px;
             }
             
-            .link-content h3 {
-                font-size: 1.3rem;
+            .grid-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+                margin-bottom: 10px;
             }
             
-            .overview-actions {
-                flex-direction: column;
-                gap: 10px;
+            .grid-content h3 {
+                font-size: 0.95rem;
             }
             
-            .btn-zoom, .btn-download {
-                width: 100%;
-                justify-content: center;
+            .grid-content p {
+                font-size: 0.75rem;
+                -webkit-line-clamp: 2;
+            }
+            
+            .grid-link {
+                font-size: 0.8rem;
+            }
+            
+            .center-image-container {
+                max-width: 300px;
+            }
+            
+            .image-overlay {
+                padding: 15px;
+            }
+            
+            .image-overlay h3 {
+                font-size: 1rem;
+            }
+            
+            .btn-view-full {
+                padding: 8px 16px;
+                font-size: 0.85rem;
             }
         }
 
         @media (max-width: 480px) {
-            .research-link-item {
-                padding: 18px;
+            .research-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(4, auto);
+                gap: 12px;
             }
             
-            .link-content h3 {
-                font-size: 1.2rem;
+            .grid-item {
+                min-height: auto;
             }
             
-            .link-content p {
-                font-size: 0.9rem;
+            .grid-content p {
+                -webkit-line-clamp: 3;
             }
             
-            .image-caption {
-                padding: 15px;
-            }
-            
-            .image-caption h3 {
-                font-size: 1.3rem;
+            .center-image-container {
+                max-width: 250px;
             }
         }
 
-        /* 动画效果 */
-        @keyframes fadeInUp {
+        /* 单页滚动特定优化 */
+        .scroll-section#research {
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* 网格项动画 */
+        @keyframes gridItemAppear {
             from {
                 opacity: 0;
                 transform: translateY(20px);
@@ -621,20 +699,21 @@
             }
         }
 
-        .research-link-item {
-            animation: fadeInUp 0.6s ease-out;
+        .grid-item {
+            animation: gridItemAppear 0.5s ease-out forwards;
+            opacity: 0;
         }
 
-        /* 为每个链接项设置延迟动画 */
-        .research-link-item[data-order="1"] { animation-delay: 0.1s; }
-        .research-link-item[data-order="2"] { animation-delay: 0.2s; }
-        .research-link-item[data-order="3"] { animation-delay: 0.3s; }
-        .research-link-item[data-order="4"] { animation-delay: 0.4s; }
-        .research-link-item[data-order="5"] { animation-delay: 0.5s; }
-        .research-link-item[data-order="6"] { animation-delay: 0.6s; }
-        .research-link-item[data-order="7"] { animation-delay: 0.7s; }
-        .research-link-item[data-order="8"] { animation-delay: 0.8s; }
-       
+        /* 为每个网格项设置延迟动画 */
+        .grid-item[data-order="1"] { animation-delay: 0.1s; }
+        .grid-item[data-order="2"] { animation-delay: 0.2s; }
+        .grid-item[data-order="3"] { animation-delay: 0.3s; }
+        .grid-item[data-order="4"] { animation-delay: 0.4s; }
+        .grid-item[data-order="5"] { animation-delay: 0.5s; }
+        .grid-item[data-order="6"] { animation-delay: 0.6s; }
+        .grid-item[data-order="7"] { animation-delay: 0.7s; }
+        .grid-item[data-order="8"] { animation-delay: 0.8s; }
+
         /* 团队成员 */
         .team-slider {
             display: flex;

@@ -506,8 +506,8 @@
         const newsItems = [
             { 
                 date: '2025-11-25', 
-                title: '全球金奖！DUT-China闪耀巴黎！',
-                excerpt: '近日，2025年国际基因工程机器大赛（International Genetically Engineered Machine Competiton, iGEM）全球总决赛在法国巴黎圆满落幕。本课题组团队从全球50多个国家和地区的400余支参赛队伍中脱颖而出夺得大赛金奖！',
+                title: 'Global Gold Award! DUT-China Shines in Paris!',
+                excerpt: 'Recently, the 2025 International Genetically Engineered Machine Competition (iGEM) Global Finals successfully concluded in Paris, France. Our research team emerged victorious from over 400 competing teams representing more than 50 countries and regions worldwide, securing the Gold Award!',
                 link: 'news/news1.html'
             },
             { 
@@ -712,21 +712,7 @@
                     closeFullImageModal();
                 }
             });
-            
-            // 打印功能
-            if (printBtn) {
-                printBtn.addEventListener('click', function() {
-                    window.print();
-                });
-            }
-            
-            function closeFullImageModal() {
-                if (fullImageModal) {
-                    fullImageModal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                }
-            }
-            
+                        
             // 网格项交互效果
             const gridItems = document.querySelectorAll('.grid-item');
             
@@ -907,9 +893,9 @@
 
             // 5. Team
             const teamMembers = [
-                { name: '林佳奇', role: '教授', img: 'images/member/ljq.jpg', page: 'member/ljq.html' },
-                { name: '都书博', role: '副教授', img: 'images/member/dsb.png', page: 'member/dsb.html' },
-                { name: '孙凯', role: '副教授', img: 'images/member/sk.jpg', page: 'member/sk.html' },
+                { name: 'Jiaqi Lin', role: 'Professor', img: 'images/member/ljq.jpg', page: 'member/ljq.html' },
+                { name: 'Shubo Du', role: 'Associate Professor', img: 'images/member/dsb.png', page: 'member/dsb.html' },
+                { name: 'Kai Sun', role: 'Associate Professor', img: 'images/member/sk.jpg', page: 'member/sk.html' },
             ];
             
             const teamSlider = document.getElementById('teamSlider');
@@ -982,7 +968,7 @@
                 {
                     title: 'Machine learning-based analysis of the impact of 5′ untranslated region on protein expression',
                     image: 'images/articles/Nucleic Acid Research.jpg',
-                    meta: '发布时间：2025年9月 • 发表于 Nucleic Acid Research',
+                    meta: 'Release Date：2025.9 • Posted on Nucleic Acid Research',
                     authors: 'Linfeng Wang, Sujia Liu, Haifeng Zhu, Shuyu Li, Yannan Li, Sen Chen, Jianyin Han, Yin Zhu, Jiahao Wua,Wentao Liao, Hongmei Zhang, Haiyan Zeng, Shaoting Li, Shuping Zhao, Bingwei Wang*, Jiaqi Lin*, Ji Zeng*.',
                     link: 'articles/article1.html'
                 },
@@ -990,7 +976,7 @@
                 {
                     title: 'Multi-functional lipid nanoformulations for enhancing the efficacy of mRNA tumor vaccines by reversing tumor immunosuppressive microenvironment',
                     image: 'images/articles/nanotoday.jpg',
-                    meta: '发布时间：2025年8月 • 发表于 Nano Today',
+                    meta: 'Release Date：2025.8 • Posted on Nano Today',
                     authors: 'Yufeng Zhang#, Liuwei Zhang#, Hui Gao, Shubo Du, Qixian Chen, Xueguang Lu*, Jiaqi Lin*.',
                     link: 'articles/article2.html'
                 },
@@ -998,7 +984,7 @@
                 {
                     title: 'Enhancing mRNA Translation Efficiency by Introducing Sequence- Optimized AU-Rich Elements in 3’UTR via HuR Anchorage',
                     image: 'images/articles/Molecular Therapy - Nucleic Acids.jpg',
-                    meta: '发布时间：2025年6月 • 发表于 Molecular Therapy - Nucleic Acids',
+                    meta: 'Release Date：2025.6 • Posted on Molecular Therapy - Nucleic Acids',
                     authors: 'Xinghuan Ma, Sujia Liu, Bangda Fan, Danni Jin, Lei Miao, Lin Liu, Shubo Du*, Jiaqi Lin*.',
                     link: 'articles/article3.html'
                 },
@@ -1006,7 +992,7 @@
                 {
                     title: 'A tough semi-dry hydrogel electrode with anti-bacterial properties for long-term repeatable non-invasive EEG acquisition',
                     image: 'images/articles/Microsystems & Nanoengineering.jpg',
-                    meta: '发布时间：2025年5月 • 发表于 Microsystems & Nanoengineering',
+                    meta: 'Release Date：2025.5 • Posted on Microsystems & Nanoengineering',
                     authors: 'Hailing Xue, Dongyang Wang, Mingyan Jin, Hanbing Gao, Xuhui Wang, Long Xia, Dong’ang Li, Kai Sun, Huanan Wang, Xufeng Dong, Chi Zhang, Fengyu Cong and Jiaqi Lin*.',
                     link: 'articles/article4.html'
                 },
@@ -1014,7 +1000,7 @@
                 {
                     title: 'A Synergistic Lipid Nanoparticle Encapsulating mRNA Shingles Vaccine Induces Potent Immune Responses and Protects Guinea Pigs from Viral Challenges. Advanced Materials',
                     image: 'images/articles/advanced materials.jpg',
-                    meta: '发布时间：2023年12月 • 发表于 Advanced Materials',
+                    meta: 'Release Date：2023.12 • Posted on Advanced Materials',
                     authors: 'Xingdi Cheng, Sujia Liu, Jing Sun, Lin Liu, Xinghuan Ma, Jingjiao Li, Bangda Fan, Chen Yang, Yuanyuan Zhao, Shuai Liu, Yixing We, Wei Li , Simin Sun, Shiwei Mi, Haonan Huo, Lei Miao, Hao Pan, Xiaolan Cui*, Jiaqi Lin*, Xueguang Lu*.',
                     link: 'articles/article5.html'
                 },

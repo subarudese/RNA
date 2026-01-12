@@ -714,7 +714,7 @@
         .grid-item[data-order="7"] { animation-delay: 0.7s; }
         .grid-item[data-order="8"] { animation-delay: 0.8s; }
 
-        /* 团队成员 */
+        /* Team */
         .team-slider {
             display: flex;
             justify-content: center;
@@ -986,7 +986,7 @@
             text-decoration: underline;
         }
 
-        /* 研究成果原文链接样式 */
+        /* Publications原文链接样式 */
         .pub-links {
             margin-top: 1.2rem;
             padding-top: 1.2rem;
@@ -1035,7 +1035,7 @@
             }
         }
         /* 修改CSS部分 */
-        /* 研究成果部分特殊处理 */
+        /* Publications部分特殊处理 */
         #publications.scroll-section {
             height: 100vh;
             overflow-y: auto;  /* 允许内部滚动 */
@@ -1050,7 +1050,7 @@
             display: block;    /* 改回block布局 */
         }
 
-        /* 隐藏研究成果section的外部滚动条，只显示内容滚动 */
+        /* 隐藏Publicationssection的外部滚动条，只显示内容滚动 */
         #publications.scroll-section::-webkit-scrollbar {
             width: 8px;
         }

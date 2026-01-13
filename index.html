@@ -435,44 +435,69 @@
             }
         });
         // 移动端下拉菜单交互
-        function initMobileDropdown() {
-            // 移动端下拉菜单触发器
-            const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+        function initMobileDropdowns() {
+            const dropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+            console.log('找到移动下拉菜单触发器数量:', dropdownToggles.length);
             
-            mobileDropdownToggles.forEach(toggle => {
-                toggle.addEventListener('click', function(e) {
+            dropdownToggles.forEach(toggle => {
+                // 移除旧的事件监听器（避免重复绑定）
+                const newToggle = toggle.cloneNode(true);
+                toggle.parentNode.replaceChild(newToggle, toggle);
+                
+                // 为新元素添加事件监听
+                newToggle.addEventListener('click', function(e) {
+                    console.log('点击了下拉菜单触发器:', this.textContent.trim());
                     e.preventDefault();
                     e.stopPropagation();
                     
-                    // 切换当前菜单的显示状态
+                    // 获取对应的下拉菜单
                     const dropdownMenu = this.nextElementSibling;
-                    const isActive = this.classList.contains('active');
+                    if (!dropdownMenu || !dropdownMenu.classList.contains('mobile-dropdown-menu')) {
+                        console.error('找不到对应的下拉菜单');
+                        return;
+                    }
                     
-                    // 关闭其他打开的菜单
-                    document.querySelectorAll('.mobile-dropdown-toggle').forEach(otherToggle => {
-                        if (otherToggle !== this) {
-                            otherToggle.classList.remove('active');
-                            otherToggle.nextElementSibling.classList.remove('active');
-                        }
-                    });
+                    // 切换当前下拉菜单
+                    const isActive = dropdownMenu.classList.contains('active');
                     
-                    // 切换当前菜单
-                    this.classList.toggle('active', !isActive);
-                    dropdownMenu.classList.toggle('active', !isActive);
+                    // 关闭其他打开的下拉菜单
+                    closeOtherMobileDropdowns(dropdownMenu);
+                    
+                    // 切换当前下拉菜单
+                    dropdownMenu.classList.toggle('active');
+                    this.classList.toggle('active');
                 });
             });
             
-            // 点击其他地方关闭菜单
+            // 点击页面其他地方关闭下拉菜单
             document.addEventListener('click', function(e) {
-                if (!e.target.closest('.mobile-dropdown')) {
-                    document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
-                        toggle.classList.remove('active');
-                        toggle.nextElementSibling.classList.remove('active');
-                    });
+                // 如果点击的不是下拉菜单触发器或下拉菜单内容
+                if (!e.target.closest('.mobile-dropdown-toggle') && 
+                    !e.target.closest('.mobile-dropdown-menu')) {
+                    closeAllMobileDropdowns();
                 }
             });
+            
+            // 点击下拉菜单内的链接时关闭菜单
+            const dropdownLinks = document.querySelectorAll('.mobile-dropdown-menu a');
+            dropdownLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    console.log('点击了下拉菜单链接');
+                    // 让链接正常跳转，菜单会自动关闭
+                    setTimeout(() => {
+                        closeAllMobileDropdowns();
+                        if (mobileNav) {
+                            mobileNav.classList.remove('active');
+                            if (mobileMenuBtn) {
+                                mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                                mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                                document.body.style.overflow = 'auto';
+                            }
+                        }
+                    }, 300);
+                });
+            });
         }
-
         // 平滑滚动到Team部分
         function initTeamNavigation() {
             // 监听下拉菜单链接点击

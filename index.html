@@ -435,45 +435,82 @@
             }
         });
         // 移动端下拉菜单交互
-        function initMobileDropdown() {
-            // 移动端下拉菜单触发器
-            const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+        function initMobileDropdowns() {
+            const dropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+            console.log('找到移动下拉菜单触发器数量:', dropdownToggles.length);
             
-            mobileDropdownToggles.forEach(toggle => {
-                toggle.addEventListener('click', function(e) {
+            dropdownToggles.forEach(toggle => {
+                // 移除旧的事件监听器（避免重复绑定）
+                const newToggle = toggle.cloneNode(true);
+                toggle.parentNode.replaceChild(newToggle, toggle);
+                
+                // 为新元素添加事件监听
+                newToggle.addEventListener('click', function(e) {
+                    console.log('点击了下拉菜单触发器:', this.textContent.trim());
                     e.preventDefault();
                     e.stopPropagation();
-                    console.log
                     
-                    // 切换当前菜单的显示状态
+                    // 获取对应的下拉菜单
                     const dropdownMenu = this.nextElementSibling;
+                    if (!dropdownMenu || !dropdownMenu.classList.contains('mobile-dropdown-menu')) {
+                        console.error('找不到对应的下拉菜单');
+                        return;
+                    }
+                    
+                    // 切换当前下拉菜单
                     const isActive = dropdownMenu.classList.contains('active');
                     
-                    // 关闭其他打开的菜单
-                    document.querySelectorAll('.mobile-dropdown-toggle').forEach(otherToggle => {
-                        if (otherToggle !== this) {
-                            otherToggle.classList.remove('active');
-                            otherToggle.nextElementSibling.classList.remove('active');
-                        }
-                    });
+                    // 关闭其他打开的下拉菜单
+                    closeOtherMobileDropdowns(dropdownMenu);
                     
-                    // 切换当前菜单
-                    this.classList.toggle('active', !isActive);
-                    dropdownMenu.classList.toggle('active', !isActive);
+                    // 切换当前下拉菜单
+                    dropdownMenu.classList.toggle('active');
+                    this.classList.toggle('active');
                 });
             });
             
-            // 点击其他地方关闭菜单
+            // 点击页面其他地方关闭下拉菜单
             document.addEventListener('click', function(e) {
-                if (!e.target.closest('.mobile-dropdown')) {
-                    document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+                // 如果点击的不是下拉菜单触发器或下拉菜单内容
+                if (!e.target.closest('.mobile-dropdown-toggle') && 
+                    !e.target.closest('.mobile-dropdown-menu')) {
+                    closeAllMobileDropdowns();
+                }
+            });
+            
+            // 点击下拉菜单内的链接时关闭菜单
+            const dropdownLinks = document.querySelectorAll('.mobile-dropdown-menu a');
+            dropdownLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    console.log('点击了下拉菜单链接');
+                    // 让链接正常跳转，菜单会自动关闭
+                    setTimeout(() => {
+                        closeAllMobileDropdowns();
+                        if (mobileNav) {
+                            mobileNav.classList.remove('active');
+                            if (mobileMenuBtn) {
+                                mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                                mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                                document.body.style.overflow = 'auto';
+                            }
+                        }
+                    }, 300);
+                });
+            });
+        }
+        
+        // 关闭其他移动下拉菜单
+        function closeOtherMobileDropdowns(currentMenu) {
+            document.querySelectorAll('.mobile-dropdown-menu').forEach(menu => {
+                if (menu !== currentMenu && menu.classList.contains('active')) {
+                    menu.classList.remove('active');
+                    const toggle = menu.previousElementSibling;
+                    if (toggle && toggle.classList.contains('mobile-dropdown-toggle')) {
                         toggle.classList.remove('active');
-                        toggle.nextElementSibling.classList.remove('active');
-                    });
+                    }
                 }
             });
         }
-
         // 平滑滚动到Team部分
         function initTeamNavigation() {
             // 监听下拉菜单链接点击
@@ -837,7 +874,7 @@
                 }
             }
 
-    // 2. 更新导航栏滚动样式
+            // 2. 更新导航栏滚动样式
             window.addEventListener('scroll', () => {
                 const navbar = document.querySelector('.navbar');
                 navbar.style.backgroundColor = window.scrollY > 50 ? 
@@ -1039,6 +1076,64 @@
                 });
             }
             
+            // 强力修复：确保所有内容都显示
+            function forceFixLayout() {
+                console.log('执行强力布局修复...');
+                
+                // 修复滚动容器
+                const scrollContainer = document.querySelector('.scroll-container');
+                if (scrollContainer) {
+                    scrollContainer.style.height = '100vh';
+                    scrollContainer.style.overflowY = 'scroll';
+                    scrollContainer.style.overflowX = 'hidden';
+                }
+                
+                // 修复所有section
+                document.querySelectorAll('.scroll-section').forEach(section => {
+                    section.style.height = '100vh';
+                    section.style.minHeight = '100vh';
+                    section.style.display = 'block';
+                    section.style.visibility = 'visible';
+                    section.style.opacity = '1';
+                    section.style.position = 'relative';
+                });
+                
+                // 特别修复研究区域
+                const researchSection = document.getElementById('research');
+                if (researchSection) {
+                    researchSection.style.height = 'auto';
+                    researchSection.style.minHeight = '100vh';
+                    researchSection.style.overflow = 'visible';
+                    
+                    const container = researchSection.querySelector('.container');
+                    if (container) {
+                        container.style.height = 'auto';
+                        container.style.minHeight = 'auto';
+                        container.style.overflow = 'visible';
+                    }
+                }
+                
+                // 确保后续内容有正确的高度
+                setTimeout(() => {
+                    document.querySelectorAll('#team, #publications, #contact').forEach(section => {
+                        section.style.height = '100vh';
+                        section.style.minHeight = '100vh';
+                    });
+                }, 100);
+                
+                console.log('强力修复完成');
+            }
+
+            // 调用修复函数
+            document.addEventListener('DOMContentLoaded', function() {
+                // 等待页面完全加载
+                setTimeout(forceFixLayout, 300);
+                
+                // 页面完全加载后再执行一次
+                window.addEventListener('load', function() {
+                    setTimeout(forceFixLayout, 500);
+                });
+            });
             // 7. 更新年份
             document.querySelector('.copyright p').innerHTML = 
                 document.querySelector('.copyright p').innerHTML.replace('2025', new Date().getFullYear());

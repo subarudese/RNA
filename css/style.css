@@ -2161,6 +2161,7 @@
             padding-left: 20px;
             margin-top: 10px;
             transition: max-height 0.3s ease;
+            z-index: 1004 !important;
         }
 
         .mobile-dropdown-menu.active {

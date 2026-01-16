@@ -1289,7 +1289,7 @@ footer {
 }
 
 .indicator.active {
-    background: white;
+    background: #0056a6;
     transform: scale(1.2);
 }
 
@@ -1312,7 +1312,7 @@ footer {
 .progress-bar {
     width: 25%; /* 对应每张图片的宽度 */
     height: 100%;
-    background: white;
+    background: #0056a6;
     transition: transform 5s linear; /* 与自动轮播时间同步 */
 }
 

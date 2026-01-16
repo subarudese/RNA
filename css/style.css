@@ -68,7 +68,6 @@
         
         /* 横幅区域 */
         .banner {
-            height: 100vh;
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
                         url('../images/banners/background.jpg');
             background-size: contain;
@@ -201,23 +200,6 @@
             transform: translateX(-50%);
         }
         
-        /* ====== 单页滚动优化研究架构布局 ====== */
-        #research .container {
-            padding-top: 80px;
-            padding-bottom: 40px;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            max-height: 100vh;
-            overflow: hidden;
-        }
-
-        #research .section-title {
-            margin-bottom: 30px;
-            flex-shrink: 0;
-        }
-
         /* 研究网格布局 */
         .research-grid-layout {
             display: flex;
@@ -681,12 +663,6 @@
             }
         }
 
-        /* 单页滚动特定优化 */
-        .scroll-section#research {
-            height: 100vh;
-            overflow: hidden;
-        }
-
         /* 网格项动画 */
         @keyframes gridItemAppear {
             from {
@@ -1033,45 +1009,6 @@
             .article-image {
                 flex: 0 0 200px;
             }
-        }
-        /* 修改CSS部分 */
-        /* Publications部分特殊处理 */
-        #publications.scroll-section {
-            height: 100vh;
-            overflow-y: auto;  /* 允许内部滚动 */
-            scroll-snap-align: start;
-        }
-
-        #publications .container {
-            min-height: auto;  /* 取消最小高度限制 */
-            height: auto;      /* 自动高度 */
-            padding-top: 120px;
-            padding-bottom: 80px;
-            display: block;    /* 改回block布局 */
-        }
-
-        /* 隐藏Publicationssection的外部滚动条，只显示内容滚动 */
-        #publications.scroll-section::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        #publications.scroll-section::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.05);
-        }
-
-        #publications.scroll-section::-webkit-scrollbar-thumb {
-            background: rgba(0, 86, 166, 0.3);
-            border-radius: 4px;
-        }
-
-        #publications.scroll-section::-webkit-scrollbar-thumb:hover {
-            background: rgba(0, 86, 166, 0.5);
-        }
-
-
-        @keyframes fadeInOut {
-            0%, 100% { opacity: 0.6; }
-            50% { opacity: 1; }
         }
 
         /* 移动端调整 */

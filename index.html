@@ -401,14 +401,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Team -->
-    <section class="scroll-section" id="team">
-        <div class="container">
-            <h2 class="section-title">Team Leaders</h2>
-            <div class="team-slider" id="teamSlider"></div>
-        </div>
-    </section>
         
     <!-- Publications -->
     <section class="scroll-section" id="publications">
@@ -799,32 +791,7 @@
                     this.style.boxShadow = '';
                 });
             });
-                        
-            // 4. Team数据渲染（保持不变）
-            const teamMembers = [
-                { name: 'Jiaqi Lin', role: 'Professor', img: 'images/member/ljq.jpg', page: 'member/ljq.html' },
-                { name: 'Shubo Du', role: 'Associate Professor', img: 'images/member/dsb.png', page: 'member/dsb.html' },
-                { name: 'Kai Sun', role: 'Associate Professor', img: 'images/member/sk.jpg', page: 'member/sk.html' },
-            ];
-            
-            const teamSlider = document.getElementById('teamSlider');
-            if (teamSlider) {
-                teamMembers.forEach(member => {
-                    const teamMember = document.createElement('div');
-                    teamMember.className = 'team-member';
-                    teamMember.innerHTML = `
-                        <a href="${member.page}" class="member-link">
-                            <div class="member-img" style="background-image: url('${member.img}')"></div>
-                            <div class="member-info">
-                                <div class="member-name">${member.name}</div>
-                                <div class="member-role">${member.role}</div>
-                            </div>
-                        </a>
-                    `;
-                    teamSlider.appendChild(teamMember);
-                });
-            }
-            
+                                    
             // 5. Publications数据渲染（保持不变）
             const articlesData = [
                 {

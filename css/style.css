@@ -348,12 +348,12 @@ body {
 
 /* 研究简介样式 */
 .research-intro {
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto 60px;
     text-align: center;
     font-size: 1.2rem;
     line-height: 1.8;
-    color: #444;
+    color: #000000;
     padding: 0 20px;
 }
 

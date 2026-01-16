@@ -1212,8 +1212,8 @@ footer {
 }
 
 .slide-cta {
-    background: rgba(255, 255, 255, 0.9);
-    color: #0056a6;
+    background: #0056a6;
+    color: #ffffff;
     border: none;
     padding: 15px 40px;
     font-size: 1.1rem;

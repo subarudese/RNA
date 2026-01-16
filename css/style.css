@@ -318,115 +318,6 @@ body {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* ================ 横幅新闻展示区 ================ */
-.banner-news {
-    width: 90%;
-    max-width: 1200px;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    padding: 25px 30px;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
-    margin: -50px auto 0;
-    position: relative;
-    z-index: 3;
-    border-top: 3px solid #0056a6;
-}
-
-.news-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid rgba(0, 86, 166, 0.2);
-}
-
-.news-header h3 {
-    color: #0056a6;
-    font-size: 1.4rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.news-header h3 i {
-    color: #4a90e2;
-}
-
-.news-more {
-    color: #0056a6;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95rem;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    transition: all 0.3s;
-}
-
-.news-more:hover {
-    color: #4a90e2;
-    transform: translateX(5px);
-}
-
-.news-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.news-item {
-    display: flex;
-    flex-direction: column;
-    padding: 15px;
-    background: rgba(248, 249, 250, 0.7);
-    border-radius: 10px;
-    transition: all 0.3s;
-    border-left: 4px solid #4a90e2;
-}
-
-.news-item:hover {
-    background: white;
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-}
-
-.news-date {
-    color: #0056a6;
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.news-date i {
-    color: #4a90e2;
-}
-
-.news-title {
-    color: #333;
-    font-weight: 600;
-    font-size: 1rem;
-    line-height: 1.4;
-    margin-bottom: 10px;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.news-title:hover {
-    color: #0056a6;
-}
-
-.news-excerpt {
-    color: #666;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    flex: 1;
-}
-
 /* ================ 主要内容区域 ================ */
 .container {
     max-width: 1200px;
@@ -1226,5 +1117,351 @@ footer {
     
     .member-img {
         height: 200px;
+    }
+}
+/* ================ 轮播横幅样式 ================ */
+.carousel-banner {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    min-height: 600px;
+    max-height: 800px;
+    overflow: hidden;
+    margin-top: 70px;
+    background: #000;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+    cursor: pointer;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 8s ease-out;
+}
+
+.carousel-slide.active img {
+    transform: scale(1.05);
+}
+
+.slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 86, 166, 0.85) 0%, rgba(0, 86, 166, 0.6) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide-content {
+    text-align: center;
+    color: white;
+    max-width: 800px;
+    padding: 0 20px;
+    transform: translateY(30px);
+    opacity: 0;
+    transition: transform 1s ease-out 0.3s, opacity 1s ease-out 0.3s;
+}
+
+.carousel-slide.active .slide-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.slide-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: -0.5px;
+}
+
+.slide-description {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.slide-cta {
+    background: rgba(255, 255, 255, 0.9);
+    color: #0056a6;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.slide-cta:hover {
+    background: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* 轮播导航按钮 */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+    left: 30px;
+}
+
+.next-btn {
+    right: 30px;
+}
+
+/* 轮播指示器 */
+.carousel-indicators {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+}
+
+.indicator {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.indicator.active {
+    background: white;
+    transform: scale(1.2);
+}
+
+.indicator:hover {
+    background: rgba(255, 255, 255, 0.7);
+    transform: scale(1.1);
+}
+
+/* 轮播进度条 */
+.carousel-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 10;
+}
+
+.progress-bar {
+    width: 25%; /* 对应每张图片的宽度 */
+    height: 100%;
+    background: white;
+    transition: transform 5s linear; /* 与自动轮播时间同步 */
+}
+
+/* 调整横幅新闻区域位置 */
+#home .banner-news {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    margin: -80px auto 0;
+    z-index: 5;
+}
+
+/* ================ 响应式设计 ================ */
+
+/* 平板设备 */
+@media (max-width: 992px) {
+    .carousel-banner {
+        height: 70vh;
+        min-height: 500px;
+    }
+    
+    .slide-title {
+        font-size: 2.8rem;
+    }
+    
+    .slide-description {
+        font-size: 1.3rem;
+    }
+    
+    .carousel-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    
+    .prev-btn {
+        left: 20px;
+    }
+    
+    .next-btn {
+        right: 20px;
+    }
+}
+
+/* 平板小尺寸 */
+@media (max-width: 768px) {
+    .carousel-banner {
+        height: 60vh;
+        min-height: 400px;
+    }
+    
+    .slide-title {
+        font-size: 2.2rem;
+    }
+    
+    .slide-description {
+        font-size: 1.1rem;
+        max-width: 90%;
+    }
+    
+    .slide-cta {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+    
+    .carousel-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+    
+    .carousel-indicators {
+        bottom: 30px;
+    }
+    
+    .indicator {
+        width: 12px;
+        height: 12px;
+    }
+    
+    #home .banner-news {
+        margin: -60px auto 0;
+    }
+}
+
+/* 手机端 */
+@media (max-width: 576px) {
+    .carousel-banner {
+        height: 50vh;
+        min-height: 350px;
+    }
+    
+    .slide-title {
+        font-size: 1.8rem;
+    }
+    
+    .slide-description {
+        font-size: 1rem;
+    }
+    
+    .slide-cta {
+        padding: 10px 25px;
+        font-size: 0.9rem;
+    }
+    
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .prev-btn {
+        left: 10px;
+    }
+    
+    .next-btn {
+        right: 10px;
+    }
+    
+    .carousel-indicators {
+        bottom: 20px;
+    }
+    
+    .indicator {
+        width: 10px;
+        height: 10px;
+    }
+    
+    #home .banner-news {
+        margin: -40px auto 0;
+    }
+}
+
+/* 小手机端 */
+@media (max-width: 480px) {
+    .carousel-banner {
+        height: 45vh;
+        min-height: 300px;
+    }
+    
+    .slide-title {
+        font-size: 1.6rem;
+    }
+    
+    .slide-description {
+        font-size: 0.9rem;
+    }
+    
+    .slide-content {
+        padding: 0 15px;
     }
 }

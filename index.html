@@ -192,14 +192,81 @@
         <a href="#contact" class="indicator-dot" title="Contact Us"></a>
     </div>
     
-    <!-- Home/横幅区域 -->
-    <section class="scroll-section" id="home">
-        <div class="banner">
-            <h1>The mRNA Technology and Bio-Interface Lab</h1>
-            <p>Committed to the research and development of nucleic acid vaccines and therapeutics, nanobiological interfaces, and biomaterials.</p>
-            <a href="#research" class="cta-button">Explore Our Research</a>
+    <!-- 替换原来的.banner区域 -->
+    <section id="home">
+        <!-- 图片轮播区域 -->
+        <div class="carousel-banner">
+            <!-- 轮播图片容器 -->
+            <div class="carousel-container">
+                <!-- 轮播图片项 -->
+                <div class="carousel-slide active" data-target="#research" data-index="0">
+                    <img src="images/banners/research-banner.jpg" alt="Research Overview">
+                    <div class="slide-overlay">
+                        <div class="slide-content">
+                            <h2 class="slide-title">Cutting-Edge Research</h2>
+                            <p class="slide-description">Exploring the frontiers of mRNA technology and biomedical interfaces</p>
+                            <button class="slide-cta">Explore Research</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-slide" data-target="#team" data-index="1">
+                    <img src="images/banners/team-banner.jpg" alt="Team Introduction">
+                    <div class="slide-overlay">
+                        <div class="slide-content">
+                            <h2 class="slide-title">Expert Team</h2>
+                            <p class="slide-description">Meet our world-class researchers and scientists</p>
+                            <button class="slide-cta">Meet Our Team</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-slide" data-target="#publications" data-index="2">
+                    <img src="images/banners/publications-banner.jpg" alt="Publications">
+                    <div class="slide-overlay">
+                        <div class="slide-content">
+                            <h2 class="slide-title">Latest Publications</h2>
+                            <p class="slide-description">Discover our groundbreaking research papers and findings</p>
+                            <button class="slide-cta">View Publications</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-slide" data-target="#contact" data-index="3">
+                    <img src="images/banners/contact-banner.jpg" alt="Contact Us">
+                    <div class="slide-overlay">
+                        <div class="slide-content">
+                            <h2 class="slide-title">Join Our Mission</h2>
+                            <p class="slide-description">Collaborate with us to advance mRNA technology</p>
+                            <button class="slide-cta">Contact Us</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 轮播导航按钮 -->
+            <button class="carousel-btn prev-btn" aria-label="Previous slide">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-btn next-btn" aria-label="Next slide">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            
+            <!-- 轮播指示器 -->
+            <div class="carousel-indicators">
+                <button class="indicator active" data-index="0" aria-label="Go to slide 1"></button>
+                <button class="indicator" data-index="1" aria-label="Go to slide 2"></button>
+                <button class="indicator" data-index="2" aria-label="Go to slide 3"></button>
+                <button class="indicator" data-index="3" aria-label="Go to slide 4"></button>
+            </div>
+            
+            <!-- 轮播进度条 -->
+            <div class="carousel-progress">
+                <div class="progress-bar"></div>
+            </div>
         </div>
-                    
+    </section> 
+
     <!-- 替换Research部分的HTML代码 -->
     <section class="scroll-section" id="research">
         <div class="container">
@@ -371,8 +438,194 @@
 </div>
 
     <script>
+        // 轮播功能
+        function initCarousel() {
+            const carousel = document.querySelector('.carousel-banner');
+            if (!carousel) return;
+            
+            const slides = document.querySelectorAll('.carousel-slide');
+            const indicators = document.querySelectorAll('.indicator');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            const progressBar = document.querySelector('.progress-bar');
+            
+            let currentSlide = 0;
+            let slideInterval;
+            const slideCount = slides.length;
+            const autoSlideInterval = 5000; // 5秒自动切换
+            
+            // 初始化轮播
+            function initSlide() {
+                // 显示第一张幻灯片
+                updateSlide(0);
+                // 启动自动轮播
+                startAutoSlide();
+            }
+            
+            // 更新幻灯片显示
+            function updateSlide(slideIndex) {
+                // 隐藏所有幻灯片
+                slides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+                
+                // 更新指示器
+                indicators.forEach(indicator => {
+                    indicator.classList.remove('active');
+                });
+                
+                // 显示当前幻灯片
+                slides[slideIndex].classList.add('active');
+                indicators[slideIndex].classList.add('active');
+                currentSlide = slideIndex;
+                
+                // 更新进度条
+                if (progressBar) {
+                    const progress = ((slideIndex + 1) / slideCount) * 100;
+                    progressBar.style.width = `${progress}%`;
+                }
+            }
+            
+            // 切换到下一张幻灯片
+            function nextSlide() {
+                const nextIndex = (currentSlide + 1) % slideCount;
+                updateSlide(nextIndex);
+            }
+            
+            // 切换到上一张幻灯片
+            function prevSlide() {
+                const prevIndex = (currentSlide - 1 + slideCount) % slideCount;
+                updateSlide(prevIndex);
+            }
+            
+            // 启动自动轮播
+            function startAutoSlide() {
+                clearInterval(slideInterval);
+                slideInterval = setInterval(nextSlide, autoSlideInterval);
+            }
+            
+            // 暂停自动轮播
+            function pauseAutoSlide() {
+                clearInterval(slideInterval);
+            }
+            
+            // 绑定事件
+            
+            // 点击幻灯片跳转
+            slides.forEach(slide => {
+                slide.addEventListener('click', function() {
+                    const target = this.getAttribute('data-target');
+                    if (target) {
+                        const targetElement = document.querySelector(target);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 70,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+            
+            // 点击指示器跳转
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', function() {
+                    updateSlide(index);
+                    startAutoSlide();
+                });
+            });
+            
+            // 点击上一张/下一张按钮
+            if (prevBtn) {
+                prevBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    prevSlide();
+                    startAutoSlide();
+                });
+            }
+            
+            if (nextBtn) {
+                nextBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    nextSlide();
+                    startAutoSlide();
+                });
+            }
+            
+            // 点击CTA按钮跳转
+            document.querySelectorAll('.slide-cta').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const slide = this.closest('.carousel-slide');
+                    const target = slide.getAttribute('data-target');
+                    if (target) {
+                        const targetElement = document.querySelector(target);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 70,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+            
+            // 鼠标悬停暂停自动轮播
+            carousel.addEventListener('mouseenter', pauseAutoSlide);
+            carousel.addEventListener('mouseleave', startAutoSlide);
+            
+            // 触摸设备支持
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            carousel.addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+                pauseAutoSlide();
+            });
+            
+            carousel.addEventListener('touchend', function(e) {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+                setTimeout(startAutoSlide, 1000);
+            });
+            
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = touchStartX - touchEndX;
+                
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        // 向左滑动，下一张
+                        nextSlide();
+                    } else {
+                        // 向右滑动，上一张
+                        prevSlide();
+                    }
+                }
+            }
+            
+            // 键盘导航支持
+            document.addEventListener('keydown', function(e) {
+                if (document.querySelector('.carousel-slide.active')) {
+                    switch(e.key) {
+                        case 'ArrowLeft':
+                            prevSlide();
+                            startAutoSlide();
+                            break;
+                        case 'ArrowRight':
+                            nextSlide();
+                            startAutoSlide();
+                            break;
+                    }
+                }
+            });
+            
+            // 初始化轮播
+            initSlide();
+        }
         // 修改后的简化版JavaScript
         document.addEventListener('DOMContentLoaded', function() {
+            initCarousel();
             // 移动端菜单功能（保持不变）
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const mobileNav = document.getElementById('mobileNav');

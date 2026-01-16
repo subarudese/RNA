@@ -2290,3 +2290,62 @@
                 transform: translateX(5px);
             }
         }
+        
+        /* 2. 确保Research区域正常显示 */
+        #research .container {
+            height: auto; /* 改为自动高度 */
+            max-height: none; /* 取消最大高度限制 */
+            overflow: visible; /* 允许内容溢出可见 */
+            padding-top: 100px; /* 调整内边距 */
+            padding-bottom: 80px;
+        }
+
+        /* 3. 确保Publications区域正常显示 */
+        #publications .container {
+            height: auto;
+            min-height: auto;
+            padding-top: 100px;
+            padding-bottom: 80px;
+        }
+
+        /* 4. 调整横幅区域 */
+        .banner {
+            height: auto;
+            min-height: 100vh;
+            padding: 150px 20px 80px;
+            margin-top: 70px;
+        }
+
+        /* 5. 调整所有section的间距 */
+        section {
+            position: relative;
+            width: 100%;
+        }
+
+        /* 6. 移动端调整 */
+        @media (max-width: 768px) {
+            .banner {
+                padding: 120px 15px 60px;
+                min-height: auto;
+            }
+            
+            .container {
+                padding: 80px 15px 40px;
+            }
+            
+            /* 确保Research网格在移动端正常显示 */
+            .research-grid-layout {
+                flex-direction: column;
+                gap: 30px;
+                max-height: none;
+                overflow: visible;
+            }
+            
+            .research-grid {
+                width: 100%;
+                flex: 0 0 auto;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+                gap: 15px;
+            }
+        }

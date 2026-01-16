@@ -200,18 +200,6 @@
             <a href="#research" class="cta-button">Explore Our Research</a>
         </div>
                     
-        <!-- 新增：新闻展示区 -->
-        <div class="banner-news">
-            <div class="news-header">
-                <h3><i class="fas fa-newspaper"></i> Latest News</h3>
-                <a href="news.html" class="news-more">Read more <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="news-list" id="latestNews">
-                <!-- 最新新闻将通过JavaScript动态生成 -->
-            </div>
-        </div>
-    </section> 
-
     <!-- 替换Research部分的HTML代码 -->
     <section class="scroll-section" id="research">
         <div class="container">
@@ -528,50 +516,7 @@
                     this.style.boxShadow = '';
                 });
             });
-            
-            // 3. 渲染横幅新闻
-            const newsItems = [
-                { 
-                    date: '2025-11-25', 
-                    title: 'Global Gold Award! DUT-China Shines in Paris!',
-                    excerpt: 'At the 2025 iGEM Global Finals in Paris, our team stood out among 400+ teams from 50+ countries and regions, winning the Gold Award!',
-                    link: 'news/news1.html'
-                },
-                { 
-                    date: '', 
-                    title: '待定',
-                    excerpt: '',
-                    link: 'news-detail.html?id=2'
-                },
-                { 
-                    date: '', 
-                    title: '待定',
-                    excerpt: '',
-                    link: 'news-detail.html?id=3'
-                }
-            ];
-            
-            function renderBannerNews() {
-                const latestNewsContainer = document.getElementById('latestNews');
-                if (!latestNewsContainer) return;
-                
-                // 显示最新的3条新闻
-                const latestNews = newsItems.slice(0, 3);
-                
-                latestNews.forEach(news => {
-                    const newsItem = document.createElement('div');
-                    newsItem.className = 'news-item';
-                    newsItem.innerHTML = `
-                        <div class="news-date">
-                            <i class="far fa-calendar"></i> ${news.date}
-                        </div>
-                        <a href="${news.link}" class="news-title">${news.title}</a>
-                        <p class="news-excerpt">${news.excerpt}</p>
-                    `;
-                    latestNewsContainer.appendChild(newsItem);
-                });
-            }
-            
+                        
             // 4. Team数据渲染（保持不变）
             const teamMembers = [
                 { name: 'Jiaqi Lin', role: 'Professor', img: 'images/member/ljq.jpg', page: 'member/ljq.html' },

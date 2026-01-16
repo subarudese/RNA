@@ -514,7 +514,6 @@ body {
 
 .center-image-container {
     width: 100%;
-    aspect-ratio: 4/3; /* 改为4:3比例，更适应宽屏 */
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);

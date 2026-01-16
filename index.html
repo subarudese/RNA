@@ -707,6 +707,16 @@
             const fullImageModal = document.getElementById('fullImageModal');
             const closeModalBtn = fullImageModal ? fullImageModal.querySelector('.close-modal') : null;
             
+            // 点击图片描述时跳转到全图模态框
+            const imageOverlay = document.querySelector('.image-overlay');
+            if (imageOverlay) {
+                imageOverlay.addEventListener('click', function(e) {
+                    if (!e.target.classList.contains('btn-view-full')) {
+                        document.getElementById('fullImageModal').classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            }
             // 打开全图模态框
             if (viewFullBtn && fullImageModal) {
                 viewFullBtn.addEventListener('click', function() {

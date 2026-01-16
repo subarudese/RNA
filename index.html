@@ -629,6 +629,7 @@
         // 修改后的简化版JavaScript
         document.addEventListener('DOMContentLoaded', function() {
             initCarousel();
+            initFullImageModal();
             // 移动端菜单功能（保持不变）
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const mobileNav = document.getElementById('mobileNav');
@@ -702,56 +703,72 @@
                 });
             }
             
-            // 1.全图查看功能（保持不变）
-            const viewFullBtn = document.getElementById('viewFullImage');
-            const fullImageModal = document.getElementById('fullImageModal');
-            const closeModalBtn = fullImageModal ? fullImageModal.querySelector('.close-modal') : null;
-            initFullImageModal();
-            // 点击图片描述时跳转到全图模态框
-            const imageOverlay = document.querySelector('.image-overlay');
-            if (imageOverlay) {
-                imageOverlay.addEventListener('click', function(e) {
-                    if (!e.target.classList.contains('btn-view-full')) {
-                        document.getElementById('fullImageModal').classList.add('active');
-                        document.body.style.overflow = 'hidden';
-                    }
-                });
-            }
-            // 打开全图模态框
-            if (viewFullBtn && fullImageModal) {
-                viewFullBtn.addEventListener('click', function() {
-                    fullImageModal.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                });
-                
-                // 点击图片容器也可以打开模态框
+            // 全图查看模态框功能
+            function initFullImageModal() {
+                const viewFullBtn = document.getElementById('viewFullImage');
+                const fullImageModal = document.getElementById('fullImageModal');
+                const closeModalBtn = fullImageModal ? fullImageModal.querySelector('.close-modal') : null;
                 const centerImageContainer = document.querySelector('.center-image-container');
-                if (centerImageContainer) {
-                    centerImageContainer.addEventListener('click', function() {
+                
+                console.log('初始化全图模态框功能...');
+                console.log('viewFullBtn:', viewFullBtn);
+                console.log('fullImageModal:', fullImageModal);
+                console.log('centerImageContainer:', centerImageContainer);
+                
+                // 打开全图模态框
+                if (viewFullBtn && fullImageModal) {
+                    viewFullBtn.addEventListener('click', function(e) {
+                        e.stopPropagation(); // 防止事件冒泡
+                        console.log('点击了View Full Image按钮');
                         fullImageModal.classList.add('active');
                         document.body.style.overflow = 'hidden';
                     });
                 }
-            }
-            
-            // 关闭模态框
-            if (closeModalBtn) {
-                closeModalBtn.addEventListener('click', function() {
-                    fullImageModal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
+                
+                // 点击图片容器也可以打开模态框
+                if (centerImageContainer && fullImageModal) {
+                    centerImageContainer.addEventListener('click', function(e) {
+                        e.stopPropagation(); // 防止事件冒泡
+                        console.log('点击了图片容器');
+                        fullImageModal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    });
+                }
+                
+                // 关闭模态框
+                if (closeModalBtn) {
+                    closeModalBtn.addEventListener('click', function(e) {
+                        e.stopPropagation(); // 防止事件冒泡
+                        console.log('点击了关闭按钮');
+                        closeFullImageModal();
+                    });
+                }
+                
+                // 点击模态框背景关闭
+                if (fullImageModal) {
+                    fullImageModal.addEventListener('click', function(e) {
+                        if (e.target === fullImageModal) {
+                            console.log('点击了模态框背景');
+                            closeFullImageModal();
+                        }
+                    });
+                }
+                
+                // ESC键关闭
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && fullImageModal && fullImageModal.classList.contains('active')) {
+                        console.log('按下了ESC键');
+                        closeFullImageModal();
+                    }
                 });
-            }
-            
-            // 点击模态框背景关闭
-            if (fullImageModal) {
-                fullImageModal.addEventListener('click', function(e) {
-                    if (e.target === fullImageModal) {
+                
+                function closeFullImageModal() {
+                    if (fullImageModal) {
                         fullImageModal.classList.remove('active');
                         document.body.style.overflow = 'auto';
                     }
-                });
-            }
-            
+                }
+            }            
             // ESC键关闭
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape' && fullImageModal && fullImageModal.classList.contains('active')) {

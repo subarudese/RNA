@@ -344,23 +344,46 @@ body {
     transform: translateX(-50%);
 }
 
-/* ================ 研究区域网格布局 ================ */
+/* ================ 研究部分优化样式 ================ */
+
+/* 研究简介样式 */
+.research-intro {
+    max-width: 900px;
+    margin: 0 auto 60px;
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #444;
+    padding: 0 20px;
+}
+
+.research-intro p {
+    margin-bottom: 20px;
+}
+
+.research-intro p:last-child {
+    margin-bottom: 0;
+}
+
+/* 修改研究网格布局 - 让图片更突出 */
 .research-grid-layout {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    gap: 20px;
+    align-items: stretch; /* 改为stretch使两侧高度与图片一致 */
+    gap: 30px; /* 增加间隙 */
     flex: 1;
     min-height: 0;
     padding: 10px 0;
+    align-items: center;
 }
 
+/* 田字格布局 - 变窄 */
 .research-grid {
-    flex: 0 0 38%;
+    flex: 0 0 22%; /* 从38%减少到22% */
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: 1fr; /* 改为单列，上下排列 */
+    grid-template-rows: repeat(4, 1fr);
     gap: 20px;
     max-height: 100%;
 }
@@ -373,7 +396,7 @@ body {
     order: 3;
 }
 
-/* 网格项样式 */
+/* 网格项样式调整 - 更窄更紧凑 */
 .grid-item {
     background: white;
     border-radius: 12px;
@@ -384,6 +407,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 0;
+    height: 100%; /* 使所有网格项高度一致 */
 }
 
 .grid-item:hover {
@@ -403,7 +427,7 @@ body {
 .grid-item[data-order="8"]:hover { border-top: 4px solid #2c3e50; }
 
 .grid-content {
-    padding: 20px;
+    padding: 18px;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -411,15 +435,15 @@ body {
 }
 
 .grid-icon {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     background: linear-gradient(135deg, #f0f7ff, #e3f2fd);
-    border-radius: 12px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 15px;
-    font-size: 1.5rem;
+    margin-bottom: 12px;
+    font-size: 1.3rem;
     color: #0056a6;
     transition: all 0.3s;
 }
@@ -432,17 +456,17 @@ body {
 
 .grid-content h3 {
     color: #0056a6;
-    font-size: 1.1rem;
-    margin-bottom: 10px;
+    font-size: 1.05rem;
+    margin-bottom: 8px;
     line-height: 1.3;
     font-weight: 700;
 }
 
 .grid-content p {
     color: #666;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     line-height: 1.4;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     flex: 1;
     overflow: hidden;
     display: -webkit-box;
@@ -453,17 +477,18 @@ body {
 .grid-link {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     color: #4a90e2;
     font-weight: 600;
     text-decoration: none;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     transition: all 0.3s;
     margin-top: auto;
 }
 
 .grid-link i {
     transition: transform 0.3s;
+    font-size: 0.8rem;
 }
 
 .grid-item:hover .grid-link {
@@ -471,42 +496,46 @@ body {
 }
 
 .grid-item:hover .grid-link i {
-    transform: translateX(5px);
+    transform: translateX(4px);
 }
 
-/* 中心图片区域 */
+/* 中心图片区域 - 更加突出 */
 .research-center-image {
-    flex: 0 0 24%;
+    flex: 0 0 52%; /* 从24%增加到52%，占据一半以上空间 */
     order: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 25px;
     height: 100%;
+    padding: 0 10px;
 }
 
 .center-image-container {
     width: 100%;
-    aspect-ratio: 3/4;
-    border-radius: 12px;
+    aspect-ratio: 4/3; /* 改为4:3比例，更适应宽屏 */
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
     position: relative;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 3px solid white;
 }
 
 .center-image-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+    border-color: #4a90e2;
 }
 
 .center-image-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s;
+    object-position: center;
+    transition: transform 0.8s ease-out;
 }
 
 .center-image-container:hover img {
@@ -518,37 +547,285 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to top, rgba(0, 86, 166, 0.9), transparent);
+    background: linear-gradient(to top, rgba(0, 86, 166, 0.95) 0%, rgba(0, 86, 166, 0.7) 50%, transparent 100%);
     color: white;
-    padding: 20px;
+    padding: 25px 30px;
     text-align: center;
 }
 
 .image-overlay h3 {
-    font-size: 1.2rem;
-    margin-bottom: 5px;
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.image-description {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    line-height: 1.5;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 .btn-view-full {
-    padding: 10px 20px;
+    padding: 12px 25px;
     background: #0056a6;
     color: white;
     border: none;
-    border-radius: 25px;
+    border-radius: 30px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 0.9rem;
+    gap: 10px;
+    font-size: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 86, 166, 0.3);
 }
 
 .btn-view-full:hover {
     background: #003d7a;
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 86, 166, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 86, 166, 0.4);
 }
+
+/* ================ 响应式设计调整 ================ */
+
+/* 大桌面端 (1400px以下) */
+@media (max-width: 1400px) {
+    .research-grid {
+        flex: 0 0 24%; /* 稍微增加一点宽度 */
+    }
+    
+    .research-center-image {
+        flex: 0 0 48%; /* 稍微减少一点宽度 */
+    }
+}
+
+/* 中等桌面端 (1200px以下) */
+@media (max-width: 1200px) {
+    .research-grid-layout {
+        gap: 25px;
+    }
+    
+    .research-grid {
+        flex: 0 0 25%;
+    }
+    
+    .research-center-image {
+        flex: 0 0 46%;
+    }
+    
+    .grid-content h3 {
+        font-size: 1rem;
+    }
+    
+    .grid-content p {
+        font-size: 0.75rem;
+        -webkit-line-clamp: 2;
+    }
+}
+
+/* 平板端 (992px以下) */
+@media (max-width: 992px) {
+    .research-intro {
+        font-size: 1.1rem;
+        margin-bottom: 40px;
+        padding: 0 15px;
+    }
+    
+    .research-grid-layout {
+        flex-direction: column;
+        gap: 40px;
+        max-height: none;
+        overflow-y: auto;
+        padding: 20px 10px;
+    }
+    
+    .research-grid {
+        width: 100%;
+        flex: 0 0 auto;
+        grid-template-columns: repeat(2, 1fr); /* 改为两列 */
+        grid-template-rows: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .research-center-image {
+        width: 100%;
+        flex: 0 0 auto;
+        order: 1;
+        margin-bottom: 30px;
+    }
+    
+    .research-grid-left,
+    .research-grid-right {
+        order: 2;
+    }
+    
+    .center-image-container {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    
+    .grid-item {
+        min-height: 180px;
+    }
+    
+    .grid-content p {
+        -webkit-line-clamp: 2;
+    }
+}
+
+/* 平板小尺寸 (768px以下) */
+@media (max-width: 768px) {
+    .research-intro {
+        font-size: 1rem;
+        margin-bottom: 30px;
+        line-height: 1.6;
+    }
+    
+    .research-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .grid-item {
+        min-height: 160px;
+    }
+    
+    .grid-content {
+        padding: 15px;
+    }
+    
+    .grid-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+    
+    .grid-content h3 {
+        font-size: 0.95rem;
+    }
+    
+    .grid-content p {
+        font-size: 0.75rem;
+        -webkit-line-clamp: 2;
+    }
+    
+    .grid-link {
+        font-size: 0.8rem;
+    }
+    
+    .center-image-container {
+        max-width: 500px;
+        aspect-ratio: 3/2;
+    }
+    
+    .image-overlay {
+        padding: 20px;
+    }
+    
+    .image-overlay h3 {
+        font-size: 1.2rem;
+    }
+    
+    .image-description {
+        font-size: 0.85rem;
+    }
+    
+    .btn-view-full {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+/* 手机端 (576px以下) */
+@media (max-width: 576px) {
+    .research-intro {
+        font-size: 0.95rem;
+        padding: 0 10px;
+    }
+    
+    .research-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, auto);
+        gap: 15px;
+    }
+    
+    .grid-item {
+        min-height: auto;
+    }
+    
+    .grid-content p {
+        -webkit-line-clamp: 3;
+    }
+    
+    .center-image-container {
+        max-width: 350px;
+        aspect-ratio: 1/1;
+    }
+    
+    .image-overlay {
+        padding: 15px;
+    }
+    
+    .image-overlay h3 {
+        font-size: 1.1rem;
+    }
+    
+    .image-description {
+        font-size: 0.8rem;
+    }
+}
+
+/* 小手机端 (480px以下) */
+@media (max-width: 480px) {
+    .research-grid {
+        gap: 12px;
+    }
+    
+    .grid-content {
+        padding: 12px;
+    }
+    
+    .center-image-container {
+        max-width: 300px;
+    }
+    
+    .btn-view-full {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+}
+
+/* 网格项动画调整 */
+@keyframes gridItemAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.grid-item {
+    animation: gridItemAppear 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+/* 为每个网格项设置延迟动画 */
+.grid-item[data-order="1"] { animation-delay: 0.1s; }
+.grid-item[data-order="2"] { animation-delay: 0.2s; }
+.grid-item[data-order="3"] { animation-delay: 0.3s; }
+.grid-item[data-order="4"] { animation-delay: 0.4s; }
+.grid-item[data-order="5"] { animation-delay: 0.5s; }
+.grid-item[data-order="6"] { animation-delay: 0.6s; }
+.grid-item[data-order="7"] { animation-delay: 0.7s; }
+.grid-item[data-order="8"] { animation-delay: 0.8s; }
 
 /* ================ 全图查看模态框 ================ */
 .full-image-modal .modal-content {

@@ -1313,7 +1313,7 @@ footer {
     width: 25%; /* 对应每张图片的宽度 */
     height: 100%;
     background: #0056a6;
-    transition: transform 5s linear; /* 与自动轮播时间同步 */
+    transition: transform 8s linear; /* 与自动轮播时间同步 */
 }
 
 /* 调整横幅新闻区域位置 */

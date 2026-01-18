@@ -199,7 +199,7 @@
             <!-- 轮播图片容器 -->
             <div class="carousel-container">
                 <!-- 轮播图片项 -->
-                <div class="carousel-slide" data-target="#News" data-index="0">
+                <div class="carousel-slide" data-target="news.html" data-index="0">
                     <img src="images/news/igem2025.jpg" alt="News">
                     <div class="slide-overlay">
                         <div class="slide-content">
@@ -231,7 +231,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="carousel-slide" data-target="../member/leader.html" data-index="3">
+                <div class="carousel-slide" data-target="member/leader.html" data-index="3">
                     <img src="images/about-team/team.jpg" alt="Team Introduction">
                     <div class="slide-overlay">
                         <div class="slide-content">
@@ -444,7 +444,7 @@
 </div>
 
     <script>
-        // 轮播功能
+        // 轮播功能 - 修复版本
         function initCarousel() {
             const carousel = document.querySelector('.carousel-banner');
             if (!carousel) return;
@@ -458,47 +458,61 @@
             let currentSlide = 0;
             let slideInterval;
             const slideCount = slides.length;
-            const autoSlideInterval = 8000; // 5秒自动切换
+            const autoSlideInterval = 8000;
+            
+            // 链接处理函数
+            function handleSlideClick(target) {
+                if (!target) return;
+                
+                // 判断是否为页面内锚点链接（以#开头）
+                if (target.startsWith('#')) {
+                    // 页面内滚动
+                    const targetElement = document.querySelector(target);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                    }
+                } else {
+                    // 外部页面链接，直接跳转
+                    window.location.href = target;
+                }
+            }
             
             // 初始化轮播
             function initSlide() {
-                // 显示第一张幻灯片
                 updateSlide(0);
-                // 启动自动轮播
                 startAutoSlide();
             }
             
             // 更新幻灯片显示
             function updateSlide(slideIndex) {
-                // 隐藏所有幻灯片
                 slides.forEach(slide => {
                     slide.classList.remove('active');
                 });
                 
-                // 更新指示器
                 indicators.forEach(indicator => {
                     indicator.classList.remove('active');
                 });
                 
-                // 显示当前幻灯片
                 slides[slideIndex].classList.add('active');
                 indicators[slideIndex].classList.add('active');
                 currentSlide = slideIndex;
                 
-                // 更新进度条
                 if (progressBar) {
                     const progress = ((slideIndex + 1) / slideCount) * 100;
                     progressBar.style.width = `${progress}%`;
                 }
             }
             
-            // 切换到下一张幻灯片
+            // 切换到下一张
             function nextSlide() {
                 const nextIndex = (currentSlide + 1) % slideCount;
                 updateSlide(nextIndex);
             }
             
-            // 切换到上一张幻灯片
+            // 切换到上一张
             function prevSlide() {
                 const prevIndex = (currentSlide - 1 + slideCount) % slideCount;
                 updateSlide(prevIndex);
@@ -521,15 +535,7 @@
             slides.forEach(slide => {
                 slide.addEventListener('click', function() {
                     const target = this.getAttribute('data-target');
-                    if (target) {
-                        const targetElement = document.querySelector(target);
-                        if (targetElement) {
-                            window.scrollTo({
-                                top: targetElement.offsetTop - 70,
-                                behavior: 'smooth'
-                            });
-                        }
-                    }
+                    handleSlideClick(target);
                 });
             });
             
@@ -564,15 +570,7 @@
                     e.stopPropagation();
                     const slide = this.closest('.carousel-slide');
                     const target = slide.getAttribute('data-target');
-                    if (target) {
-                        const targetElement = document.querySelector(target);
-                        if (targetElement) {
-                            window.scrollTo({
-                                top: targetElement.offsetTop - 70,
-                                behavior: 'smooth'
-                            });
-                        }
-                    }
+                    handleSlideClick(target);
                 });
             });
             
@@ -601,10 +599,8 @@
                 
                 if (Math.abs(diff) > swipeThreshold) {
                     if (diff > 0) {
-                        // 向左滑动，下一张
                         nextSlide();
                     } else {
-                        // 向右滑动，上一张
                         prevSlide();
                     }
                 }

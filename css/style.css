@@ -2061,3 +2061,78 @@ footer {
     border-radius: 8px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
+/* ================ 研究简介背景框 ================ */
+.research-intro {
+    max-width: 1000px;
+    margin: 0 auto 60px;
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #333;
+    padding: 40px 50px;
+    background: linear-gradient(145deg, #ffffff, #f8fafc);
+    border-radius: 16px;
+    box-shadow: 
+        0 10px 30px rgba(0, 86, 166, 0.12),
+        0 4px 12px rgba(0, 86, 166, 0.06),
+        0 0 0 1px rgba(0, 86, 166, 0.05);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid rgba(0, 86, 166, 0.1);
+}
+
+.research-intro::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #0056a6, #4a90e2, #0056a6);
+    border-radius: 16px 16px 0 0;
+}
+
+.research-intro:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 20px 40px rgba(0, 86, 166, 0.18),
+        0 8px 20px rgba(0, 86, 166, 0.1),
+        0 0 0 1px rgba(0, 86, 166, 0.1);
+}
+
+.research-intro p {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 20px;
+}
+
+.research-intro p:last-child {
+    margin-bottom: 0;
+}
+
+/* 响应式设计 */
+@media (max-width: 992px) {
+    .research-intro {
+        padding: 35px 40px;
+        margin: 0 auto 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .research-intro {
+        padding: 30px 25px;
+        margin: 0 auto 40px;
+        font-size: 1.1rem;
+        border-radius: 12px;
+    }
+}
+
+@media (max-width: 576px) {
+    .research-intro {
+        padding: 25px 20px;
+        margin: 0 auto 30px;
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+}

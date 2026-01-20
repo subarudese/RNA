@@ -2136,49 +2136,45 @@ footer {
         line-height: 1.7;
     }
 }
-/* 在您的CSS中添加以下样式 */
 
-/* Research部分整体背景 */
+/* Research部分 - 抽象科技图案背景 */
 #research {
     position: relative;
-    background: 
-        /* 深色渐变作为备用背景 */
-        linear-gradient(135deg, #f8fbff 0%, #eef5ff 100%),
-        /* 科技感网格图案 */
-        linear-gradient(90deg, rgba(0, 86, 166, 0.03) 1px, transparent 1px),
-        linear-gradient(rgba(0, 86, 166, 0.03) 1px, transparent 1px);
+    background-color: #f8fbff;
+    background-image: 
+        /* DNA双螺旋装饰图案 */
+        url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M100,50 Q150,75 100,100 Q50,125 100,150' stroke='%230056a6' stroke-width='2' fill='none' opacity='0.1'/%3E%3Cpath d='M100,50 Q50,75 100,100 Q150,125 100,150' stroke='%234a90e2' stroke-width='2' fill='none' opacity='0.1'/%3E%3Ccircle cx='100' cy='50' r='3' fill='%230056a6' opacity='0.2'/%3E%3Ccircle cx='100' cy='100' r='3' fill='%230056a6' opacity='0.2'/%3E%3Ccircle cx='100' cy='150' r='3' fill='%230056a6' opacity='0.2'/%3E%3C/svg%3E"),
+        /* 分子结构装饰 */
+        url("data:image/svg+xml,%3Csvg width='150' height='150' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='75' cy='75' r='40' stroke='%230056a6' stroke-width='1' fill='none' opacity='0.05'/%3E%3Ccircle cx='75' cy='75' r='20' stroke='%234a90e2' stroke-width='1' fill='none' opacity='0.05'/%3E%3Cline x1='35' y1='75' x2='115' y2='75' stroke='%230056a6' stroke-width='1' opacity='0.05'/%3E%3Cline x1='75' y1='35' x2='75' y2='115' stroke='%234a90e2' stroke-width='1' opacity='0.05'/%3E%3C/svg%3E");
     background-size: 
-        cover,
-        30px 30px,
-        30px 30px;
-    background-position: center center;
-    overflow: hidden;
-    padding: 50px 0;
+        200px 200px,
+        150px 150px;
+    background-position: 
+        10% 20%,
+        90% 80%;
+    background-repeat: no-repeat;
+    padding: 60px 0;
 }
 
-/* 添加装饰性背景元素 */
+/* 添加流动光效 */
 #research::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
+    left: -100%;
     width: 100%;
-    height: 100%;
-    background-image: 
-        /* 分子结构装饰图案 */
-        radial-gradient(circle at 10% 20%, rgba(74, 144, 226, 0.05) 0%, transparent 20%),
-        radial-gradient(circle at 90% 30%, rgba(0, 86, 166, 0.05) 0%, transparent 20%),
-        radial-gradient(circle at 50% 80%, rgba(74, 144, 226, 0.05) 0%, transparent 20%),
-        /* 细线条装饰 */
-        repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0, 86, 166, 0.03) 10px, rgba(0, 86, 166, 0.03) 20px);
-    z-index: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(0, 86, 166, 0.2), transparent);
+    animation: lightFlow 8s ease-in-out infinite;
+}
+
+@keyframes lightFlow {
+    0% { left: -100%; }
+    100% { left: 100%; }
 }
 
 /* 确保内容在背景之上 */
-#research .container,
-#research .section-title,
-#research .research-intro,
-#research .research-grid-layout {
+#research .container {
     position: relative;
     z-index: 1;
 }

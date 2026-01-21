@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>leader - mRNA技术与生物界面实验室</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 复用主站样式，注意路径是 ../css/style.css -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* 个人页独有样式 */
+        .member-profile {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 30px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .profile-avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #f0f8ff;
+        }
+        .profile-basic h1 {
+            color: #0056a6;
+            margin-bottom: 5px;
+        }
+        .profile-tag {
+            display: inline-block;
+            background: #4a90e2;
+            color: #ffffff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin: 10px 5px 5px 0;
+            font-size: 0.9rem;
+        }
+        .profile-section {
+            margin: 30px 0;
+        }
+        .profile-section h2 {
+            color: #0056a6;
+            border-bottom: 2px solid #4a90e2;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .publication-list li {
+            margin-bottom: 15px;
+            padding-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏（与主页一致） -->
+    <nav class="navbar">
+        <a class="navbar-brand" href="#" style="display: flex; align-items: center; text-decoration: none;">
+            <img src="../images/banners/dut.png" alt="大连理工大学校徽" style="height: 40px; margin-right: 12px;">
+            <span style="font-size: 24px; font-weight: 700; color: #0056a6;">mRNA技术与生物界面实验室</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="../index.html">首页</a></li>
+            <li class="nav-item"><a class="nav-link" href="../about-team.html">团队简介</a></li>
+            <li><a href="../index.html#research">研究方向</a></li>
+            <li class="nav-dropdown">
+                <a href="" class="dropdown-toggle">
+                    团队成员 <i class="fas fa-chevron-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="index.html#team" class="dropdown-item">团队负责人</a></li>
+                    <li><a href="../member/member-more.html" class="dropdown-item">其他团队成员</a></li>
+                </ul>
+            </li>            
+            <li><a href="../index.html#publications">研究成果</a></li>
+            <li><a href="../join us.html">加入我们</a></li>
+        </ul>
+    </nav>
+
+    <!-- 个人资料主体 -->
+    <main class="container">
+        <article class="member-profile">
+            <div class="profile-header">
+                <!-- 头像：替换 ../images/team/xxx.jpg 为实际路径 -->
+                <img src="../images/member/ljq.jpg" alt="{{姓名}}" class="profile-avatar">
+                <div class="profile-basic">
+                    <h1>林佳奇</h1>
+                    <p><strong>教授</strong></p>
+                    <div>
+                        <span class="profile-tag">mRNA预防性疫苗</span>
+                        <span class="profile-tag">AI赋能RNA序列优化</span>
+                        <span class="profile-tag">核酸分子靶向递送</span>
+                        <span class="profile-tag">柔性生物传感</span>
+                        <span class="profile-tag">脑机接口</span>
+                    </div>
+                    <p style="margin-top: 15px;">
+                        <i class="fas fa-envelope"></i> jqlin@dlut.edu.cn<br>
+                        <i class="fas fa-map-marker-alt"></i> 生物工程学院513
+                    </p>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <h2><i class="fas fa-user-graduate"></i> 个人简介</h2>
+                <p>林佳奇，大连理工大学生物工程学院教授，教育部“智能生物制造”重点实验室骨干，国家级青年人才(中组部青年拔尖)。于2005年在北京航空航天大学获得学士学位，2012年在大连理工大学获得生物医学工程博士学位（纳米生物界面）；于2012年至2018年在美国麻省理工学院从事博士后研究工作（核酸药物）；于2018年至2020年在美国BrainCo Inc. 担任研发总监。获得科技部青年科学家、宁波甬江人才、大连市海外高层次人才称号。研究方向为mRNA药物与疫苗、纳米生物界面、组织工程再生及脑机接口。相关研究成果发表于Nature Biomedical Engineering，Nature Communications，Advanced Materials，Nano Letters，Science Advance，Small等多个国际期刊，2篇ESI高被引论文，论文被引用次数超过3300+次，h因子19。研究成果的重要性得到了国内外同行的广泛关注，被Chemical Review、Chemical Society Review、Accounts of Chemical research，Nature review drug discovery，Science Daily等评述和正面报道。作为项目负责人，承担国家科技部重点研发计划青年科学家项目、省科技计划联合项目、市科创委“揭榜挂帅项目”，市重点科技研发计划等，纵向总经费1800万。相关领域申请发明专利20余项，已公开12项，已授权专利5项， 3项实现成果转化。</p>
+            </div>
+
+            <div class="profile-section">
+                <h2><i class="fas fa-award"></i> 代表成果</h2>
+                <ul class="publication-list">
+                    <li>1. Yufeng Zhang, Liuwei Zhang, Hui Gao, Shubo Du, Qixian Chen, Xueguang Lu*, Jiaqi Lin*. Multi-functional lipid nanoformulations for enhancing the efficacy of mRNA tumor vaccines by reversing tumor immunosuppressive microenvironment. Nano Today, 2025, 63, 102757  </li>
+                    <li>2. Bangda Fan, Sujia Liu, Yinghuan Xu, Xinghuan Ma, Wenbin Qi, Lei Miao, Lin Liu, Shubo Du, Jiaqi Lin*.  Mechanistic insights into circularization via Anabaena group I intron-based scarless circular RNA. Molecular Therapy Nucleic Acids, 2025, 36: 102626</li>
+                    <li>3. Dongyang Wang+, Hailing Xue+, et. al, Fengyu Cong, Yanhua Li*, Fei Song* and Jiaqi Lin*. A tough semi-dry hydrogel electrode with anti-bacterial properties for long-term repeatable non-invasive EEG acquisition. Microsystems & Nanoengineering, 2025, 11, 105</li>
+                    <li>4. Runying Wang+, Yufeng Zhang+, Shubo Du, Yanhua Li, Yanying Ren* and Jiaqi Lin*. Nanoformulations Downregulating METTL16 Combined with mRNA Tumor Vaccines Suppress Triple-Negative Breast Cancer and Prevent Metastasis. International Journal of Nanomedicine, 2025, 20, 8951–8966</li>
+                    <li>5. Linfeng Wang+, Sujia Liu+, et. al, Bingwei Wang*, Jiaqi Lin*, Ji Zeng*. Machine learning -based analysis of the impact of 5' untranslated region on protein expression. Nucleic Acid Research, 2025, 53 , gkaf861</li>
+                    <li>6. Xinghuan Ma, Sujia Liu, Bangda Fan, Danni Jin, Lei Miao, Lin Liu, Shubo Du*, Jiaqi Lin*. Enhancing mRNA Translation Efficiency by Introducing Sequence- Optimized AU-Rich Elements in 3’UTR via HuR Anchorage. Molecular Therapy Nucleic Acids, 2025, 36: 102485</li>
+                    <li>7. ingjiao Li, Jie Hu, Danni Jin, Haonan Huo, Ning Chen*, Jiaqi Lin*, Xueguang Lu*.  High‑throughput synthesis and optimization of ionizable lipids through A3 coupling for efficient mRNA delivery. Journal of Nanobiotechnology, 2024, 22:672</li>
+                    <li>8. Xingdi Cheng+, Sujia Liu+, Jing Sun, et. al, Xiaolan Cui*, Jiaqi Lin*, Xueguang Lu*, A Synergistic Lipid Nanoparticle Encapsulating mRNA Shingles Vaccine Induces Potent Immune Responses and Protects Guinea Pigs from Viral Challenges. Advanced Materials, 2023, 25, e2310886</li>
+                    <li>9. Lei Miao+, Jiaqi Lin(co-first)+, Yuxuan Huang, Linxian Li, Derfogail Delcassian, Yifan Ge, Yunhua Shi, Daniel G. Anderson. Synergistic Lipid Compositions for Albumin Receptor Mediated Delivery of mRNA to the Liver. Nature communications. 2020, 11, 2424</li>
+                    <li>10. Jiaqi Lin, Alfredo Alexander-Katz. Cell Membranes Open "Doors" for Cationic Nanoparticles/Biomolecules: Insights into Uptake Kinetics. ACS Nano, 2013, 7, 10799-10808.</li>
+
+                </ul>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="../index.html#team" class="cta-button">返回团队页面</a>
+            </div>
+        </article>
+    </main>
+
+    <!-- 页脚 -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>联系我们</h3>
+                <ul class="contact-list">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>大连市甘井子区凌工路2号 大连理工大学生物工程学院</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span>+86 XXX-XXXX-XXXX</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>jqlin@dlut.edu.cn</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>快速链接</h3>
+                <ul class="contact-list">
+                    <li><a href="#home" style="color: #ffffff;">首页</a></li>
+                    <li><a href="#research" style="color: #ffffff;">研究方向</a></li>
+                    <li><a href="#team" style="color: #ffffff;">团队成员</a></li>
+                    <li><a href="#publications" style="color: #ffffff;">研究成果</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>关注我们</h3>
+                <ul class="contact-list">
+                    <li><i class="fab fa-weixin"></i> 微信公众号</li>
+                    <li><i class="fab fa-github"></i> GitHub仓库</li>
+                    <li><i class="fas fa-graduation-cap"></i> Google Scholar</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2026 mRNA技术与生物界面实验室. 版权所有.</p>
+            <p>本网站基于学术交流目的创建</p>
+        </div>
+    </footer>
+</body>
+</html>

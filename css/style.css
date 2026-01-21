@@ -2140,7 +2140,7 @@ footer {
 /* Research部分 - 实验室图片背景 */
 #research {
     position: relative;
-    background-image: url('images/research/banners/research.png'); /* 使用您的实验室图片 */
+    background-image: url('../images/banners/research.png'); /* 使用您的实验室图片 */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

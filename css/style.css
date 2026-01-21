@@ -2149,22 +2149,6 @@ footer {
     overflow: hidden;
 }
 
-/* 添加深色叠加层确保内容可读性 */
-#research::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        135deg, 
-        rgba(0, 86, 166, 0.85) 0%, 
-        rgba(0, 61, 122, 0.85) 50%,
-        rgba(0, 86, 166, 0.85) 100%
-    );
-    z-index: 0;
-}
 
 /* 添加粒子效果装饰 */
 #research::after {

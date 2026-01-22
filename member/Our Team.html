@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Our Team - The mRNA Technology and Bio-Interface Lab</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Our Team页面专用样式 */
+        
+        /* 1. 页面横幅 */
+        .team-banner {
+            position: relative;
+            height: 60vh;
+            min-height: 400px;
+            background-image: url('images/team/team-banner.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+            margin-top: 70px;
+            overflow: hidden;
+        }
+        
+        /* 添加深色叠加层确保文字可读 */
+        .team-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 86, 166, 0.85) 0%, rgba(0, 61, 122, 0.8) 100%);
+            z-index: 1;
+        }
+        
+        .banner-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+        
+        .banner-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .banner-content p {
+            font-size: 1.4rem;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+        
+        /* 2. 团队页面容器 */
+        .team-page-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 20px 100px;
+        }
+        
+        /* 3. 面包屑导航 */
+        .breadcrumb-nav {
+            max-width: 1400px;
+            margin: 0 auto 40px;
+            padding: 0 20px;
+            font-size: 0.9rem;
+        }
+        
+        .breadcrumb-nav a {
+            color: #0056a6;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .breadcrumb-nav a:hover {
+            color: #4a90e2;
+            text-decoration: underline;
+        }
+        
+        .breadcrumb-nav span {
+            color: #666;
+        }
+        
+        /* 4. 通用卡片样式 */
+        .team-member-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            height: 100%;
+        }
+        
+        .team-member-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 86, 166, 0.2);
+        }
+        
+        .member-image {
+            height: 300px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: top center;
+            position: relative;
+        }
+        
+        .member-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            height: calc(100% - 300px);
+        }
+        
+        .member-name {
+            color: #0056a6;
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .member-role {
+            color: #4a90e2;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .member-bio {
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+        
+        .member-expertise {
+            margin-bottom: 20px;
+        }
+        
+        .expertise-title {
+            color: #0056a6;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .expertise-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .expertise-list li {
+            padding: 5px 0;
+            color: #666;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .expertise-list li i {
+            color: #4a90e2;
+            font-size: 0.8rem;
+        }
+        
+        .member-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: auto;
+        }
+        
+        .member-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: #f0f7ff;
+            color: #0056a6;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid #cce0ff;
+            font-size: 0.9rem;
+        }
+        
+        .member-link:hover {
+            background: #0056a6;
+            color: white;
+            border-color: #0056a6;
+            transform: translateY(-3px);
+        }
+        
+        /* 5. 实验室主任卡片 - 特殊样式 */
+        .director-card {
+            background: linear-gradient(135deg, #ffffff, #f8fbff);
+            border: 3px solid #0056a6;
+            box-shadow: 0 15px 40px rgba(0, 86, 166, 0.2);
+            position: relative;
+        }
+        
+        .director-card::before {
+            content: 'Lab Director';
+            position: absolute;
+            top: 20px;
+            right: -10px;
+            background: #0056a6;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            z-index: 2;
+            box-shadow: 0 5px 15px rgba(0, 86, 166, 0.3);
+        }
+        
+        .director-card .member-name {
+            font-size: 1.8rem;
+            color: #003d7a;
+        }
+        
+        .director-card .member-role {
+            font-size: 1.2rem;
+            color: #0056a6;
+        }
+        
+        /* 6. 卡片网格布局 */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        /* 副研究员和博士后 - 一行最多4个 */
+        .associate-directors-grid,
+        .postdocs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        /* 学生卡片 - 较小尺寸 */
+        .student-card {
+            height: 100%;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .student-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 86, 166, 0.15);
+        }
+        
+        .student-image {
+            height: 200px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: top center;
+            position: relative;
+        }
+        
+        .student-content {
+            padding: 20px;
+        }
+        
+        .student-name {
+            color: #0056a6;
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .student-program {
+            color: #4a90e2;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .student-year {
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        
+        .student-research {
+            color: #555;
+            line-height: 1.4;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .student-links {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .student-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 12px;
+            background: #f0f7ff;
+            color: #0056a6;
+            text-decoration: none;
+            border-radius: 15px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 1px solid #cce0ff;
+            font-size: 0.8rem;
+        }
+        
+        .student-link:hover {
+            background: #0056a6;
+            color: white;
+            border-color: #0056a6;
+        }
+        
+        /* 学生网格布局 - 一行最多4个 */
+        .students-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        /* 7. 校友部分样式 */
+        .alumni-section {
+            background: #f8fbff;
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+        
+        .alumni-category {
+            margin-bottom: 30px;
+        }
+        
+        .alumni-category h3 {
+            color: #0056a6;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #cce0ff;
+        }
+        
+        .alumni-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .alumni-item {
+            flex: 0 0 calc(33.333% - 20px);
+            padding: 12px 15px;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid #4a90e2;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .alumni-name {
+            color: #0056a6;
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .alumni-period {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* 8. 各部分标题样式 */
+        .section-title {
+            color: #000000;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: #0056a6;
+            bottom: 0;
+            left: 0;
+        }
+        
+        .section-subtitle {
+            color: #4a90e2;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            position: relative;
+            padding-left: 15px;
+            border-left: 4px solid #0056a6;
+        }
+        
+        /* 9. 响应式设计 */
+        @media (max-width: 1200px) {
+            .team-grid {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            }
+            
+            .associate-directors-grid,
+            .postdocs-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .students-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            }
+            
+            .alumni-item {
+                flex: 0 0 calc(50% - 20px);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .team-banner {
+                height: 50vh;
+                min-height: 350px;
+            }
+            
+            .banner-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .banner-content p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1.6rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .team-banner {
+                height: 40vh;
+                min-height: 300px;
+            }
+            
+            .banner-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .banner-content p {
+                font-size: 1rem;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .associate-directors-grid,
+            .postdocs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .students-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .alumni-item {
+                flex: 0 0 100%;
+            }
+            
+            .alumni-section {
+                padding: 30px 20px;
+            }
+            
+            .director-card::before {
+                right: 10px;
+                top: 10px;
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .team-banner {
+                height: 35vh;
+                min-height: 250px;
+            }
+            
+            .banner-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .associate-directors-grid,
+            .postdocs-grid,
+            .students-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .member-links {
+                flex-direction: column;
+            }
+            
+            .member-link {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .student-links {
+                flex-direction: column;
+            }
+            
+            .student-link {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1.4rem;
+            }
+        }
+        
+        /* 10. 空状态样式（如果某部分暂无人员） */
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            background: #f8fbff;
+            border-radius: 10px;
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        .empty-state i {
+            font-size: 2.5rem;
+            color: #cce0ff;
+            margin-bottom: 15px;
+        }
+        
+        /* 11. 卡片之间的分隔线 */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #cce0ff, transparent);
+            margin: 60px 0;
+        }
+    </style>
+</head>
+<body class="mobile-fixed">
+    <!-- 导航栏（与主页保持一致） -->
+    <nav class="navbar">
+        <a class="navbar-brand" href="index.html" style="display: flex; align-items: center; text-decoration: none;">
+            <img src="images/banners/8g.jpg" alt="大连理工大学校徽" style="height: 40px; margin-right: 12px;">
+            <span style="font-size: 20px; font-weight: 700; color: #0056a6;">The mRNA Technology and Bio-Interface Lab</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="research.html">Research</a></li>
+            <li class="nav-dropdown">
+                <a href="" class="dropdown-toggle active">
+                    Team <i class="fas fa-chevron-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="member/ljq.html" class="dropdown-item">Principle Investigator</a></li>
+                    <li><a href="team.html" class="dropdown-item">Our Team</a></li>
+                </ul>
+            </li>            
+            <li><a href="index.html#publications">Publications</a></li>
+            <li><a href="join us.html">Join Us</a></li>
+        </ul>
+        <div class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li class="mobile-dropdown">
+                    <a href="#" class="mobile-dropdown-toggle">Team <i class="fas fa-chevron-down"></i></a>
+                    <ul class="mobile-dropdown-menu">
+                        <li><a href="member/ljq.html">Principle Investigator</a></li>
+                        <li><a href="team.html" class="active">Our Team</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#publications">Publications</a></li>
+                <li><a href="join us.html">Join Us</a></li>
+            </ul>
+        </div>    
+    </nav>
+    
+    <!-- 面包屑导航 -->
+    <div class="breadcrumb-nav">
+        <a href="index.html">Home</a> &gt; <span>Our Team</span>
+    </div>
+    
+    <!-- 页面横幅 -->
+    <section class="team-banner">
+        <div class="banner-content">
+            <h1>Our Team</h1>
+            <p>Meet the dedicated researchers and scientists driving innovation in mRNA technology and bio-interface research</p>
+        </div>
+    </section>
+    
+    <!-- 团队页面主要内容 -->
+    <main class="team-page-container">
+        <!-- Lab Director 实验室主任 -->
+        <section class="director-section">
+            <h2 class="section-title">Lab Director</h2>
+            <div class="team-grid">
+                <div class="team-member-card director-card">
+                    <div class="member-image" style="background-image: url('images/member/ljq.jpg');"></div>
+                    <div class="member-content">
+                        <h3 class="member-name">Jiaqi Lin</h3>
+                        <p class="member-role">Professor, Principle Investigator</p>
+                        <div class="member-bio">
+                            <p>Professor at the School of Biological Engineering, Dalian University of Technology. Recipient of the National Youth Talent Award. Research focuses on mRNA therapeutics and vaccines, nanobiological interfaces, tissue engineering and regeneration, and brain-computer interfaces.</p>
+                        </div>
+                        <div class="member-expertise">
+                            <h4 class="expertise-title">Research Expertise</h4>
+                            <ul class="expertise-list">
+                                <li><i class="fas fa-dna"></i> mRNA Therapeutics and Vaccines</li>
+                                <li><i class="fas fa-microscope"></i> Nano-Bio Interfaces</li>
+                                <li><i class="fas fa-heartbeat"></i> Tissue Engineering and Regeneration</li>
+                                <li><i class="fas fa-brain"></i> Brain-Computer Interfaces</li>
+                            </ul>
+                        </div>
+                        <div class="member-links">
+                            <a href="member/ljq.html" class="member-link">
+                                <i class="fas fa-user-circle"></i> Full Profile
+                            </a>
+                            <a href="mailto:jqlin@dlut.edu.cn" class="member-link">
+                                <i class="fas fa-envelope"></i> Email
+                            </a>
+                            <a href="#publications" class="member-link">
+                                <i class="fas fa-file-alt"></i> Publications
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 分隔线 -->
+        <div class="section-divider"></div>
+        
+        <!-- Associate Directors 副研究员 -->
+        <section class="associate-directors-section">
+            <h2 class="section-title">Associate Directors</h2>
+            <div class="associate-directors-grid">
+                <!-- dsb -->
+                <div class="team-member-card">
+                    <div class="member-image" style="background-image: url('images/member/dsb.png');"></div>
+                    <div class="member-content">
+                        <h3 class="member-name">Shubo Du</h3>
+                        <p class="member-role">Associate Professor</p>
+                        <div class="member-expertise">
+                            <h4 class="expertise-title">Research Expertise</h4>
+                            <ul class="expertise-list">
+                                <li><i class="fas fa-dna"></i> Nucleic Acid Drug Development</li>
+                                <li><i class="fas fa-flask"></i> Protein Drug Development</li>
+                                <li><i class="fas fa-vial"></i> Precision Delivery of Nanomedicines</li>
+                            </ul>
+                        </div>
+                        <div class="member-links">
+                            <a href="member/dsb.html" class="member-link">
+                                <i class="fas fa-user-circle"></i> Profile
+                            </a>
+                            <a href="mailto:dushubo@dlut.edu.cn" class="member-link">
+                                <i class="fas fa-envelope"></i> Email
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- sk -->
+                <div class="team-member-card">
+                    <div class="member-image" style="background-image: url('images/member/sk.jpg');"></div>
+                    <div class="member-content">
+                        <h3 class="member-name">Kai Sun</h3>
+                        <p class="member-role">Associate Professor</p>
+                        <div class="member-expertise">
+                            <h4 class="expertise-title">Research Expertise</h4>
+                            <ul class="expertise-list">
+                                <li><i class="fas fa-microscope"></i> Biosensor Detection Technology</li>
+                                <li><i class="fas fa-edit"></i> Precision Diagnosis and Therapy for Diseases</li>
+                                <li><i class="fas fa-vial"></i> Fluorescent Probe Imaging Technology</li>
+                            </ul>
+                        </div>
+                        <div class="member-links">
+                            <a href="member/sk.html" class="member-link">
+                                <i class="fas fa-user-circle"></i> Profile
+                            </a>
+                            <a href="mailto:kaisun@dlut.edu.cn" class="member-link">
+                                <i class="fas fa-envelope"></i> Email
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 可以根据需要添加更多副研究员 -->
+                <!--
+                <div class="team-member-card">
+                    <div class="member-image" style="background-image: url('images/member/placeholder.jpg');"></div>
+                    <div class="member-content">
+                        <h3 class="member-name">Name Surname</h3>
+                        <p class="member-role">Associate Professor</p>
+                        <div class="member-expertise">
+                            <h4 class="expertise-title">Research Expertise</h4>
+                            <ul class="expertise-list">
+                                <li><i class="fas fa-dna"></i> Research Area 1</li>
+                                <li><i class="fas fa-flask"></i> Research Area 2</li>
+                            </ul>
+                        </div>
+                        <div class="member-links">
+                            <a href="member/profile.html" class="member-link">
+                                <i class="fas fa-user-circle"></i> Profile
+                            </a>
+                            <a href="mailto:email@dlut.edu.cn" class="member-link">
+                                <i class="fas fa-envelope"></i> Email
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                -->
+            </div>
+        </section>
+        
+        <!-- 分隔线 -->
+        <div class="section-divider"></div>
+        
+        <!-- Postdocs 博士后 -->
+        <section class="postdocs-section">
+            <h2 class="section-title">Postdoctoral Researchers</h2>
+            <div class="postdocs-grid">
+                <!-- zyj -->
+                <div class="team-member-card">
+                    <div class="member-image" style="background-image: url('images/member/zyl.jpg');"></div>
+                    <div class="member-content">
+                        <h3 class="member-name">Yujing Zhao</h3>
+                        <p class="member-role">Postdoctoral Researcher</p>
+                        <div class="member-expertise">
+                            <h4 class="expertise-title">Research Expertise</h4>
+                            <ul class="expertise-list">
+                                <li><i class="fas fa-dna"></i> AI-Based Design of Nucleic Acid Therapeutics</li>
+                                <li><i class="fas fa-flask"></i> AI-Based Targeted Delivery Systems</li>
+                            </ul>
+                        </div>
+                        <div class="member-links">
+                            <a href="member/zyj.html" class="member-link">
+                                <i class="fas fa-user-circle"></i> Profile
+                            </a>
+                            <a href="mailto:zhaoyujing@dlut.edu.cn" class="member-link">
+                                <i class="fas fa-envelope"></i> Email
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ch -->
+                <div class="team-member-card">
+                    <div class="member-image" style="background-image: url('images/member/ch.jpg');"></div>
+                    <div class="member-content">
+                        <h3 class="member-name">Hao Cheng</h3>
+                        <p class="member-role">Postdoctoral Researcher</p>
+                        <div class="member-expertise">
+                            <h4 class="expertise-title">Research Expertise</h4>
+                            <ul class="expertise-list">
+                                <li><i class="fas fa-microscope"></i> Genetic Druggability Design</li>
+                                <li><i class="fas fa-edit"></i> Transmembrane Drug Delivery</li>
+                                <li><i class="fas fa-vial"></i> High-Transfection Vectors Development</li>
+                            </ul>
+                        </div>
+                        <div class="member-links">
+                            <a href="member/ch.html" class="member-link">
+                                <i class="fas fa-user-circle"></i> Profile
+                            </a>
+                            <a href="mailto:chenghao@dlut.edu.cn" class="member-link">
+                                <i class="fas fa-envelope"></i> Email
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 可以根据需要添加更多博士后 -->
+                <!--
+                <div class="team-member-card">
+                    <div class="member-image" style="background-image: url('images/member/placeholder.jpg');"></div>
+                    <div class="member-content">
+                        <h3 class="member-name">Name Surname</h3>
+                        <p class="member-role">Postdoctoral Researcher</p>
+                        <div class="member-expertise">
+                            <h4 class="expertise-title">Research Expertise</h4>
+                            <ul class="expertise-list">
+                                <li><i class="fas fa-dna"></i> Research Area 1</li>
+                                <li><i class="fas fa-flask"></i> Research Area 2</li>
+                            </ul>
+                        </div>
+                        <div class="member-links">
+                            <a href="member/profile.html" class="member-link">
+                                <i class="fas fa-user-circle"></i> Profile
+                            </a>
+                            <a href="mailto:email@dlut.edu.cn" class="member-link">
+                                <i class="fas fa-envelope"></i> Email
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                -->
+                
+                <!-- 如果没有更多博士后，可以使用占位符或空状态 -->
+                <!--
+                <div class="empty-state">
+                    <i class="fas fa-user-plus"></i>
+                    <p>More postdoctoral researchers will join our team soon!</p>
+                </div>
+                -->
+            </div>
+        </section>
+        
+        <!-- 分隔线 -->
+        <div class="section-divider"></div>
+        
+        <!-- PhD Students 博士研究生 -->
+        <section class="phd-students-section">
+            <h3 class="section-subtitle">PhD Students</h3>
+            <div class="students-grid">
+                <!-- 示例博士生卡片1 -->
+                <div class="student-card">
+                    <div class="student-image" style="background-image: url('images/member/student1.jpg');"></div>
+                    <div class="student-content">
+                        <h4 class="student-name">Zhang Wei</h4>
+                        <p class="student-program">PhD in Biological Engineering</p>
+                        <p class="student-year">2020 - Present</p>
+                        <p class="student-research">Research focus on mRNA vaccine development and immune response optimization.</p>
+                        <div class="student-links">
+                            <a href="mailto:zhangwei@mail.dlut.edu.cn" class="student-link">
+                                <i class="fas fa-envelope"></i> Email
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 示例博士生卡片2 -->
+                <div class="student-card">
+                    <div class="student-image" style="background-image: url('images/member/student2.jpg');"></div>
+                    <div class="student-content">
+                        <h4 class="student-name">Li Mei</h4>
+                        <p class="student-program">PhD in Biotechnology</p>
+                        <p class="student-year">2021 - Present</p>
+                        <p class="student-research">Working on nanomaterial-based drug delivery systems for cancer therapy.</p>
+                        <div class="student-links">
+                            <a href="mailto:limei@mail.dlut.edu.cn" class="student-link">
+                                <i class="fas fa-envelope"></i> Email
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 可以根据需要添加更多博士生卡片 -->
+                <!--
+                <div class="student-card">
+                    <div class="student-image" style="background-image: url('images/member/placeholder.jpg');"></div>
+                    <div class="student-content">
+                        <h4 class="student-name">Student Name</h4>
+                        <p class="student-program">PhD Program</p>
+                        <p class="student-year">Year - Present</p>
+                        <p class="student-research">Brief research description goes here.</p>
+                        <div class="student-links">
+                            <a href="mailto:student@mail.dlut.edu.cn" class="student-link">
+                                <i class="fas fa-envelope"></i> Email
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                -->
+                
+                <!-- 如果没有博士生数据，可以显示空状态 -->
+                <!--
+                <div class="empty-state">
+                    <i class="fas fa-graduation-cap"></i>
+                    <p>PhD students will be listed here as they join the lab.</p>
+                </div>
+                -->
+            </div>
+        </section>
+        
+        <!-- Graduate Students 硕士研究生 -->
+        <section class="graduate-students-section">
+            <h3 class="section-subtitle">Graduate Students (Masters)</h3>
+            <div class="students-grid">
+                <!-- 示例硕士生卡片1 -->
+                <div class="student-card">
+                    <div class="student-image" style="background-image: url('images/member/student3.jpg');"></div>
+                    <div class="student-content">
+                        <h4 class="student-name">Wang Fang</h4>
+                        <p class="student-program">MSc in Biopharmaceuticals</p>
+                        <p class="student-year">2022 - 2024</p>
+                        <p class="student-research">Studying the applications of mRNA technology in regenerative medicine.</p>
+                        <div class="student-links">
+                            <a href="mailto:wangfang@mail.dlut.edu.cn" class="student-link">
+                                <i class="fas fa-envelope"></i> Email
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 示例硕士生卡片2 -->
+                <div class="student-card">
+                    <div class="student-image" style="background-image: url('images/member/student4.jpg');"></div>
+                    <div class="student-content">
+                        <h4 class="student-name">Chen Hao</h4>
+                        <p class="student-program">MSc in Biological Engineering</p>
+                        <p class="student-year">2022 - 2024</p>
+                        <p class="student-research">Research on biosensor development for disease diagnostics.</p>
+                        <div class="student-links">
+                            <a href="mailto:chenhao@mail.dlut.edu.cn" class="student-link">
+                                <i class="fas fa-envelope"></i> Email
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 可以根据需要添加更多硕士生卡片 -->
+            </div>
+        </section>
+        
+        <!-- Undergraduates 本科生 -->
+        <section class="undergraduates-section">
+            <h3 class="section-subtitle">Undergraduate Students</h3>
+            <div class="students-grid">
+                <!-- 示例本科生卡片1 -->
+                <div class="student-card">
+                    <div class="student-image" style="background-image: url('images/member/student5.jpg');"></div>
+                    <div class="student-content">
+                        <h4 class="student-name">Liu Yang</h4>
+                        <p class="student-program">BSc in Biological Engineering</p>
+                        <p class="student-year">2023 - 2024</p>
+                        <p class="student-research">Undergraduate research assistant working on lab automation projects.</p>
+                        <div class="student-links">
+                            <a href="mailto:liuyang@mail.dlut.edu.cn" class="student-link">
+                                <i class="fas fa-envelope"></i> Email
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 示例本科生卡片2 -->
+                <div class="student-card">
+                    <div class="student-image" style="background-image: url('images/member/student6.jpg');"></div>
+                    <div class="student-content">
+                        <h4 class="student-name">Zhao Min</h4>
+                        <p class="student-program">BSc in Biotechnology</p>
+                        <p class="student-year">2023 - 2024</p>
+                        <p class="student-research">Assisting with data analysis for mRNA sequencing projects.</p>
+                        <div class="student-links">
+                            <a href="mailto:zhaomin@mail.dlut.edu.cn" class="student-link">
+                                <i class="fas fa-envelope"></i> Email
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 可以根据需要添加更多本科生卡片 -->
+            </div>
+        </section>
+        
+        <!-- Alumni 校友 -->
+        <section class="alumni-section">
+            <h2 class="section-title">Lab Alumni</h2>
+            
+            <!-- 博士后校友 -->
+            <div class="alumni-category">
+                <h3>Postdoctoral Alumni</h3>
+                <div class="alumni-list">
+                    <div class="alumni-item">
+                        <div class="alumni-name">Dr. Zhang Ming</div>
+                        <div class="alumni-period">2019 - 2021 | Now: Assistant Professor at Shanghai University</div>
+                    </div>
+                    <div class="alumni-item">
+                        <div class="alumni-name">Dr. Liu Hong</div>
+                        <div class="alumni-period">2020 - 2022 | Now: Senior Scientist at BioNTech</div>
+                    </div>
+                    <!-- 添加更多博士后校友 -->
+                </div>
+            </div>
+            
+            <!-- 博士生校友 -->
+            <div class="alumni-category">
+                <h3>PhD Alumni</h3>
+                <div class="alumni-list">
+                    <div class="alumni-item">
+                        <div class="alumni-name">Dr. Wang Qiang</div>
+                        <div class="alumni-period">2018 - 2022 | Now: Postdoc at MIT</div>
+                    </div>
+                    <div class="alumni-item">
+                        <div class="alumni-name">Dr. Li Jing</div>
+                        <div class="alumni-period">2017 - 2021 | Now: Research Scientist at Moderna</div>
+                    </div>
+                    <!-- 添加更多博士生校友 -->
+                </div>
+            </div>
+            
+            <!-- 硕士生校友 -->
+            <div class="alumni-category">
+                <h3>Master's Alumni</h3>
+                <div class="alumni-list">
+                    <div class="alumni-item">
+                        <div class="alumni-name">Chen Wei</div>
+                        <div class="alumni-period">2020 - 2022 | Now: PhD student at Stanford University</div>
+                    </div>
+                    <div class="alumni-item">
+                        <div class="alumni-name">Zhou Fang</div>
+                        <div class="alumni-period">2019 - 2021 | Now: Research Associate at Pfizer</div>
+                    </div>
+                    <!-- 添加更多硕士生校友 -->
+                </div>
+            </div>
+            
+            <!-- 本科生校友 -->
+            <div class="alumni-category">
+                <h3>Undergraduate Alumni</h3>
+                <div class="alumni-list">
+                    <div class="alumni-item">
+                        <div class="alumni-name">Xu Yan</div>
+                        <div class="alumni-period">2021 - 2022 | Now: MSc student at Tsinghua University</div>
+                    </div>
+                    <div class="alumni-item">
+                        <div class="alumni-name">Ma Liang</div>
+                        <div class="alumni-period">2020 - 2021 | Now: Medical School at Peking University</div>
+                    </div>
+                    <!-- 添加更多本科生校友 -->
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- 页脚 -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="contact-list">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Room 513, School of Biological Engineering, Dalian University of Technology</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span>+86 XXX-XXXX-XXXX</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>jqlin@dlut.edu.cn</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2026 The mRNA Technology and Bio-Interface Lab. All rights reserved.</p>
+            <p>This website was created for the purpose of academic exchange.</p>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 移动端菜单功能（与主页保持一致）
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileNav = document.getElementById('mobileNav');
+            
+            if (mobileMenuBtn && mobileNav) {
+                mobileMenuBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    
+                    mobileNav.classList.toggle('active');
+                    
+                    const icon = this.querySelector('i');
+                    if (mobileNav.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                        document.body.style.overflow = '';
+                    }
+                });
+                
+                // 移动端下拉菜单功能
+                const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+                mobileDropdownToggles.forEach(toggle => {
+                    toggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        const dropdownMenu = this.nextElementSibling;
+                        dropdownMenu.classList.toggle('active');
+                        this.classList.toggle('active');
+                    });
+                });
+                
+                // 点击移动菜单链接后关闭菜单
+                const mobileNavLinks = mobileNav.querySelectorAll('a[href]');
+                mobileNavLinks.forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        if (this.classList.contains('mobile-dropdown-toggle')) {
+                            return;
+                        }
+                        
+                        mobileNav.classList.remove('active');
+                        mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                        mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                        document.body.style.overflow = '';
+                    });
+                });
+                
+                // 点击页面其他地方关闭菜单
+                document.addEventListener('click', function(e) {
+                    if (mobileNav.classList.contains('active') && 
+                        !mobileNav.contains(e.target) && 
+                        !mobileMenuBtn.contains(e.target)) {
+                        mobileNav.classList.remove('active');
+                        mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                        mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                        document.body.style.overflow = '';
+                    }
+                });
+                
+                // ESC键关闭菜单
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+                        mobileNav.classList.remove('active');
+                        mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                        mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+            
+            // 卡片悬停效果增强
+            const teamCards = document.querySelectorAll('.team-member-card');
+            
+            teamCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.boxShadow = '0 20px 40px rgba(0, 86, 166, 0.25)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.boxShadow = '';
+                });
+            });
+            
+            // 学生卡片悬停效果
+            const studentCards = document.querySelectorAll('.student-card');
+            
+            studentCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.boxShadow = '0 15px 30px rgba(0, 86, 166, 0.2)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.boxShadow = '';
+                });
+            });
+            
+            // 平滑滚动到页面顶部
+            const backToTopBtn = document.createElement('button');
+            backToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+            backToTopBtn.className = 'back-to-top';
+            backToTopBtn.style.cssText = `
+                position: fixed;
+                bottom: 30px;
+                right: 30px;
+                width: 50px;
+                height: 50px;
+                background: #0056a6;
+                color: white;
+                border: none;
+                border-radius: 50%;
+                cursor: pointer;
+                z-index: 1000;
+                display: none;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.2rem;
+                box-shadow: 0 5px 15px rgba(0, 86, 166, 0.3);
+                transition: all 0.3s;
+            `;
+            document.body.appendChild(backToTopBtn);
+            
+            backToTopBtn.addEventListener('mouseenter', function() {
+                this.style.backgroundColor = '#003d7a';
+                this.style.transform = 'scale(1.1)';
+            });
+            
+            backToTopBtn.addEventListener('mouseleave', function() {
+                this.style.backgroundColor = '#0056a6';
+                this.style.transform = 'scale(1)';
+            });
+            
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // 显示/隐藏返回顶部按钮
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 500) {
+                    backToTopBtn.style.display = 'flex';
+                } else {
+                    backToTopBtn.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

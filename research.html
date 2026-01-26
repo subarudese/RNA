@@ -115,39 +115,20 @@
             margin-bottom: 0;
         }
         
-        /* 3. 研究网格布局 - 重新设计 */
+        /* 3. 研究网格布局 - 重新设计为上下结构 */
         .research-main-layout {
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             position: relative;
             padding: 40px 20px;
             background: #ffffff;
+            gap: 60px; /* 增加图片和卡片之间的间距 */
         }
-        
-        /* 左侧卡片容器 */
-        .research-cards-left {
-            flex: 0 0 300px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            padding-right: 20px;
-            z-index: 2;
-        }
-        
-        /* 右侧卡片容器 */
-        .research-cards-right {
-            flex: 0 0 300px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            padding-left: 20px;
-            z-index: 2;
-        }
-        
-        /* 中心图片区域 - 占据主要空间 */
+
+        /* 中心图片区域 - 保持在顶部 */
         .research-center-visual {
-            flex: 1;
-            min-height: 80vh;
+            flex: 0 0 auto;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -156,12 +137,13 @@
             position: relative;
             z-index: 1;
         }
-        
-        /* 中心图片容器 - 占满高度 */
+
+        /* 中心图片容器 - 调整大小 */
         .full-height-image {
             width: 100%;
-            height: 100%;
-            /*max-height: 85vh;*/
+            max-width: 1200px;
+            height: auto;
+            aspect-ratio: 16/9; /* 保持16:9比例 */
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 25px 60px rgba(0, 86, 166, 0.2);
@@ -169,14 +151,15 @@
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border: 3px solid white;
+            margin: 0 auto; /* 居中显示 */
         }
-        
+
         .full-height-image:hover {
             transform: translateY(-5px) scale(1.01);
             box-shadow: 0 35px 80px rgba(0, 86, 166, 0.3);
             border-color: #4a90e2;
         }
-        
+
         .full-height-image img {
             width: 100%;
             height: 100%;
@@ -184,11 +167,11 @@
             object-position: center;
             transition: transform 0.8s ease-out;
         }
-        
+
         .full-height-image:hover img {
             transform: scale(1.05);
         }
-        
+
         .image-title-overlay {
             position: absolute;
             bottom: 0;
@@ -199,13 +182,13 @@
             padding: 30px 40px;
             text-align: center;
         }
-        
+
         .image-title-overlay h3 {
             font-size: 1.8rem;
             margin-bottom: 10px;
             font-weight: 700;
         }
-        
+
         .image-description {
             font-size: 1.1rem;
             opacity: 0.9;
@@ -213,7 +196,17 @@
             max-width: 600px;
             margin: 0 auto;
         }
-        
+
+        /* 研究卡片容器 - 网格布局，每排4个 */
+        .research-cards-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
         /* 研究卡片样式 - 调整以适应新布局 */
         .research-card {
             background: white;
@@ -224,15 +217,15 @@
             position: relative;
             display: flex;
             flex-direction: column;
-            height: 200px; /* 固定高度确保卡片大小一致 */
+            height: 280px; /* 增加高度以容纳更多内容 */
         }
-        
+
         .research-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
             z-index: 10;
         }
-        
+
         /* 卡片颜色边框 */
         .research-card[data-order="1"] { border-top: 4px solid #4a90e2; }
         .research-card[data-order="2"] { border-top: 4px solid #5cb85c; }
@@ -242,7 +235,7 @@
         .research-card[data-order="6"] { border-top: 4px solid #337ab7; }
         .research-card[data-order="7"] { border-top: 4px solid #8e44ad; }
         .research-card[data-order="8"] { border-top: 4px solid #2c3e50; }
-        
+
         .card-content {
             padding: 25px;
             flex: 1;
@@ -250,7 +243,7 @@
             flex-direction: column;
             overflow: hidden;
         }
-        
+
         .card-icon {
             width: 50px;
             height: 50px;
@@ -264,33 +257,33 @@
             color: #0056a6;
             transition: all 0.3s;
         }
-        
+
         .research-card:hover .card-icon {
             background: linear-gradient(135deg, #0056a6, #4a90e2);
             color: white;
             transform: scale(1.1) rotate(5deg);
         }
-        
+
         .card-content h3 {
             color: #0056a6;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
             line-height: 1.3;
             font-weight: 700;
         }
-        
+
         .card-content p {
             color: #666;
-            font-size: 0.9rem;
-            line-height: 1.4;
+            font-size: 0.95rem;
+            line-height: 1.5;
             margin-bottom: 15px;
             flex: 1;
             overflow: hidden;
             display: -webkit-box;
-            -webkit-line-clamp: 2;
+            -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
         }
-        
+
         .card-link {
             display: inline-flex;
             align-items: center;
@@ -302,215 +295,79 @@
             transition: all 0.3s;
             margin-top: auto;
         }
-        
+
         .card-link i {
             transition: transform 0.3s;
             font-size: 0.8rem;
         }
-        
+
         .research-card:hover .card-link {
             color: #0056a6;
         }
-        
+
         .research-card:hover .card-link i {
             transform: translateX(5px);
         }
-        
-        /* 4. 全图查看模态框样式 */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 9999;
-        }
-        
-        .modal.active {
-            display: block;
-        }
-        
-        .modal-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(5px);
-        }
-        
-        .modal-content {
-            position: relative;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: transparent;
-            max-width: 95%;
-            max-height: 95vh;
-            width: auto;
-            overflow: hidden;
-        }
-        
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: rgb(0, 0, 0);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 10000;
-            font-size: 1.5rem;
-            transition: all 0.3s;
-        }
-        
-        .close-modal:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.1);
-        }
-        
-        .modal-image-container {
-            max-height: 90vh;
-            overflow: auto;
-            padding: 20px;
-            text-align: center;
-        }
-        
-        #fullResearchView {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* 5. 响应式设计 */
+
+        /* 5. 响应式设计 - 调整网格布局 */
         @media (max-width: 1200px) {
-            .research-cards-left,
-            .research-cards-right {
-                flex: 0 0 280px;
+            .research-cards-container {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
             }
             
             .full-height-image {
-                max-height: 80vh;
+                max-width: 1000px;
             }
         }
-        
+
         @media (max-width: 992px) {
-            .research-main-layout {
-                flex-direction: column;
-                min-height: auto;
-            }
-            
-            .research-cards-left,
-            .research-cards-right {
-                flex: 0 0 auto;
-                width: 100%;
-                padding: 0;
-                margin-bottom: 40px;
-            }
-            
-            .research-cards-left {
-                order: 1;
-            }
-            
-            .research-center-visual {
-                order: 2;
-                margin-bottom: 40px;
-                min-height: 60vh;
-            }
-            
-            .research-cards-right {
-                order: 3;
-            }
-            
-            /* 卡片改为网格布局 */
-            .research-cards-left,
-            .research-cards-right {
-                display: grid;
+            .research-cards-container {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 20px;
             }
             
             .research-card {
-                height: 220px;
+                height: 260px;
             }
             
             .full-height-image {
-                max-height: 60vh;
-            }
-            
-            .banner-content h1 {
-                font-size: 2.8rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .research-banner {
-                height: 50vh;
-                min-height: 350px;
-            }
-            
-            .banner-content h1 {
-                font-size: 2.2rem;
-            }
-            
-            .banner-content p {
-                font-size: 1.1rem;
-            }
-            
-            .section-title-research {
-                font-size: 2rem;
-            }
-            
-            .intro-card {
-                padding: 30px 25px;
-                font-size: 1.1rem;
-            }
-            
-            .research-cards-left,
-            .research-cards-right {
-                grid-template-columns: 1fr;
-            }
-            
-            .research-card {
-                height: 200px;
-            }
-            
-            .full-height-image {
-                max-height: 50vh;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .research-banner {
-                height: 40vh;
-                min-height: 300px;
-            }
-            
-            .banner-content h1 {
-                font-size: 1.8rem;
-            }
-            
-            .banner-content p {
-                font-size: 1rem;
-            }
-            
-            .intro-card {
-                padding: 25px 20px;
-                font-size: 1rem;
-            }
-            
-            .full-height-image {
-                max-height: 40vh;
+                max-width: 800px;
+                aspect-ratio: 3/2;
             }
             
             .image-title-overlay {
                 padding: 20px;
+            }
+            
+            .image-title-overlay h3 {
+                font-size: 1.5rem;
+            }
+            
+            .image-description {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .research-main-layout {
+                padding: 30px 15px;
+                gap: 40px;
+            }
+            
+            .research-cards-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                max-width: 600px;
+            }
+            
+            .research-card {
+                height: 240px;
+            }
+            
+            .full-height-image {
+                max-width: 600px;
+                aspect-ratio: 1/1;
             }
             
             .image-title-overlay h3 {
@@ -520,29 +377,86 @@
             .image-description {
                 font-size: 0.9rem;
             }
+            
+            .card-content h3 {
+                font-size: 1.2rem;
+            }
+            
+            .card-content p {
+                font-size: 0.9rem;
+            }
         }
-        
-        /* 6. 导航指示器（面包屑导航） */
-        .breadcrumb-nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px 20px 0;
-            font-size: 0.9rem;
+
+        @media (max-width: 576px) {
+            .research-main-layout {
+                padding: 20px 10px;
+                gap: 30px;
+            }
+            
+            .full-height-image {
+                max-width: 100%;
+                aspect-ratio: 4/3;
+            }
+            
+            .image-title-overlay {
+                padding: 15px;
+            }
+            
+            .image-title-overlay h3 {
+                font-size: 1.1rem;
+            }
+            
+            .image-description {
+                font-size: 0.8rem;
+            }
+            
+            .research-card {
+                height: auto;
+                min-height: 220px;
+            }
+            
+            .card-content {
+                padding: 20px;
+            }
+            
+            .card-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+            
+            .card-content h3 {
+                font-size: 1.1rem;
+            }
+            
+            .card-content p {
+                font-size: 0.85rem;
+                -webkit-line-clamp: 2;
+            }
         }
-        
-        .breadcrumb-nav a {
-            color: #0056a6;
-            text-decoration: none;
-            transition: color 0.3s;
+
+        /* 调整全图查看按钮位置 */
+        .btn-view-full {
+            margin-top: 30px;
+            padding: 12px 25px;
+            background: #0056a6;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 86, 166, 0.3);
         }
-        
-        .breadcrumb-nav a:hover {
-            color: #4a90e2;
-            text-decoration: underline;
-        }
-        
-        .breadcrumb-nav span {
-            color: #666;
+
+        .btn-view-full:hover {
+            background: #003d7a;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 86, 166, 0.4);
         }
     </style>
 </head>
@@ -616,8 +530,22 @@
     
     <!-- 研究网格布局 -->
     <section class="research-main-layout">
-        <!-- 左侧四个研究方向卡片 -->
-        <div class="research-cards-left">
+        <!-- 中心图片区域 -->
+        <div class="research-center-visual">
+            <div class="full-height-image" id="fullHeightImage">
+                <img src="images/research/lab-research.jpg" alt="研究架构总览图">
+                <div class="image-title-overlay">
+                    <h3>Research Architecture Overview</h3>
+                    <p class="image-description">A comprehensive visual representation of our interdisciplinary research framework and technological integration</p>
+                </div>
+            </div>
+            <button class="btn-view-full" id="viewFullResearchImage">
+                <i class="fas fa-expand-alt"></i> View full image
+            </button>
+        </div>
+        
+        <!-- 研究卡片区域（全部移到图片下方） -->
+        <div class="research-cards-container">
             <div class="research-card" data-order="1">
                 <div class="card-content">
                     <div class="card-icon">
@@ -669,24 +597,7 @@
                     </a>
                 </div>
             </div>
-        </div>
-        
-        <!-- 中心概览图区域 -->
-        <div class="research-center-visual">
-            <div class="full-height-image" id="fullHeightImage">
-                <img src="images/research/lab-research.jpg" alt="研究架构总览图">
-                <div class="image-title-overlay">
-                    <h3>Research Architecture Overview</h3>
-                    <p class="image-description">A comprehensive visual representation of our interdisciplinary research framework and technological integration</p>
-                </div>
-            </div>
-            <button class="btn-view-full" id="viewFullResearchImage" style="margin-top: 30px; padding: 12px 25px; background: #0056a6; color: white; border: none; border-radius: 30px; font-weight: 600; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 10px;">
-                <i class="fas fa-expand-alt"></i> View full image
-            </button>
-        </div>
-        
-        <!-- 右侧四个研究方向卡片 -->
-        <div class="research-cards-right">
+            
             <div class="research-card" data-order="5">
                 <div class="card-content">
                     <div class="card-icon">
@@ -740,7 +651,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- 全图查看模态框 -->
     <div class="modal full-image-modal" id="fullResearchModal">
         <div class="modal-overlay"></div>

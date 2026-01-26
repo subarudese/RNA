@@ -539,9 +539,6 @@
                     <p class="image-description">A comprehensive visual representation of our interdisciplinary research framework and technological integration</p>
                 </div>
             </div>
-            <button class="btn-view-full" id="viewFullResearchImage">
-                <i class="fas fa-expand-alt"></i> View full image
-            </button>
         </div>
         
         <!-- 研究卡片区域（全部移到图片下方） -->
@@ -767,62 +764,7 @@
                     }
                 });
             }
-            
-            // 全图查看功能
-            const fullImageBtn = document.getElementById('viewFullResearchImage');
-            const fullImageContainer = document.getElementById('fullHeightImage');
-            const fullResearchModal = document.getElementById('fullResearchModal');
-            const closeModalBtn = fullResearchModal ? fullResearchModal.querySelector('.close-modal') : null;
-            
-            // 打开全图模态框
-            if (fullImageBtn && fullResearchModal) {
-                fullImageBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    fullResearchModal.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                });
-            }
-            
-            // 点击图片容器也可以打开模态框
-            if (fullImageContainer && fullResearchModal) {
-                fullImageContainer.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    fullResearchModal.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                });
-            }
-            
-            // 关闭模态框
-            if (closeModalBtn) {
-                closeModalBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    closeFullImageModal();
-                });
-            }
-            
-            // 点击模态框背景关闭
-            if (fullResearchModal) {
-                fullResearchModal.addEventListener('click', function(e) {
-                    if (e.target === fullResearchModal) {
-                        closeFullImageModal();
-                    }
-                });
-            }
-            
-            // ESC键关闭
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && fullResearchModal && fullResearchModal.classList.contains('active')) {
-                    closeFullImageModal();
-                }
-            });
-            
-            function closeFullImageModal() {
-                if (fullResearchModal) {
-                    fullResearchModal.classList.remove('active');
-                    document.body.style.overflow = '';
-                }
-            }
-            
+                        
             // 卡片悬停效果增强
             const researchCards = document.querySelectorAll('.research-card');
             

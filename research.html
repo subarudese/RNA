@@ -204,7 +204,7 @@
             gap: 25px;
             width: 100%;
             max-width: 1400px;
-            margin: 0 auto;
+            margin: 40px auto 0; /* 增加上边距 */        
         }
 
         /* 研究卡片样式 - 调整以适应新布局 */
@@ -458,6 +458,114 @@
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(0, 86, 166, 0.4);
         }
+        /* 响应式设计优化 */
+        @media (max-width: 1400px) {
+            .fullscreen-image-container {
+                height: 75vh;
+                min-height: 550px;
+                max-height: 800px;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .fullscreen-image-container {
+                height: 70vh;
+                min-height: 500px;
+                max-height: 750px;
+            }
+            
+            .image-title-overlay {
+                padding: 25px 30px;
+            }
+            
+            .image-title-overlay h3 {
+                font-size: 1.8rem;
+            }
+            
+            .image-description {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .fullscreen-image-container {
+                height: 65vh;
+                min-height: 450px;
+                max-height: 700px;
+                border-radius: 15px;
+            }
+            
+            .image-title-overlay {
+                padding: 20px 25px;
+            }
+            
+            .image-title-overlay h3 {
+                font-size: 1.6rem;
+            }
+            
+            .image-description {
+                font-size: 1rem;
+            }
+            
+            .research-main-layout {
+                padding: 30px 15px 50px;
+                gap: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .fullscreen-image-container {
+                height: 60vh;
+                min-height: 400px;
+                max-height: 600px;
+                border-radius: 12px;
+            }
+            
+            .image-title-overlay {
+                padding: 15px 20px;
+            }
+            
+            .image-title-overlay h3 {
+                font-size: 1.4rem;
+            }
+            
+            .image-description {
+                font-size: 0.95rem;
+                line-height: 1.4;
+            }
+            
+            .research-main-layout {
+                padding: 20px 10px 40px;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .fullscreen-image-container {
+                height: 55vh;
+                min-height: 350px;
+                max-height: 500px;
+                border-radius: 10px;
+            }
+            
+            .image-title-overlay {
+                padding: 12px 15px;
+            }
+            
+            .image-title-overlay h3 {
+                font-size: 1.2rem;
+                margin-bottom: 5px;
+            }
+            
+            .image-description {
+                font-size: 0.85rem;
+            }
+            
+            .research-main-layout {
+                padding: 15px 8px 30px;
+                gap: 30px;
+            }
+        }
     </style>
 </head>
 <body class="mobile-fixed">
@@ -532,18 +640,14 @@
     <section class="research-main-layout">
         <!-- 中心图片区域 -->
         <div class="research-center-visual">
-            <div class="full-height-image" id="fullHeightImage">
-                <img src="images/research/lab-research.jpg" alt="研究架构总览图">
+            <div class="fullscreen-image-container">
+                <img src="images/research/lab-research.jpg" alt="研究架构总览图" class="fullscreen-image">
                 <div class="image-title-overlay">
                     <h3>Research Architecture Overview</h3>
                     <p class="image-description">A comprehensive visual representation of our interdisciplinary research framework and technological integration</p>
                 </div>
             </div>
-            <button class="btn-view-full" id="viewFullResearchImage">
-                <i class="fas fa-expand-alt"></i> View full image
-            </button>
-        </div>
-        
+        </div>        
         <!-- 研究卡片区域（全部移到图片下方） -->
         <div class="research-cards-container">
             <div class="research-card" data-order="1">
@@ -651,19 +755,6 @@
             </div>
         </div>
     </section>
-
-    <!-- 全图查看模态框 -->
-    <div class="modal full-image-modal" id="fullResearchModal">
-        <div class="modal-overlay"></div>
-        <div class="modal-content">
-            <button class="close-modal" aria-label="Close modal">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="modal-image-container">
-                <img src="images/research/lab-research.jpg" alt="研究架构总览图 - 全尺寸" id="fullResearchView">
-            </div>
-        </div>
-    </div>
     
     <!-- 页脚 -->
     <footer id="contact">
@@ -767,62 +858,7 @@
                     }
                 });
             }
-            
-            // 全图查看功能
-            const fullImageBtn = document.getElementById('viewFullResearchImage');
-            const fullImageContainer = document.getElementById('fullHeightImage');
-            const fullResearchModal = document.getElementById('fullResearchModal');
-            const closeModalBtn = fullResearchModal ? fullResearchModal.querySelector('.close-modal') : null;
-            
-            // 打开全图模态框
-            if (fullImageBtn && fullResearchModal) {
-                fullImageBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    fullResearchModal.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                });
-            }
-            
-            // 点击图片容器也可以打开模态框
-            if (fullImageContainer && fullResearchModal) {
-                fullImageContainer.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    fullResearchModal.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                });
-            }
-            
-            // 关闭模态框
-            if (closeModalBtn) {
-                closeModalBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    closeFullImageModal();
-                });
-            }
-            
-            // 点击模态框背景关闭
-            if (fullResearchModal) {
-                fullResearchModal.addEventListener('click', function(e) {
-                    if (e.target === fullResearchModal) {
-                        closeFullImageModal();
-                    }
-                });
-            }
-            
-            // ESC键关闭
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && fullResearchModal && fullResearchModal.classList.contains('active')) {
-                    closeFullImageModal();
-                }
-            });
-            
-            function closeFullImageModal() {
-                if (fullResearchModal) {
-                    fullResearchModal.classList.remove('active');
-                    document.body.style.overflow = '';
-                }
-            }
-            
+                        
             // 卡片悬停效果增强
             const researchCards = document.querySelectorAll('.research-card');
             
